@@ -1,0 +1,3 @@
+/.bundle
+vendor/bundle
+logs/*.log
