@@ -38,11 +38,13 @@ post '/api/vimrc' do
       end
     end
   rescue JSON::ParserError => e
+    @logger.error(e.message)
     return [400, {"message" => "RequestBody should be JSON object"}.to_json]
   rescue => e
     @logger.error(e.message)
     return [500, {"message" => "Unexpected Error"}.to_json]
   end
 
+  @logger.info('success')
   return [201, {"filepath" => params['filepath'], "contents" => params['contents']}.to_json]
 end
