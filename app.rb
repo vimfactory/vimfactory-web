@@ -38,7 +38,7 @@ post '/api/vimrc' do
       return [400, {"message" => "`#{params['filepath']}` does not exist"}.to_json]
     end
 
-    File.open(params['filepath'], 'a') do |file|
+    File.open(params['filepath'], 'w') do |file|
       params['contents'].each do |content|
         file.puts content
       end
