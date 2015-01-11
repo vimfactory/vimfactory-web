@@ -1,40 +1,35 @@
 <div class="raw">
-<div class="terminal-area col-xs-6">
-  <h3 class="page-header">Vim実行画面</h3>
-  <!--
-  <div class="terminal-window">
-     <p class="terminal-window-text">$ vim<br />$ ssh vagrant hogegegegegegeg</p>
+  <div class="terminal-area col-xs-6">
+    <%# <h3 class="page-header">Vim実行画面</h3> %>
+    <iframe src="http://<%= @tty_host %>:<%= @tty_port %>" class="terminal-window"></iframe>
   </div>
-  -->
-  <iframe src="http://<%= @tty_host %>:<%= @tty_port %>" class="terminal-window"></iframe>
-</div>
 
-<div class="vimrc-area col-xs-6">
-  <h3 class="page-header">Vimを設定</h3>
-  <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="#">設定項目</a></li>
-    <li role="presentation"><a href="#">設定ファイル(vimrc)</a></li>
-  </ul>
-  <div id="vimrc-setting">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="vimrc-contents[]" value="set number">
-        行番号をつける
-      </label>
+  <div class="vimrc-area col-xs-6">
+    <%# <h3 class="page-header">Vimを設定</h3> %>
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">設定項目</a></li>
+      <li role="presentation"><a href="#">設定ファイル(vimrc)</a></li>
+    </ul>
+    <div id="vimrc-setting">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="vimrc-contents[]" value="set number">
+          行番号をつける
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="vimrc-contents[]" value="set showmatch">
+          対応するカッコをハイライトする
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="vimrc-contents[]"  value="set ignorecase">
+          検索時大文字小文字を区別しない
+        </label>
+      </div>
     </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="vimrc-contents[]" value="set showmatch">
-        対応するカッコをハイライトする
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="vimrc-contents[]"  value="set ignorecase">
-        検索時大文字小文字を区別しない
-      </label>
-    </div>
+    <button type="button" id="btn-vimrc-setting" class="btn btn-primary btn-lg">これで設定する</button>
   </div>
-  <button type="button" id="btn-vimrc-setting" class="btn btn-primary btn-lg">これで設定する</button>
-</div>
 </div>
