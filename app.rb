@@ -1,13 +1,18 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require "sinatra/config_file"
 require 'logger'
 require 'json'
+
+config_file './config/config.yml'
 
 before do
   @logger = Logger.new('./logs/vimrc-generator-web.log', 'daily')
 end
 
 get '/' do
+  @tty_host = settings.tty_host
+  @tty_port = settings.tty_port
   erb :index
 end
 
