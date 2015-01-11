@@ -15,30 +15,26 @@
     <li role="presentation" class="active"><a href="#">設定項目</a></li>
     <li role="presentation"><a href="#">設定ファイル(vimrc)</a></li>
   </ul>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" value="">
-      行番号をつける
-    </label>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" value="">
-      行番号をつける
-    </label>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" value="">
-      行番号をつける
-    </label>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" value="">
-      行番号をつける
-    </label>
-  </div>
-  <button type="button" class="btn btn-primary btn-lg">これで設定する</button>
+  <form id="vimrc-setting" action="api/vimrc" method="post">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="set-number" value="1">
+        行番号をつける
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="set-showwatch" value="1">
+        対応するカッコをハイライトする
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="set-ignorecase"  value="1">
+        検索時大文字小文字を区別しない
+      </label>
+    </div>
+  </form>
+  <button type="button" id="btn-vimrc-setting" class="btn btn-primary btn-lg">これで設定する</button>
 </div>
 </div>
