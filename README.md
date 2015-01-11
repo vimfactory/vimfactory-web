@@ -2,10 +2,11 @@
 vimrc-generatorのフロントエンド&APIのリポジトリだよ！
 
 ## 動かす
-- rbenvでRuby2.1.5をインストールする
+- rbenvでRuby2.1.5をインストールする https://slack-files.com/T02MB4ECW-F03B44XJ6-7db7c4f39a
+- bundlerをインストールする `gem install bundler`
 - このリポジトリをgit cloneする
-- `bundle install`してgemをインストールする
-- `bundle exec rackup --host 0.0.0.0`でWebサーバを起動する
+- gemをインストールする `bundle install`
+- Webサーバを起動する `bundle exec rackup --host 0.0.0.0`
 - これで動く
 - `GET http://hostname:9292/`にアクセスするとトップページ
 - `POST http://hostname:9292/api/vimrc`でAPIリクエスト
