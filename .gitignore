@@ -1,3 +1,4 @@
 /.bundle
 vendor/bundle
 logs/*.log
+!.gitkeep
