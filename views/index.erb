@@ -15,26 +15,26 @@
     <li role="presentation" class="active"><a href="#">設定項目</a></li>
     <li role="presentation"><a href="#">設定ファイル(vimrc)</a></li>
   </ul>
-  <form id="vimrc-setting" action="api/vimrc" method="post">
+  <div id="vimrc-setting">
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="set-number" value="1">
+        <input type="checkbox" name="vimrc-contents[]" value="set number">
         行番号をつける
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="set-showwatch" value="1">
+        <input type="checkbox" name="vimrc-contents[]" value="set showwatch">
         対応するカッコをハイライトする
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="set-ignorecase"  value="1">
+        <input type="checkbox" name="vimrc-contents[]"  value="set ignorecase">
         検索時大文字小文字を区別しない
       </label>
     </div>
-  </form>
+  </div>
   <button type="button" id="btn-vimrc-setting" class="btn btn-primary btn-lg">これで設定する</button>
 </div>
 </div>

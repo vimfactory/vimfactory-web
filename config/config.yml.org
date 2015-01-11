@@ -1,2 +1,3 @@
+base_url: "http://192.168.33.100/"
 tty_host: 192.168.33.20
 tty_port: 8080
