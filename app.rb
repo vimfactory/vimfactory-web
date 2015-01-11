@@ -26,12 +26,12 @@ post '/api/vimrc' do
       return [400, {"message" => "Required parameter `filepath` is missing"}.to_json]
     end
 
-    if params['contents'].nil?
-      return [400, {"message" => "Required parameter `contents` is missing"}.to_json]
+    if params['vimrc_contents'].nil?
+      return [400, {"message" => "Required parameter `vimrc_contents` is missing"}.to_json]
     end
 
-    if params['contents'].class != Array
-      return [400, {"message" => "Parameter `contents` type must be Array"}.to_json]
+    if params['vimrc_contents'].class != Array
+      return [400, {"message" => "Parameter `vimrc_contents` type must be Array"}.to_json]
     end
 
     unless File.exists?(params['filepath'])
@@ -39,8 +39,12 @@ post '/api/vimrc' do
     end
 
     File.open(params['filepath'], 'w') do |file|
-      params['contents'].each do |content|
-        file.puts content
+      params['vimrc_contents'].each do |option|
+        if VIMRC_SETTINGS[option]
+          file.puts VIMRC_SETTINGS[option]
+        else
+          @logger.warn("Invalid settings passed: #{option}")
+        end
       end
     end
   rescue JSON::ParserError => e
@@ -52,5 +56,5 @@ post '/api/vimrc' do
   end
 
   @logger.info('success')
-  return [201, {"filepath" => params['filepath'], "contents" => params['contents']}.to_json]
+  return [201, {"filepath" => params['filepath'], "vimrc_contents" => params['vimrc_contents']}.to_json]
 end

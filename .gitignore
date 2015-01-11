@@ -1,5 +1,6 @@
 /.bundle
 vendor/bundle
 logs/*.log
+logs/*.log.*
 config/config.yml
 !.gitkeep

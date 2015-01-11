@@ -27,12 +27,12 @@ webapiについての説明じゃ。
      - 型：文字列
      - 存在しないファイルへの書き込みはできない
      - 例：'/home/mogulla3/.vimrc'
-  - contents
-     - 書き込むデータ。1要素1行。
+  - vimrc_contents
+     - 書き込むデータ
      - 必須
      - 型：配列
-     - 書き込み内容の妥当性はチェックしない
-     - 例：['set number']
+     - 指定方法はwiki参照
+     - 例：["set_number", "set_showmatch"]
 
 ```
 POST /api/vimrc
@@ -41,7 +41,7 @@ Host: ???
 
 {
   "filepath": "/home/mogulla3/.vimrc",
-  "contents": ["set number"]
+  "vimrc_contents": ["set_number", "set_showmatch"]
 }
 ```
 
@@ -50,7 +50,7 @@ Host: ???
 ```
 {
   "filepath": "/home/mogulla3/.vimrc",
-  "contents": ["set number"]
+  "vimrc_contents": ["set_number", "set_showmatch"]
 }
 ```
 
