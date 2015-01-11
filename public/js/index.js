@@ -3,9 +3,9 @@ $("#btn-vimrc-setting").click(function(event){
   
   var results = [];
    
-  $("input[name='vimrc-contents[]']:checked").map(function(){
+  $(".vimrc-contents:checked").map(function(){
   
-    results.push($(this).val());
+    results.push($(this).attr('name'));
 
   });
   
