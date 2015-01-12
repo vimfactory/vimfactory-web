@@ -33,7 +33,7 @@ header p {
 }
 
 .terminal-window{
-    background-color:black;
+    /*background-color:black;*/
     margin: 0 auto;
     width: 682px;
     height: 585px;
