@@ -1,11 +1,14 @@
 <div class="raw">
-  <div class="terminal-area col-xs-6">
-    <%# <h3 class="page-header">Vim実行画面</h3> %>
-    <iframe src="http://<%= @tty_host %>:<%= @tty_port %>" class="terminal-window"></iframe>
+  <div id="terminal-body" class="terminal-area col-xs-6">
+    <div id="empty-terminal">
+        左画面でお好みのVim設定をしよう。<br />
+        設定後ここでvimを即お試しできます。<br />
+      <button id="open">vim起動</button>
+    </div>
+    <!--<iframe src="http://<%= @tty_host %>:<%= @tty_port %>" class="terminal-window"></iframe>-->
   </div>
 
   <div class="vimrc-area col-xs-6">
-    <%# <h3 class="page-header">Vimを設定</h3> %>
     <ul class="nav nav-tabs">
       <li role="presentation" class="active"><a href="#">基本設定</a></li>
       <li role="presentation"><a href="#">高度な設定</a></li>
