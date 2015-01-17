@@ -26,5 +26,5 @@ $("#btn-vimrc-setting").click(function(event){
       console.log(data);
     },
   });
-
+  
 });

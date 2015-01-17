@@ -509,6 +509,10 @@ Terminal.bindKeys = function(document) {
   // We should only need to check `target === body` below,
   // but we can check everything for good measure.
   on(document, 'keydown', function(ev) {
+   
+    console.log('-----start-----');
+    console.log('1: term.js: Termial.bindKeys: keydown');
+
     if (!Terminal.focus) return;
     var target = ev.target || ev.srcElement;
     if (!target) return;
@@ -2369,6 +2373,10 @@ Terminal.prototype.writeln = function(data) {
 // Key Resources:
 // https://developer.mozilla.org/en-US/docs/DOM/KeyboardEvent
 Terminal.prototype.keyDown = function(ev) {
+
+  console.log('2: term.js: Termial.prototype.keyDown');
+  console.log('2-1: keycode: '+ev.keyCode);
+
   var self = this
     , key;
 
@@ -2595,6 +2603,10 @@ Terminal.prototype.keyDown = function(ev) {
     this.keySelect(ev, key);
     return cancel(ev);
   }
+  
+  console.log('2-2: emit: key='+key);
+  console.log('2-3: emit: ev');
+  console.log(ev);
 
   this.emit('keydown', ev);
   this.emit('key', key, ev);

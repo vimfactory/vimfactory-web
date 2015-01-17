@@ -618,6 +618,9 @@ var io = ('undefined' === typeof module ? {} : module.exports);
    */
 
   EventEmitter.prototype.emit = function (name) {
+
+    console.log('3: socket.io.js: EventEmitter.prototype.emit');
+    console.log('3-1: name='+name);
     if (!this.$events) {
       return false;
     }
@@ -630,15 +633,22 @@ var io = ('undefined' === typeof module ? {} : module.exports);
 
     var args = Array.prototype.slice.call(arguments, 1);
 
+    console.log('3-2: socket.io.js: args');
+    console.log(args);
+
     if ('function' == typeof handler) {
+      console.log('3-3: 1');
+      console.log(this);
       handler.apply(this, args);
     } else if (io.util.isArray(handler)) {
+      console.log('3-3: 2');
       var listeners = handler.slice();
 
       for (var i = 0, l = listeners.length; i < l; i++) {
         listeners[i].apply(this, args);
       }
     } else {
+      console.log('3-3: 3');
       return false;
     }
 
@@ -1782,6 +1792,7 @@ var io = ('undefined' === typeof module ? {} : module.exports);
    */
 
   Socket.prototype.packet = function (data) {
+    console.log('[Socket.prototype.packet]');
     if (this.connected && !this.doBuffer) {
       this.transport.packet(data);
     } else {
@@ -2127,6 +2138,7 @@ var io = ('undefined' === typeof module ? {} : module.exports);
    */
 
   SocketNamespace.prototype.packet = function (packet) {
+    console.log('[SocketNamespace.prototype.packet]');
     packet.endpoint = this.name;
     this.socket.packet(packet);
     this.flags = {};
@@ -2140,6 +2152,7 @@ var io = ('undefined' === typeof module ? {} : module.exports);
    */
 
   SocketNamespace.prototype.send = function (data, fn) {
+    console.log('[SocketNamespace.prototype.send]');
     var packet = {
         type: this.flags.json ? 'json' : 'message'
       , data: data
@@ -2161,6 +2174,32 @@ var io = ('undefined' === typeof module ? {} : module.exports);
    */
   
   SocketNamespace.prototype.emit = function (name) {
+    console.log('[SocketNamespace.prototype.emit]');
+    var args = Array.prototype.slice.call(arguments, 1)
+      , lastArg = args[args.length - 1]
+      , packet = {
+            type: 'event'
+          , name: name
+        };
+    
+    if ('function' == typeof lastArg) {
+      console.log('if typeof lastArg == function');
+      packet.id = ++this.ackPackets;
+      packet.ack = 'data';
+      this.acks[packet.id] = lastArg;
+      args = args.slice(0, args.length - 1);
+    }
+
+    packet.args = args;
+    console.log('args:');
+    console.log(args);
+    console.log('packet:');
+    console.log(packet);
+
+    return this.packet(packet);
+  };
+  
+  SocketNamespace.prototype.emit2 = function (name) {
     var args = Array.prototype.slice.call(arguments, 1)
       , lastArg = args[args.length - 1]
       , packet = {
@@ -2176,8 +2215,12 @@ var io = ('undefined' === typeof module ? {} : module.exports);
     }
 
     packet.args = args;
-
+    
+    console.log('3: socket.io.js: SocketNamespace.prototype.emit');
+    console.log('3-1: packet='+packet);
+    /*
     return this.packet(packet);
+    */
   };
 
   /**
