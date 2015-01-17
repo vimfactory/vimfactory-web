@@ -1,5 +1,5 @@
 //vimrc設定ボタンを押した際の動作
-$("#btn-vimrc-setting").click(function(event){
+$("#setting-btn").click(function(event){
   
   var results = [];
    
@@ -28,3 +28,4 @@ $("#btn-vimrc-setting").click(function(event){
   });
 
 });
+
