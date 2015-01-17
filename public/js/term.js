@@ -98,6 +98,7 @@ EventEmitter.prototype.once = function(type, listener) {
 };
 
 EventEmitter.prototype.emit = function(type) {
+  console.log('2-4: term.js: EventEmitter.prototype.emit: type='+type);
   if (!this._events[type]) return;
 
   var args = Array.prototype.slice.call(arguments, 1)
@@ -105,7 +106,11 @@ EventEmitter.prototype.emit = function(type) {
     , l = obj.length
     , i = 0;
 
+  console.log('2-5: term.js: EventEmitter.prototype.emit: args');
+  console.log(args);
+
   for (; i < l; i++) {
+    console.log(obj[i]);
     obj[i].apply(this, args);
   }
 };
@@ -2605,7 +2610,7 @@ Terminal.prototype.keyDown = function(ev) {
   }
   
   console.log('2-2: emit: key='+key);
-  console.log('2-3: emit: ev');
+  console.log('2-3: emit: ev=');
   console.log(ev);
 
   this.emit('keydown', ev);

@@ -2182,6 +2182,8 @@ var io = ('undefined' === typeof module ? {} : module.exports);
           , name: name
         };
     
+    console.log('lastArg: '+lastArg);
+
     if ('function' == typeof lastArg) {
       console.log('if typeof lastArg == function');
       packet.id = ++this.ackPackets;

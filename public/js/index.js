@@ -28,3 +28,4 @@ $("#btn-vimrc-setting").click(function(event){
   });
   
 });
+
