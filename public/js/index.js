@@ -28,4 +28,3 @@ $("#setting-btn").click(function(event){
   });
 
 });
-

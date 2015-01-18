@@ -1,11 +1,9 @@
 <div class="raw">
   <div class="terminal-area col-xs-6">
-    <%# <h3 class="page-header">Vim実行画面</h3> %>
     <iframe src="http://<%= @tty_host %>:<%= @tty_port %>" class="terminal-window"></iframe>
   </div>
 
   <div class="vimrc-area col-xs-6">
-    <%# <h3 class="page-header">Vimを設定</h3> %>
     <ul class="nav nav-tabs">
       <li role="presentation" class="active">
         <a href="#setting-color" data-toggle="tab">カラー</a>
@@ -19,11 +17,12 @@
     </ul>
     <div id="setting-contents" class="tab-content">
       <div id="setting-color" class="tab-pane fade in active">
-        <ul>
-          <li class="color-schema"><img src="img/vimrc_color_default.jpg"></li>
-          <li class="color-schema"><img src="img/vimrc_color_desert.jpg"></li>
-          <li class="color-schema"><img src="img/vimrc_color_darkblue.jpg"></li>
-          <li class="color-schema"><img src="img/vimrc_color_evening.jpg"></li>
+        <h5>お好みのカラーを選択</h5>
+        <ul class="color-schema">
+          <li class="color-list"><img src="img/vimrc_color_default.jpg"></li>
+          <li class="color-list"><img src="img/vimrc_color_desert.jpg"></li>
+          <li class="color-list"><img src="img/vimrc_color_darkblue.jpg"></li>
+          <li class="color-list"><img src="img/vimrc_color_evening.jpg"></li>
         </ul>
       </div>
       <div id="setting-basic" class="tab-pane fade">

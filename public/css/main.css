@@ -48,3 +48,12 @@ header p {
     width:100%;
     height:100%;
 }
+
+ul.color-schema{
+    padding: 0;
+}
+
+ul.color-schema li{
+    display: inline;
+    margin: 0 10px;
+}
