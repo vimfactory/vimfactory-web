@@ -1,35 +1,54 @@
 <div class="raw">
   <div class="terminal-area col-xs-6">
-    <%# <h3 class="page-header">Vim実行画面</h3> %>
     <iframe src="http://<%= @tty_host %>:<%= @tty_port %>" class="terminal-window"></iframe>
   </div>
 
   <div class="vimrc-area col-xs-6">
-    <%# <h3 class="page-header">Vimを設定</h3> %>
     <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="#">基本設定</a></li>
-      <li role="presentation"><a href="#">高度な設定</a></li>
+      <li role="presentation" class="active">
+        <a href="#setting-color" data-toggle="tab">カラー</a>
+      </li>
+      <li role="presentation">
+        <a href="#setting-basic" data-toggle="tab">基本設定</a>
+      </li>
+      <li role="presentation">
+        <a href="#setting-advanced" data-toggle="tab">高度な設定</a>
+      </li>
     </ul>
-    <div id="vimrc-setting">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" class="vimrc-contents" name="set_number">
-          行番号をつける
-        </label>
+    <div id="setting-contents" class="tab-content">
+      <div id="setting-color" class="tab-pane fade in active">
+        <h5>お好みのカラーを選択</h5>
+        <ul class="color-schema">
+          <li class="color-list"><img src="img/vimrc_color_default.jpg"></li>
+          <li class="color-list"><img src="img/vimrc_color_desert.jpg"></li>
+          <li class="color-list"><img src="img/vimrc_color_darkblue.jpg"></li>
+          <li class="color-list"><img src="img/vimrc_color_evening.jpg"></li>
+        </ul>
       </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" class="vimrc-contents" name="set_showmatch">
-          対応するカッコをハイライトする
-        </label>
+      <div id="setting-basic" class="tab-pane fade">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="set_number">
+            行番号をつける
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="set_showmatch">
+            対応するカッコをハイライトする
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="set_ignorecase">
+            検索時大文字小文字を区別しない
+          </label>
+        </div>
       </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" class="vimrc-contents" name="set_ignorecase">
-          検索時大文字小文字を区別しない
-        </label>
+      <div id="setting-advanced" class="tab-pane fade">
+        advanced
       </div>
-      <button type="button" id="btn-vimrc-setting" class="btn btn-primary btn-lg">これで設定する</button>
+      <button type="button" id="setting-btn" class="btn btn-primary btn-lg">これで設定する</button>
     </div>
   </div>
 </div>
