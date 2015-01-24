@@ -1,6 +1,10 @@
 <div class="raw">
-  <div class="terminal-area col-xs-6">
-    <iframe src="http://<%= @tty_host %>:<%= @tty_port %>" class="terminal-window"></iframe>
+  <div id="terminal-body" class="terminal-area col-xs-6">
+    <div id="empty-terminal">
+        左画面でお好みのVim設定をしよう。<br />
+        設定後ここでvimを即お試しできます。<br />
+      <button id="open">vim起動</button>
+    </div>
   </div>
 
   <div class="vimrc-area col-xs-6">

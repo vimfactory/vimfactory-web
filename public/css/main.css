@@ -49,6 +49,12 @@ header p {
     height:100%;
 }
 
+#empty-terminal{
+    border: dotted 2px #ddd;
+    height: 100%;
+    text-align: center;
+}
+
 ul.color-schema{
     padding: 0;
 }

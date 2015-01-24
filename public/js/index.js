@@ -26,5 +26,6 @@ $("#setting-btn").click(function(event){
       console.log(data);
     },
   });
-
+  
 });
+
