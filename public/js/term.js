@@ -98,7 +98,6 @@ EventEmitter.prototype.once = function(type, listener) {
 };
 
 EventEmitter.prototype.emit = function(type) {
-  console.log('2-4: term.js: EventEmitter.prototype.emit: type='+type);
   if (!this._events[type]) return;
 
   var args = Array.prototype.slice.call(arguments, 1)
@@ -106,11 +105,8 @@ EventEmitter.prototype.emit = function(type) {
     , l = obj.length
     , i = 0;
 
-  console.log('2-5: term.js: EventEmitter.prototype.emit: args');
-  console.log(args);
 
   for (; i < l; i++) {
-    console.log(obj[i]);
     obj[i].apply(this, args);
   }
 };
@@ -515,9 +511,6 @@ Terminal.bindKeys = function(document) {
   // but we can check everything for good measure.
   on(document, 'keydown', function(ev) {
    
-    console.log('-----start-----');
-    console.log('1: term.js: Termial.bindKeys: keydown');
-
     if (!Terminal.focus) return;
     var target = ev.target || ev.srcElement;
     if (!target) return;
@@ -2379,9 +2372,6 @@ Terminal.prototype.writeln = function(data) {
 // https://developer.mozilla.org/en-US/docs/DOM/KeyboardEvent
 Terminal.prototype.keyDown = function(ev) {
 
-  console.log('2: term.js: Termial.prototype.keyDown');
-  console.log('2-1: keycode: '+ev.keyCode);
-
   var self = this
     , key;
 
@@ -2609,9 +2599,6 @@ Terminal.prototype.keyDown = function(ev) {
     return cancel(ev);
   }
   
-  console.log('2-2: emit: key='+key);
-  console.log('2-3: emit: ev=');
-  console.log(ev);
 
   this.emit('keydown', ev);
   this.emit('key', key, ev);

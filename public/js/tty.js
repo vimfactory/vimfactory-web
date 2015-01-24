@@ -95,7 +95,6 @@ tty.open = function() {
     if (!tty.terms[id]) return;
     tty.terms[id].write(data);
 
-    //console.log(data);
   });
 
   tty.socket.on('kill', function(id) {
@@ -105,8 +104,6 @@ tty.open = function() {
 
   // XXX Clean this up.
   tty.socket.on('sync', function(terms) {
-    console.log('Attempting to sync...');
-    console.log(terms);
 
     tty.reset();
 
@@ -634,9 +631,7 @@ inherits(Tab, Terminal);
 // We could just hook in `tab.on('data', ...)`
 // in the constructor, but this is faster.
 Tab.prototype.handler = function(data) {
-  console.log('tty.js: Tab.prototype.handler: data='+data);
   this.socket.emit('data', this.id, data);
-  //this.socket.emit2('data', this.id, data);
 };
 
 // We could just hook in `tab.on('title', ...)`
