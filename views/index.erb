@@ -30,22 +30,91 @@
         </ul>
       </div>
       <div id="setting-basic" class="tab-pane fade">
+
+        <h4>タブ・インデント</h4>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="vimrc-contents" name="set_number">
+            <input type="checkbox" class="vimrc-contents" name="autoindent">
+            直前の行から新しい行のインデントを得る
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="expandtab">
+            <Tab>入力でタブの代わりにスペースを利用する
+          </label>
+        </div>
+        <div class="checkbox">
+            自動インデントの各段階に使われる空白の数
+            <input type="text" class="vimrc-contents" name="shiftwidth">
+        </div>
+        <div class="checkbox">
+            タブの表示幅
+            <input type="text" class="vimrc-contents" name="tabstop">
+        </div>
+
+        <h4>検索</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="hlsearch">
+            検索結果に色を付ける
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="ignorecase">
+            検索時大文字小文字を区別しない
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="wrapscan">
+            検索がファイル末尾まで進んだら先頭から再検索
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="incsearch">
+            インクリメンタルサーチを行う
+          </label>
+        </div>
+
+        <h4>カーソル</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="cursorcolumn">
+            カーソルがある桁を強調表示する
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="cursorline">
+            カーソルがある行を強調表示する
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="ruler">
+            カーソルが何行目の何列目に置かれているかを表示する
+          </label>
+        </div>
+        <h4>表示・装飾</h4>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="vimrc-contents" name="number">
             行番号をつける
           </label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="vimrc-contents" name="set_showmatch">
+            <input type="checkbox" class="vimrc-contents" name="showmatch">
             対応するカッコをハイライトする
           </label>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" class="vimrc-contents" name="set_ignorecase">
-            検索時大文字小文字を区別しない
+            <input type="checkbox" class="vimrc-contents" name="wrap">
+            長い行を折り返して表示する
           </label>
         </div>
       </div>
