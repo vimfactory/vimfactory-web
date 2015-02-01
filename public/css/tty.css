@@ -105,8 +105,8 @@ html.maximized {
   background: #000;
 
   font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
-  font-size: 14px;
-  line-height: 1.2;
+  font-size: 20px;
+  line-height: 1;
 }
 
 .reverse-video {
