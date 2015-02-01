@@ -39,6 +39,7 @@ $("#setting-btn").click(function(event){
       }else{
         val = false;
       }
+      results[key] = val;
       return; 
     }
 
