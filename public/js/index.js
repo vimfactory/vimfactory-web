@@ -60,6 +60,16 @@ $("#setting-btn").click(function(event){
     success: function(data) {
       console.log("succe");
       console.log(data);
+
+      //vim reload
+      tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
+      setTimeout(function(){
+
+        //start vim
+        tty.socket.emit('data', terminal_id, "vim\r")
+
+      },300);
+
     },
     error: function(data) {
       console.log("err");
@@ -82,6 +92,7 @@ $(window).load(function() {
         }
 
         //start vim
+        tty.socket.emit('data', terminal_id, "vim\r")
 
       },1000);
 

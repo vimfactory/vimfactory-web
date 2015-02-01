@@ -94,7 +94,9 @@ tty.open = function() {
   tty.socket.on('data', function(id, data) {
     if (!tty.terms[id]) return;
     tty.terms[id].write(data);
-
+    
+    //mosuke add
+    terminal_id = id;
   });
 
   tty.socket.on('kill', function(id) {
