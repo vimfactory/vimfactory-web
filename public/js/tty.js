@@ -578,8 +578,8 @@ function Tab(win, socket) {
   //  , rows = win.rows;
 
   //なぜかconfigが効かないのでここで。。。。
-  y = Math.ceil(($(window).height()-13-10)/16);
-  x = Math.ceil(($(window).width()*0.65)/8.4);
+  y = Math.ceil(($(window).height()-13-10)/20);
+  x = Math.ceil(($(window).width()*0.65)/12);
   var cols = x
     , rows = y;
 
