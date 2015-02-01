@@ -1,7 +1,7 @@
-/**
- * tty.js
- * Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
- */
+ /**
+  *  * tty.js
+  *   * Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
+  *    */
 
 ;(function() {
 
@@ -158,7 +158,7 @@ tty.open = function() {
 
   tty.emit('load');
   tty.emit('open');
-
+  
 };
 
 /**
@@ -578,8 +578,10 @@ function Tab(win, socket) {
   //  , rows = win.rows;
 
   //なぜかconfigが効かないのでここで。。。。
-  var cols = 80
-    , rows = 35;
+  y = Math.ceil(($(window).height()-13-10)/20);
+  x = Math.ceil(($(window).width()*0.65)/12);
+  var cols = x
+    , rows = y;
 
   Terminal.call(this, {
     cols: cols,
@@ -928,6 +930,7 @@ function load() {
   off(document, 'load', load);
   off(document, 'DOMContentLoaded', load);
   tty.open();
+  
 }
 
 on(document, 'load', load);
@@ -947,3 +950,4 @@ this.tty = tty;
 }).call(function() {
   return this || (typeof window !== 'undefined' ? window : global);
 }());
+

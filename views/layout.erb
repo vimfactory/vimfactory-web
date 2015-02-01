@@ -13,18 +13,9 @@
   <![endif]-->
 </head>
 <body>
-  <header>
-    <h1>.vimrc Creator</h1>
-    <p>あなただけのvimrcを作りましょう。<br>設定を決めて送信ボタンを押せば、すぐに反映されます。</p>
-  </header>
   <div class="mainbody clearfix">
     <%= yield %>
   </div>
-
-  <footer>
-    <p>All right reserved.</p>
-  </footer>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <script src="<%= @web_host%>js/index.js"></script>
