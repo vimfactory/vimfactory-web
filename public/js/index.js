@@ -15,7 +15,7 @@ $("#setting-btn").click(function(event){
   */
 
   var results = {};
-  var id = $("#terminal-body .terminal div:first").text().substr(5,12);
+  //var id = $("#terminal-body .terminal div:first").text().substr(5,12);
    
   $(".vimrc-contents").map(function(){
   
@@ -71,6 +71,19 @@ $("#setting-btn").click(function(event){
 
 $(window).load(function() {
       //実行する内容
-      //$('#open').trigger("click");
+      setTimeout(function(){
+
+        //get id
+        while(true){
+          id = $("#terminal-body .terminal div:first").text().substr(5,12);
+          if(id.match(/[a-z0-9]{12}/)){
+            break;
+          }
+        }
+
+        //start vim
+
+      },1000);
+
 });
 

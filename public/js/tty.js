@@ -937,6 +937,13 @@ on(document, 'load', load);
 on(document, 'DOMContentLoaded', load);
 setTimeout(load, 200);
 
+//mosuke add
+setTimeout(function(){
+    //connect terminal
+    $("#empty-terminal").remove();
+    new Window;
+},200);
+
 /**
  * Expose
  */
