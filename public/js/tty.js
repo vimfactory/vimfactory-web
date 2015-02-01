@@ -158,7 +158,7 @@ tty.open = function() {
 
   tty.emit('load');
   tty.emit('open');
-
+  
 };
 
 /**
@@ -928,6 +928,7 @@ function load() {
   off(document, 'load', load);
   off(document, 'DOMContentLoaded', load);
   tty.open();
+  
 }
 
 on(document, 'load', load);
