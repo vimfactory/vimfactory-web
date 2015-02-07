@@ -3,6 +3,7 @@ require 'sinatra/reloader' if development?
 require "sinatra/config_file"
 require 'logger'
 require 'json'
+require 'securerandom'
 
 config_file './config/config.yml'
 
@@ -13,6 +14,10 @@ before do
 end
 
 get '/' do
+
+  session[:id] = SecureRandom.base64(8) if session[:id].nil?
+  
+  @id       = session[:id]
   @web_host = settings.web_host
   @tty_host = settings.tty_host
   erb :index
