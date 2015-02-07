@@ -13,7 +13,6 @@ end
 get '/' do
   @web_host = settings.web_host
   @tty_host = settings.tty_host
-  @tty_port = settings.tty_port
   erb :index
 end
 

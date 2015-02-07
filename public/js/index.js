@@ -79,6 +79,7 @@ $("#setting-btn").click(function(event){
   
 });
 
+/*
 $(window).load(function() {
       //実行する内容
       setTimeout(function(){
@@ -97,4 +98,4 @@ $(window).load(function() {
       },1000);
 
 });
-
+*/

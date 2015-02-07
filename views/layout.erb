@@ -18,9 +18,10 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="<%= @web_host%>js/config.js"></script>
   <script src="<%= @web_host%>js/index.js"></script>
-  <script src="<%= @web_host%>js/socket.io.js"></script>
-  <script src="<%= @web_host%>js/term.js"></script>
+  <script src="<%= @tty_host%>socket.io/socket.io.js"></script>
+  <script src="<%= @tty_host%>term.js"></script>
   <script src="<%= @web_host%>js/tty.js"></script>
 </body>
 </html>
