@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'sinatra/config_file'
+require 'sinatra/assetpack'
 require 'logger'
 require 'json'
 require 'securerandom'
@@ -11,6 +12,22 @@ enable :sessions
 
 before do
   @logger = Logger.new('./logs/vimrc-generator-web.log', 'daily')
+end
+
+assets do
+  serve '/js',  from: 'public/js'
+  serve '/css', from: 'public/css'
+
+  js :app, '/js/app.js', [
+    '/js/*.js'
+  ]
+
+  css :app, '/css/app.css', [
+    '/css/*.css'
+  ]
+
+  js_compression  :jsmin
+  css_compression :simple
 end
 
 get '/' do
