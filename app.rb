@@ -6,6 +6,8 @@ require 'json'
 
 config_file './config/config.yml'
 
+enable :sessions
+
 before do
   @logger = Logger.new('./logs/vimrc-generator-web.log', 'daily')
 end
