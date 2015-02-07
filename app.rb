@@ -15,18 +15,25 @@ before do
 end
 
 assets do
-  serve '/js',  from: 'public/js'
+  serve '/js', from: 'public/js'
   serve '/css', from: 'public/css'
+  serve '/bower_components', from: 'bower_components'
 
   js :app, '/js/app.js', [
     '/js/*.js'
+  ]
+
+  js :libs, [
+    '/bower_components/jquery/dist/jquery.min.js',
+    '/bower_components/socket.io-client/dist/socket.io.min.js',
+    '/bower_components/term/index.js'
   ]
 
   css :app, '/css/app.css', [
     '/css/*.css'
   ]
 
-  js_compression  :jsmin
+  js_compression :jsmin
   css_compression :simple
 end
 
