@@ -74,7 +74,7 @@ tty.open = function() {
       //mosuke add
       $("#welcome").addClass("hide");
       $("#main-content").removeClass("hide");
-
+      
       new Window;
     });
   }
@@ -127,6 +127,8 @@ tty.open = function() {
       tty.emit('open tab', tab);
       tab.emit('open');
     });
+    
+    //tty.socket.emit('key',id,'hogege');
 
     tty.socket.emit = emit;
   });
@@ -641,6 +643,7 @@ Tab.prototype.handler = function(data) {
 
 // We could just hook in `tab.on('title', ...)`
 // in the constructor, but this is faster.
+/*
 Tab.prototype.handleTitle = function(title) {
   if (!title) return;
 
@@ -657,6 +660,7 @@ Tab.prototype.handleTitle = function(title) {
     // this.setProcessName(this.process);
   }
 };
+*/
 
 /*
 Tab.prototype._write = Tab.prototype.write;
