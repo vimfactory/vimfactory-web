@@ -72,7 +72,8 @@ tty.open = function() {
   if (open) {
     on(open, 'click', function() {
       //mosuke add
-      $("#empty-terminal").remove();
+      $("#welcome").addClass("hide");
+      $("#main-content").removeClass("hide");
 
       new Window;
     });
@@ -938,13 +939,6 @@ function load() {
 on(document, 'load', load);
 on(document, 'DOMContentLoaded', load);
 setTimeout(load, 200);
-
-//mosuke add
-setTimeout(function(){
-    //connect terminal
-    $("#empty-terminal").remove();
-    new Window;
-},200);
 
 /**
  * Expose
