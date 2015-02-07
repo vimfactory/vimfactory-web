@@ -3,4 +3,5 @@ vendor/bundle
 logs/*.log
 logs/*.log.*
 config/config.yml
+public/js/config.js
 !.gitkeep
