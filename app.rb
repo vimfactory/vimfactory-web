@@ -15,9 +15,9 @@ end
 
 get '/' do
 
-  session[:id] = SecureRandom.base64(8) if session[:id].nil?
+  session[:tmp_id] = SecureRandom.base64(8) if session[:tmp_id].nil?
   
-  @id       = session[:id]
+  @tmp_id   = session[:tmp_id]
   @web_host = settings.web_host
   @tty_host = settings.tty_host
   erb :index
