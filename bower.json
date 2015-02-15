@@ -1,0 +1,21 @@
+{
+  "name": "vimrc-generator-web",
+  "version": "0.0.0",
+  "authors": [
+    "mogulla3 <hs.iarn3@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.1.3",
+    "socket.io-client": "0.9.11",
+    "term": "https://raw.githubusercontent.com/chjj/term.js/master/src/term.js"
+  }
+}

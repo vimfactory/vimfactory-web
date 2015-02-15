@@ -1,0 +1,7 @@
+# 一行の最大文字数は120文字とする（暫定）
+Metrics/LineLength:
+  Max: 120
+
+# 日本語コメントを認める
+Style/AsciiComments:
+  Enabled: false

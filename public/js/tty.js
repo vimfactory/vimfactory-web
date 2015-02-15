@@ -75,7 +75,7 @@ tty.open = function() {
       $("#welcome").addClass("hide");
       $("#main-content").removeClass("hide");
       
-      //tty.socket.emit('tmp_id', $("#tmp_id").val());
+      tty.socket.emit('tmp_id', $("#tmp_id").val());
 
       new Window;
     });

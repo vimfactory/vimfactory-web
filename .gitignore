@@ -4,4 +4,5 @@ logs/*.log
 logs/*.log.*
 config/config.yml
 public/js/config.js
+bower_components
 !.gitkeep
