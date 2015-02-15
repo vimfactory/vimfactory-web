@@ -5,6 +5,7 @@ gem 'sinatra-contrib'
 gem 'sinatra-assetpack'
 gem 'json'
 gem 'thin'
+gem 'memcached'
 
 group :development, :test do
   gem 'pry'

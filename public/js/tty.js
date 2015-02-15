@@ -75,6 +75,8 @@ tty.open = function() {
       $("#welcome").addClass("hide");
       $("#main-content").removeClass("hide");
       
+      tty.socket.emit('tmp_id', $("#tmp_id").val());
+
       new Window;
     });
   }
@@ -128,8 +130,6 @@ tty.open = function() {
       tab.emit('open');
     });
     
-    //tty.socket.emit('key',id,'hogege');
-
     tty.socket.emit = emit;
   });
 
