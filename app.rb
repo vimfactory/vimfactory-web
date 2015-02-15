@@ -5,6 +5,7 @@ require 'sinatra/assetpack'
 require 'logger'
 require 'json'
 require 'securerandom'
+require './lib/validator'
 
 config_file './config/config.yml'
 
@@ -51,16 +52,13 @@ post '/api/vimrc' do
   begin
     params = JSON.parse(request.body.read)
 
-    if params['id'].nil?
-      return [400, { 'message' => 'Required parameter `id` is missing' }.to_json]
-    end
-
-    if params['vimrc_contents'].nil?
-      return [400, { 'message' => 'Required parameter `vimrc_contents` is missing' }.to_json]
+    # バリデーション
+    validator = VimFactory::Validator.new(params)
+    if validator.valid? == false
+      return [400, { 'message' => validator.error }.to_json]
     end
 
     vimrc = settings.vimrc_dir + '/vimrc_' + params['id']
-
     File.open(vimrc, 'w') do |file|
       params['vimrc_contents'].each do |key, val|
         # 値がfalseあるいは空の時にはスキップ
@@ -93,6 +91,7 @@ post '/api/vimrc' do
     @logger.error(e.message)
     return [500, { 'message' => 'Unexpected Error' }.to_json]
   end
+
   @logger.info('success')
   return [201, { 'filepath' => params['filepath'], 'vimrc_contents' => params['vimrc_contents'] }.to_json]
 end

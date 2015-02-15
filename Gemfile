@@ -6,9 +6,10 @@ gem 'sinatra-assetpack'
 gem 'json'
 gem 'thin'
 
-group :development do
+group :development, :test do
   gem 'pry'
   gem 'pry-doc'
   gem 'rb-readline'
   gem 'rubocop'
+  gem 'test-unit'
 end
