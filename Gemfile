@@ -7,9 +7,10 @@ gem 'json'
 gem 'thin'
 gem 'memcached'
 
-group :development do
+group :development, :test do
   gem 'pry'
   gem 'pry-doc'
   gem 'rb-readline'
   gem 'rubocop'
+  gem 'test-unit'
 end
