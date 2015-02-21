@@ -6,7 +6,9 @@ module VimFactory
     # エラー情報
     attr_reader :error
 
+    # コンストラクタ
     # @param [Hash{String =>(String, Fixnum, Boolean)}] vimrc_contents vimrc設定値
+    # @return [void]
     def initialize(params = {})
       @vimrc_contents = params['vimrc_contents']
     end

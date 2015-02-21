@@ -5,6 +5,7 @@ module VimFactory
   # == 与えられた設定値に従いvimrcを作成するクラス
   #
   class VimrcCreator
+    # コンストラクタ
     # @param [Hash] vimrc_contents vimrcの設定値
     # @param [String] filepath 作成するvimrcのパス
     def initialize(vimrc_contents, filepath)
@@ -13,6 +14,7 @@ module VimFactory
     end
 
     # vimrc作成処理
+    # @return [void]
     def create
       File.open(@filepath, 'w') do |file|
         @vimrc_contents.each do |option, value|

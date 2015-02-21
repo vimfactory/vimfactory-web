@@ -67,18 +67,21 @@ module VimFactory
 
     # トグル形式のオプションか確認する
     # @param [String] option オプション名
+    # @return [Boolean] トグル形式のオプションであればtrue、そうでなければfalse
     def self.toggle_option?(option)
       TOGGLE_OPTIONS.include?(option)
     end
 
     # 文字列形式のオプションか確認する
     # @param [String] option オプション名
+    # @return [Boolean] 文字列形式のオプションであればtrue、そうでなければfalse
     def self.string_option?(option)
       STRING_OPTIONS.include?(option)
     end
 
     # 数値形式のオプションか確認する
     # @param [String] option オプション名
+    # @return [Boolean] 数値形式のオプションであればtrue、そうでなければfalse
     def self.number_option?(option)
       NUMBER_OPTIONS.include?(option)
     end
