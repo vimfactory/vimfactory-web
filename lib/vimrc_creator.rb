@@ -29,7 +29,7 @@ module VimFactory
     # 設定行を組み立てる
     # @param [String] option オプション名
     # @param [String] value オプション値
-    # @return [String] 設定行
+    # @return [String, nil] 設定行
     def build_option_line(option, value)
       case
       when VimrcOption.toggle_option?(option)
