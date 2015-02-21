@@ -1,35 +1,33 @@
 require 'test/unit'
-require '../lib/validator'
+require_relative '../lib/validator'
 
 class TestValidator < Test::Unit::TestCase
   def setup
-    @validator = VimFactory::Validator.new
   end
 
-  # idがnilの場合、valid?はfalseを返す
-  def test_valid_without_id
-    @validator.vimrc_contents = {}
+  # vimrc_contentsキーが存在し、Hashである場合trueを返す
+  def test_valid_with_valid_vimrc_contents
+    @validator = VimFactory::Validator.new({'vimrc_contents' => {}})
     result = @validator.valid?
 
-    assert_equal result, false
-    assert_equal @validator.error, 'Required parameter `id` is missing'
+    assert_equal result, true
   end
 
   # vimrc_contetnsがnilの場合、valid?はfalseを返す
-  def test_valid_without_vimrc_contents
-    @validator.id = 1
+  def test_valid_with_vimrc_contents_is_nil
+    @validator = VimFactory::Validator.new({'vimrc_contents' => nil})
     result = @validator.valid?
 
     assert_equal result, false
     assert_equal @validator.error, 'Required parameter `vimrc_contents` is missing'
   end
 
-  # idもvimrc_contentsも存在する場合、valid?はtrueを返す
-  def test_valid_with_id_and_vimrc_contents
-    @validator.id = 1
-    @validator.vimrc_contents = {}
+  # vimrc_contetnsがHash以外の型の場合、valid?はfalseを返す
+  def test_valid_with_vimrc_contents_is_not_Hash
+    @validator = VimFactory::Validator.new({'vimrc_contents' => 'foo'})
     result = @validator.valid?
 
-    assert_equal result, true
+    assert_equal result, false
+    assert_equal @validator.error, 'Type of `vimrc_contents` must be Hash'
   end
 end

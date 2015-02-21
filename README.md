@@ -33,3 +33,17 @@ bowerはシステムグローバルにインストールする。
 ```
 $ sudo npm install bower -g
 ```
+
+### rubocopをつかった静的解析
+commit/push前にチェック
+```
+// 全コードチェック
+$ bundle exec rubocop .
+```
+
+### ユニットテスト
+commit/push前にチェック
+```
+// テスト実行
+$ bundle exec ruby tests/[テストしたいファイル].rb
+```

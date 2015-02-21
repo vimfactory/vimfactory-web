@@ -6,6 +6,7 @@ require 'logger'
 require 'json'
 require 'securerandom'
 require './lib/validator'
+require './lib/vimrc_creator'
 
 config_file './config/config.yml'
 
@@ -55,43 +56,23 @@ post '/api/vimrc' do
     # バリデーション
     validator = VimFactory::Validator.new(params)
     if validator.valid? == false
-      return [400, { 'message' => validator.error }.to_json]
+      return [400, { message: validator.error }.to_json]
     end
 
-    vimrc = settings.vimrc_dir + '/vimrc_' + params['id']
-    File.open(vimrc, 'w') do |file|
-      params['vimrc_contents'].each do |key, val|
-        # 値がfalseあるいは空の時にはスキップ
-        next if val == false || val == ''
-
-        # 値チェックのバリデーション
-
-        # colorchemeオプション
-        if key == 'colorscheme'
-          file.puts 'syntax on'
-          file.puts "colorscheme #{val}"
-          next
-        end
-
-        # true or falseのオプション
-        if val == true
-          file.puts "set #{key}"
-          next
-        end
-
-        # 値があるオプション
-        file.puts "set #{key}=#{val}"
-      end
-    end
-
+    # vimrc作成
+    vimrc_creator = VimFactory::VimrcCreator.new(
+      params['vimrc_contents'],
+      "#{settings.vimrc_dir}/vimrc_xxxxx" # TODO: idはmemcachedから取得する
+    )
+    vimrc_creator.create
   rescue JSON::ParserError => e
     @logger.error(e.message)
-    return [400, { 'message' => 'RequestBody should be JSON object' }.to_json]
+    return [400, { message: 'Requestbody should be JSON format' }.to_json]
   rescue => e
     @logger.error(e.message)
-    return [500, { 'message' => 'Unexpected Error' }.to_json]
+    return [500, { message: 'Unexpected error' }.to_json]
   end
 
   @logger.info('success')
-  return [201, { 'filepath' => params['filepath'], 'vimrc_contents' => params['vimrc_contents'] }.to_json]
+  [201, { vimrc_contents: params['vimrc_contents'] }.to_json]
 end
