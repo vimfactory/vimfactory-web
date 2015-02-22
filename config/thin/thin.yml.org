@@ -1,0 +1,17 @@
+--- 
+user: vagrant
+group: vagrant
+pid: vimfactory-web.pid
+port: 9292
+timeout: 30
+wait: 30
+log: logs/thin.log
+max_conns: 1024
+require: []
+environment: development
+max_persistent_conns: 512
+servers: 1
+threaded: true
+no-epoll: true
+daemonize: true
+rackup: config.ru

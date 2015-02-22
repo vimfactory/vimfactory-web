@@ -1,8 +1,10 @@
 /.bundle
+*.pid
 vendor/bundle
 logs/*.log
 logs/*.log.*
-config/config.yml
+config/*.yml
+config/thin/*.yml
 public/js/config.js
 bower_components
 !.gitkeep
