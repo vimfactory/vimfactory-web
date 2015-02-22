@@ -582,7 +582,6 @@ function Tab(win, socket) {
   //var cols = win.cols
   //  , rows = win.rows;
 
-  //なぜかconfigが効かないのでここで。。。。
   y = Math.ceil(($(window).height()-13-10)/20);
   x = Math.ceil(($(window).width()*0.65)/12);
   var cols = x
@@ -900,7 +899,7 @@ Tab.prototype.setProcessName = function(name) {
     // if (this.title) {
     //   name += ' (' + this.title + ')';
     // }
-    this.window.title.innerHTML = name;
+    //this.window.title.innerHTML = name;
   }
 };
 
