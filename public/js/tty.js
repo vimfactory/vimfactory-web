@@ -51,7 +51,7 @@ tty.open = function() {
       , base = parts.slice(0, parts.length - 1).join('/') + '/'
       , resource = base.substring(1) + 'socket.io';
 
-    tty.socket = io.connect(config["tty_host"], { resource: resource });
+    tty.socket = io.connect(null, { resource: resource });
   } else {
     tty.socket = io.connect();
   }
