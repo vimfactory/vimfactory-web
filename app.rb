@@ -14,8 +14,6 @@ enable :sessions
 
 before do
   @logger = Logger.new('./logs/vimrc-generator-web.log', 'daily')
-
-  session[:tmp_id] = SecureRandom.base64(8) if session[:tmp_id].nil?
 end
 
 assets do
@@ -42,7 +40,7 @@ assets do
 end
 
 get '/' do
-  @tmp_id   = session[:tmp_id]
+  @tmp_id   = SecureRandom.base64(8)
   @web_host = settings.web_host
   @tty_host = settings.tty_host
   erb :index
