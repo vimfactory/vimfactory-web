@@ -1,22 +1,16 @@
-/*
-header {
-    padding: 15px 0;
-    margin-bottom: 30px;
-    background: #f8f8f8;
+body {
+    background-image: url("../img/dark_geometric.png")
 }
 
-header h1 {
-    margin: 0;
-    font-family: 'Bubblegum Sans';
+.welcome-top {
     text-align: center;
-    font-size: 500%;
+    background-color: transparent !important;
 }
 
-header p {
-    text-align: center;
-    font-size: 150%;
+.app-title, .app-subtitle {
+    color: #EDE9D7 !important;
 }
-*/
+
 .vimrc-area{
     margin-bottom: 20px;
 }
@@ -40,3 +34,4 @@ ul.color-schema li{
     display: inline;
     margin: 0 10px;
 }
+
