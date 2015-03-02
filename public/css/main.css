@@ -2,13 +2,23 @@ body {
     background-image: url("../img/dark_geometric.png")
 }
 
+#welcome {
+    color: #d2d0cf !important;
+}
+
 .welcome-top {
     text-align: center;
     background-color: transparent !important;
 }
 
+/*
 .app-title, .app-subtitle {
-    color: #EDE9D7 !important;
+    color: #eae8e7 !important;
+}
+*/
+
+.concept {
+    text-align: center;
 }
 
 .vimrc-area{
@@ -35,3 +45,8 @@ ul.color-schema li{
     margin: 0 10px;
 }
 
+.footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 40px;
+}

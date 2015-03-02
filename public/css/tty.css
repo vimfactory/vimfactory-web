@@ -111,29 +111,14 @@ html.maximized {
  */
 
 #open {
+  top: 10px;
   font: 20px/1.5 sans-serif;
   padding: 10px;
   height: 50px;
-  color: white;
   cursor: pointer;
   margin: 30px 0 0 0;
-  background: none;
   border: none;
   -webkit-appearance: none;
-}
-
-#open {
-  top: 10px;
-  background: #333;
-}
-
-#open:hover {
-  color: slategrey;
-  background: white;
-}
-
-#open:active {
-  color: orange;
 }
 
 #terminal-body{
