@@ -26,9 +26,12 @@ module VimFactory
     # 値が文字列形式のオプション
     # @example set encoding=utf8
     STRING_OPTIONS = {
-      'encoding'   => %w(utf-8 sjis euc-jp euc-kr euc-cn latin1),
-      'fileformat' => %w(dos unix mac),
-      'syntax'     => %w(on off enable clear)
+      'encoding'      => %w(utf-8 sjis euc-jp euc-kr euc-cn latin1),
+      'fileformat'    => %w(dos unix mac),
+      'syntax'        => %w(on off enable clear),
+      'fileformats'   => %w(unix,dos,mac),
+      'encoding'      => %w(utf-8),
+      'fileencodings' => %w(utf-8)
     }
 
     # 値が数値形式のオプション
@@ -39,7 +42,8 @@ module VimFactory
       'scrolloff'   => 0..100,
       'shiftwidth'  => 0..100,
       'softtabstop' => 0..100,
-      'tabstop'     => 0..100
+      'tabstop'     => 0..100,
+      't_Co'        => 256..256
     }
 
     # カラースキーマオプション
@@ -67,6 +71,14 @@ module VimFactory
       jellybeans
       solarized
     )
+
+    # デフォルトオプション
+    DEFAULT_OPTIONS = {
+      't_Co' => 256,
+      'fileformats' => 'unix,dos,mac',
+      'encoding' => 'utf-8',
+      'fileencodings' => 'utf-8'
+    }
 
     # トグル形式のオプションか確認する
     # @param [String] option オプション名
