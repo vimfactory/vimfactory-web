@@ -50,3 +50,11 @@ ul.color-schema li{
     padding-bottom: 40px;
     margin-top: 40px;
 }
+
+#vim-reloading {
+    background-image: url("../img/ajax-loader.gif");
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
