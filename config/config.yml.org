@@ -1,3 +1,1 @@
-web_host: "http://192.168.33.100:9292/"
-tty_host: "http://192.168.33.100:8080/"
 vimrc_dir: "/home/vagrant/vimrcs"
