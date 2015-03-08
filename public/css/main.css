@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 body {
     background-image: url("../img/dark_geometric.png")
 }
@@ -11,12 +15,6 @@ body {
     background-color: transparent !important;
 }
 
-/*
-.app-title, .app-subtitle {
-    color: #eae8e7 !important;
-}
-*/
-
 .concept {
     text-align: center;
 }
@@ -25,15 +23,12 @@ body {
     margin-bottom: 20px;
 }
 
-#empty-terminal{
-    border: dotted 2px #ddd;
-    height: 100%;
-    text-align: center;
-}
-
 #terminal-body{
     padding:0;
     height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
 }
 
 ul.color-schema{
