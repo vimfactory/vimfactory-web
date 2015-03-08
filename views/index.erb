@@ -11,143 +11,59 @@
       </li>
     </ul>
     <div id="setting-contents" class="tab-content">
+
+      <% # カラースキーマ設定 %>
       <div id="setting-color" class="tab-pane fade in active">
         <h5>お好みのカラーを選択</h5>
-        <div class="colorscheme default">
-          <div class="radio">
-            <label>
-              <input type="radio" class="vimrc-contents" name="colorscheme" value="default" checked>
-              <span class="colorschme-name">default</span>
-            </label>
+        <% @colorscheme_options.each_with_index do |colorscheme, index| %>
+          <div class="colorscheme <%= colorscheme %>">
+            <div class="radio">
+              <label>
+                <% if index == 0 %>
+                  <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>" checked>
+                <% else %>
+                  <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>">
+                <% end %>
+                <span class="colorschme-name"><%= colorscheme %></span>
+              </label>
+            </div>
+            <%= erb :colorscheme_sample %>
           </div>
-          <%= erb :colorscheme_sample %>
-        </div>
-        <div class="colorscheme darkblue">
-          <div class="radio">
-            <label>
-              <input type="radio" class="vimrc-contents" name="colorscheme" value="darkblue">
-              <span class="colorschme-name">darkblue</span>
-            </label>
-          </div>
-          <%= erb :colorscheme_sample %>
-        </div>
-        <div class="colorscheme molokai">
-          <div class="radio">
-            <label>
-              <input type="radio" class="vimrc-contents" name="colorscheme" value="molokai">
-              <span class="colorschme-name">molokai</span> ※インストール必要
-            </label>
-          </div>
-          <%= erb :colorscheme_sample %>
-        </div>
-        <div class="colorscheme jellybeans">
-          <div class="radio">
-            <label>
-              <input type="radio" class="vimrc-contents" name="colorscheme" value="jellybeans">
-              <span class="colorschme-name">jellybeans</span> ※インストール必要
-            </label>
-          </div>
-          <%= erb :colorscheme_sample %>
-        </div>
+        <% end %>
       </div>
+
+      <% # 基本設定 %>
       <div id="setting-basic" class="tab-pane fade">
-
-        <h4>タブ・インデント</h4>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="autoindent">
-            直前の行から新しい行のインデントを得る
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="expandtab">
-            <Tab>入力でタブの代わりにスペースを利用する
-          </label>
-        </div>
-        <div class="checkbox">
-            自動インデントの各段階に使われる空白の数
-            <input type="text" class="vimrc-contents" name="shiftwidth">
-        </div>
-        <div class="checkbox">
-            タブの表示幅
-            <input type="text" class="vimrc-contents" name="tabstop">
-        </div>
-
-        <h4>検索</h4>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="hlsearch">
-            検索結果に色を付ける
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="ignorecase">
-            検索時大文字小文字を区別しない
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="wrapscan">
-            検索がファイル末尾まで進んだら先頭から再検索
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="incsearch">
-            インクリメンタルサーチを行う
-          </label>
-        </div>
-
-        <h4>カーソル</h4>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="cursorcolumn">
-            カーソルがある桁を強調表示する
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="cursorline">
-            カーソルがある行を強調表示する
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="ruler">
-            カーソルが何行目の何列目に置かれているかを表示する
-          </label>
-        </div>
-        <h4>表示・装飾</h4>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="number">
-            行番号をつける
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="showmatch">
-            対応するカッコをハイライトする
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="vimrc-contents" name="wrap">
-            長い行を折り返して表示する
-          </label>
-        </div>
-        <h4>固定設定</h4>
-        <div class="checkbox">
-            色の種類：256色
-        </div>
-        <div class="checkbox">
-            対応改行コード：unix,dos,mac
-        </div>
-        <div class="checkbox">
-            文字コード：utf-8
-        </div>
+        <% @basic_options.each do |genre, elements| %>
+          <h4>
+            <% if genre == 'tab' %>
+              タブ
+            <% elsif genre == 'indent' %>
+              インデント
+            <% elsif genre == 'search' %>
+              検索
+            <% elsif genre == 'cursor' %>
+              カーソル
+            <% elsif genre == 'visual' %>
+              表示・装飾
+            <% elsif genre == 'default' %>
+              固定設定
+            <% end %>
+          </h4>
+          <% elements.each do |element| %>
+            <div class="checkbox">
+              <label>
+                <% if element['type'] == 'text' %>
+                  <%= element['message'] %>
+                  <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>">
+                <% else %>
+                  <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>">
+                  <%= element['message'] %>
+                <% end %>
+              </label>
+            </div>
+          <% end %>
+        <% end %>
       </div>
       <button type="button" id="setting-btn" class="btn btn-primary btn-lg">これで設定する</button>
     </div>

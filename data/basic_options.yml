@@ -1,0 +1,57 @@
+tab:
+  - name: expandtab
+    type: checkbox
+    message: 入力でタブの代わりにスペースを利用する
+  - name: tabstop
+    type: text
+    message: タブの表示幅
+indent:
+  - name: autoindent
+    type: checkbox
+    message: 直前の行から新しい行のインデントを得る
+  - name: shiftwidth
+    type: text
+    message: 自動インデントの各段階に使われる空白の数
+search:
+  - name: hlsearch
+    type: checkbox
+    message: 検索結果に色を付ける
+  - name: ignorecase
+    type: checkbox
+    message: 検索時大文字小文字を区別しない
+  - name: wrapscan
+    type: checkbox
+    message: 検索がファイル末尾まで進んだら先頭から再検索
+  - name: incsearch
+    type: checkbox
+    message: インクリメンタルサーチを行う
+cursor:
+  - name: cursorcolumn
+    type: checkbox
+    message: カーソルがある桁を強調表示する
+  - name: cursorline
+    type: checkbox
+    message: カーソルがある行を強調表示する
+  - name: ruler
+    type: checkbox
+    message: カーソルが何行目の何列目に置かれているかを表示する
+visual:
+  - name: number
+    type: checkbox
+    message: 行番号をつける
+  - name: showmatch
+    type: checkbox
+    message: 対応するカッコをハイライトする
+  - name: wrap
+    type: checkbox
+    message: 長い行を折り返して表示する
+default:
+  - name: t_Co
+    type: checkbox
+    message: 色の種類：256色
+  - name: fileformats
+    type: checkbox
+    message: 対応改行コード：unix,dos,mac
+  - name: encoding
+    type: checkbox
+    message: 文字コード：utf-8
