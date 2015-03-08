@@ -73,7 +73,7 @@ tty.open = function() {
     on(open, 'click', function() {
       //mosuke add
       $("#welcome").addClass("hide");
-      // $("body").css( "background-image", "url('')" );
+      $("body").css( "background-image", "url('')" );
       $("#main-content").removeClass("hide");
 
       // tty.socket.emit('tmp_id', $("#tmp_id").val());
