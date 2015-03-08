@@ -39,51 +39,70 @@
       <li role="presentation">
         <a href="#setting-basic" data-toggle="tab">基本設定</a>
       </li>
-      <li role="presentation">
-        <a href="#setting-advanced" data-toggle="tab">高度な設定</a>
-      </li>
     </ul>
     <div id="setting-contents" class="tab-content">
       <div id="setting-color" class="tab-pane fade in active">
         <h5>お好みのカラーを選択</h5>
-        <div class="radio">
-          <label>
-            <input type="radio" class="vimrc-contents" name="colorscheme" value="default" checked>
-            default
-          </label>
+        <div class="colorscheme default">
+          <div class="radio">
+            <label>
+              <input type="radio" class="vimrc-contents" name="colorscheme" value="default" checked>
+              <span class="colorschme-name">default</span>
+            </label>
+          </div>
+          <pre>
+            <span class="lnr"> 1 </span><span class="PreProc">require</span> <span class="Delimiter">'</span><span class="String">json</span><span class="Delimiter">'</span>
+            <span class="lnr"> 2 </span>
+            <span class="lnr"> 3 </span><span class="Define">class</span> factory
+            <span class="lnr"> 4 </span>  <span class="Define">def</span> <span class="Constant">self</span>.<span class="Function">test</span>
+            <span class="lnr"> 5 </span>    params = <span class="Type">JSON</span>.parse(request.body.read)
+            <span class="lnr"> 6 </span>
+            <span class="lnr"> 7 </span>    <span class="Comment"># Comment</span>
+            <span class="lnr"> 8 </span>    validator = <span class="Type">VimFactory</span>::<span class="Type">Validator</span>.new(params)
+            <span class="lnr"> 9 </span>    <span class="Conditional">if</span> validator.valid? == <span class="Boolean">false</span>
+            <span class="lnr">10 </span>      <span class="Statement">return</span> [<span class="Number">400</span>, { <span class="Constant">message</span>: validator.error }.to_json]
+          </pre>
         </div>
-        <div class="radio">
-          <label>
-            <input type="radio" class="vimrc-contents" name="colorscheme" value="desert">
-            desert
-          </label>
+        <div class="colorscheme darkblue">
+          <div class="radio">
+            <label>
+              <input type="radio" class="vimrc-contents" name="colorscheme" value="darkblue">
+              <span class="colorschme-name">darkblue</span>
+            </label>
+          </div>
+          <pre>
+            <span class="lnr"> 1 </span><span class="PreProc">require</span> <span class="Delimiter">'</span><span class="String">json</span><span class="Delimiter">'</span>
+            <span class="lnr"> 2 </span>
+            <span class="lnr"> 3 </span><span class="Define">class</span> factory
+            <span class="lnr"> 4 </span>  <span class="Define">def</span> <span class="Constant">self</span>.<span class="Function">test</span>
+            <span class="lnr"> 5 </span>    params = <span class="Type">JSON</span>.parse(request.body.read)
+            <span class="lnr"> 6 </span>
+            <span class="lnr"> 7 </span>    <span class="Comment"># Comment</span>
+            <span class="lnr"> 8 </span>    validator = <span class="Type">VimFactory</span>::<span class="Type">Validator</span>.new(params)
+            <span class="lnr"> 9 </span>    <span class="Conditional">if</span> validator.valid? == <span class="Boolean">false</span>
+            <span class="lnr">10 </span>      <span class="Statement">return</span> [<span class="Number">400</span>, { <span class="Constant">message</span>: validator.error }.to_json]
+          </pre>
         </div>
-        <div class="radio">
-          <label>
-            <input type="radio" class="vimrc-contents" name="colorscheme" value="darkblue">
-            darkblue
-          </label>
+        <div class="colorscheme molokai">
+          <div class="radio">
+            <label>
+              <input type="radio" class="vimrc-contents" name="colorscheme" value="molokai">
+              <span class="colorschme-name">molokai</span> ※インストール必要
+            </label>
+          </div>
+          <pre>
+            <span class="lnr"> 1 </span><span class="PreProc">require</span> <span class="Delimiter">'</span><span class="String">json</span><span class="Delimiter">'</span>
+            <span class="lnr"> 2 </span>
+            <span class="lnr"> 3 </span><span class="Define">class</span> factory
+            <span class="lnr"> 4 </span>  <span class="Define">def</span> <span class="Constant">self</span>.<span class="Function">test</span>
+            <span class="lnr"> 5 </span>    params = <span class="Type">JSON</span>.parse(request.body.read)
+            <span class="lnr"> 6 </span>
+            <span class="lnr"> 7 </span>    <span class="Comment"># Comment</span>
+            <span class="lnr"> 8 </span>    validator = <span class="Type">VimFactory</span>::<span class="Type">Validator</span>.new(params)
+            <span class="lnr"> 9 </span>    <span class="Conditional">if</span> validator.valid? == <span class="Boolean">false</span>
+            <span class="lnr">10 </span>      <span class="Statement">return</span> [<span class="Number">400</span>, { <span class="Constant">message</span>: validator.error }.to_json]
+          </pre>
         </div>
-        <div class="radio">
-          <label>
-            <input type="radio" class="vimrc-contents" name="colorscheme" value="evening">
-            evening
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <input type="radio" class="vimrc-contents" name="colorscheme" value="morning">
-            morning
-          </label>
-        </div>
-        <!--
-        <ul class="color-schema">
-          <li class="color-list"><img src="img/vimrc_color_default.jpg"></li>
-          <li class="color-list"><img src="img/vimrc_color_desert.jpg"></li>
-          <li class="color-list"><img src="img/vimrc_color_darkblue.jpg"></li>
-          <li class="color-list"><img src="img/vimrc_color_evening.jpg"></li>
-        </ul>
-        -->
       </div>
       <div id="setting-basic" class="tab-pane fade">
 
@@ -173,9 +192,6 @@
             長い行を折り返して表示する
           </label>
         </div>
-      </div>
-      <div id="setting-advanced" class="tab-pane fade">
-        advanced
       </div>
       <button type="button" id="setting-btn" class="btn btn-primary btn-lg">これで設定する</button>
     </div>

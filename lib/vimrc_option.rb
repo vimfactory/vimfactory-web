@@ -63,6 +63,9 @@ module VimFactory
       slate
       torte
       zellner
+      molokai
+      jellybeans
+      solarized
     )
 
     # トグル形式のオプションか確認する
