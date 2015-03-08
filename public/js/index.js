@@ -3,7 +3,7 @@ $("#setting-btn").click(function(event){
   /*
    * json形式
   {
-    "container_id": "xxxxxxxxx",
+    "connection_id": "xxxxxxxxx",
     "vimrc_contents": {
       "colorcheme": "molokai", // colorcheme molokai
       "number": true,          // set number
@@ -13,15 +13,14 @@ $("#setting-btn").click(function(event){
     }
   }
   */
-
   var results = {};
-  //var id = $("#terminal-body .terminal div:first").text().substr(5,12);
-   
+  var connection_id = $('#connection_id').val();
+
   $(".vimrc-contents").map(function(){
-  
+
     var key = $(this).attr('name');
-    var val; 
-    
+    var val;
+
     //colorscheme
     if(key=="colorscheme"){
       if($(this).prop('checked')){
@@ -40,7 +39,7 @@ $("#setting-btn").click(function(event){
         val = false;
       }
       results[key] = val;
-      return; 
+      return;
     }
 
     //値がある形式
@@ -48,54 +47,23 @@ $("#setting-btn").click(function(event){
     results[key] = val;
 
   });
-  
-  console.log(JSON.stringify({"id": id, "vimrc_contents": results}))
-  
+
   $.ajax({
     type: "POST",
     url: "/api/vimrc",
     contentType: "application/json",
     dataType: "json",
-    data: JSON.stringify({"id": id, "vimrc_contents": results}),
+    data: JSON.stringify({"connection_id": connection_id, "vimrc_contents": results}),
     success: function(data) {
-      console.log("succe");
-      console.log(data);
-
       //vim reload
       tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
       setTimeout(function(){
-
         //start vim
         tty.socket.emit('data', terminal_id, "vim\r")
-
       },300);
-
     },
     error: function(data) {
-      console.log("err");
-      console.log(data);
     },
   });
-  
-});
-
-/*
-$(window).load(function() {
-      //実行する内容
-      setTimeout(function(){
-
-        //get id
-        while(true){
-          id = $("#terminal-body .terminal div:first").text().substr(5,12);
-          if(id.match(/[a-z0-9]{12}/)){
-            break;
-          }
-        }
-
-        //start vim
-        tty.socket.emit('data', terminal_id, "vim\r")
-
-      },1000);
 
 });
-*/

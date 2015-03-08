@@ -1,19 +1,16 @@
 require 'sinatra'
-require 'sinatra/reloader' if development?
 require 'sinatra/config_file'
 require 'sinatra/assetpack'
-require 'logger'
 require 'json'
-require 'securerandom'
+require 'memcached'
 require './lib/validator'
 require './lib/vimrc_creator'
+require './lib/cache'
 
-config_file './config/config.yml'
-
-enable :sessions
-
-before do
-  @logger = Logger.new('./logs/vimrc-generator-web.log', 'daily')
+configure do
+  enable :logging
+  config_file './config/config.yml'
+  @@cache = VimFactory::Cache.new('localhost:11211')
 end
 
 assets do
@@ -40,9 +37,7 @@ assets do
 end
 
 get '/' do
-  @tmp_id   = SecureRandom.base64(8)
-  @web_host = settings.web_host
-  @tty_host = settings.tty_host
+  @connection_id = @@cache.generate_uniqid
   erb :index
 end
 
@@ -60,17 +55,17 @@ post '/api/vimrc' do
     # vimrc作成
     vimrc_creator = VimFactory::VimrcCreator.new(
       params['vimrc_contents'],
-      "#{settings.vimrc_dir}/vimrc_xxxxx" # TODO: idはmemcachedから取得する
+      "#{settings.vimrc_dir}/vimrc_#{@@cache.get(params['connection_id'])}"
     )
     vimrc_creator.create
   rescue JSON::ParserError => e
-    @logger.error(e.message)
+    logger.error(e.message)
     return [400, { message: 'Requestbody should be JSON format' }.to_json]
   rescue => e
-    @logger.error(e.message)
+    logger.error(e.message)
     return [500, { message: 'Unexpected error' }.to_json]
   end
 
-  @logger.info('success')
+  logger.info('success')
   [201, { vimrc_contents: params['vimrc_contents'] }.to_json]
 end
