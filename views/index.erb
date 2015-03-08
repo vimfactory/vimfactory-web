@@ -1,34 +1,4 @@
-<div id="welcome">
-  <div class="welcome-top jumbotron">
-    <h1 class="app-title">Vim::Factory</h1>
-    <p class="app-subtitle">Vimの設定をその場ですぐ体感。</p>
-    <button id="open" class="btn btn-success">Let's Try!!</button>
-    <input id="connection_id" type="hidden" value="<%= @connection_id %>">
-  </div>
-  <div class="container">
-    <h1>Concept</h1>
-    <div class="row concept">
-      <div class="col-lg-4">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-        <h2>Select</h2>
-        <p>数あるVimの設定からお好みのものを選択しよう。<br />Vimの設定に詳しくなくても問題ありません。</p>
-      </div>
-      <div class="col-lg-4">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-        <h2>Try</h2>
-        <p>設定が決まったら、その場でその設定を体感しよう。<br />気に入らなければまたすぐに設定を変更だ。</p>
-      </div>
-      <div class="col-lg-4">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-        <h2>Download</h2>
-        <p>お気に入りの設定が見つかったらダウンロードし、<br />自分の開発環境へ反映させよう。</p>
-      </div>
-    </div>
-    <footer class="footer">
-      <p>footer</p>
-    </foorter>
-  </div>
-</div>
+<%= erb :welcome %>
 <div id="main-content" class="raw hide">
   <div class="vimrc-area col-xs-4">
     <h1>Vim::Factory</h1>
