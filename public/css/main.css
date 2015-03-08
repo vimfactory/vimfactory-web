@@ -51,7 +51,7 @@ ul.color-schema li{
     margin-top: 40px;
 }
 
-#vim-reloading {
+.vim-reloading {
     background-image: url("../img/ajax-loader.gif");
     background-repeat: no-repeat;
     background-position: center center;
