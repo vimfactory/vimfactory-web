@@ -11,7 +11,7 @@ require './lib/cache'
 configure do
   enable :logging
   config_file './config/config.yml'
-  @@cache = VimFactory::Cache.new('localhost:11211')
+  $cache = VimFactory::Cache.new('localhost:11211')
 end
 
 assets do
@@ -40,7 +40,7 @@ end
 get '/' do
   @basic_options = YAML.load_file('data/basic_options.yml')
   @colorscheme_options = YAML.load_file('data/colorscheme_options.yml')
-  @connection_id = @@cache.generate_uniqid
+  @connection_id = $cache.generate_uniqid
   erb :index
 end
 
@@ -58,7 +58,7 @@ post '/api/vimrc' do
     # vimrc作成
     vimrc_creator = VimFactory::VimrcCreator.new(
       params['vimrc_contents'],
-      "#{settings.vimrc_dir}/vimrc_#{@@cache.get(params['connection_id'])}"
+      "#{settings.vimrc_dir}/vimrc_#{$cache.get(params['connection_id'])}"
     )
     vimrc_creator.create
   rescue JSON::ParserError => e
