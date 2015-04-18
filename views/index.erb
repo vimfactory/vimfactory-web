@@ -1,20 +1,30 @@
 <%= erb :welcome %>
 <div id="main-content" class="raw hide">
-  <div class="vimrc-area col-xs-4">
-    <h1>Vim::Factory</h1>
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="active">
-        <a href="#setting-color" data-toggle="tab">カラー</a>
-      </li>
-      <li role="presentation">
-        <a href="#setting-basic" data-toggle="tab">基本設定</a>
-      </li>
-    </ul>
-    <div id="setting-contents" class="tab-content">
 
-      <% # カラースキーマ設定 %>
-      <div id="setting-color" class="tab-pane fade in active">
-        <h5>お好みのカラーを選択</h5>
+  <div class="vimrc-area col-xs-6">
+    <!-- ヘッダ -->
+    <header>
+      <h1>Vim::Factory</h1>
+    </header>
+
+    <!-- ナビゲーション -->
+    <nav>
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active">
+          <a href="#setting-color" data-toggle="tab">カラー</a>
+        </li>
+        <li role="presentation">
+          <a href="#setting-basic" data-toggle="tab">基本設定</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- vim設定欄 -->
+    <section id="setting-contents" class="tab-content">
+
+      <!--  カラースキーマ設定 -->
+      <section id="setting-color" class="tab-pane fade in active">
+        <h4>お好みのカラーを選択</h4>
         <% @colorscheme_options.each_with_index do |colorscheme, index| %>
           <div class="colorscheme">
             <div class="radio">
@@ -30,10 +40,10 @@
             <%= erb :"colorschemes/#{colorscheme}" %>
           </div>
         <% end %>
-      </div>
+      </section>
 
-      <% # 基本設定 %>
-      <div id="setting-basic" class="tab-pane fade">
+      <!-- 基本設定 -->
+      <section id="setting-basic" class="tab-pane fade">
         <% @basic_options.each do |genre, elements| %>
           <h4>
             <% if genre == 'tab' %>
@@ -64,10 +74,25 @@
             </div>
           <% end %>
         <% end %>
-      </div>
+      </section>
       <button type="button" id="setting-btn" class="btn btn-primary btn-lg">これで設定する</button>
-    </div>
+    </section>
+
   </div>
-  <div id="terminal-body" class="terminal-area col-xs-8">
+
+  <!-- ターミナル -->
+  <div id="terminal-body" class="terminal-area col-xs-6">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <a href="#console" data-toggle="tab">コンソール</a>
+      </li>
+      <li role="presentation">
+        <a href="#vimrc-preview" data-toggle="tab">.vimrc</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div id="console" class="tab-pane active"></div>
+      <div id="vimrc-preview" class="tab-pane">プレビュー</div>
+    </div>
   </div>
 </div>

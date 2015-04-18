@@ -19,16 +19,39 @@ body {
     text-align: center;
 }
 
-.vimrc-area{
+div#main-content {
+    /* width: 100%; */
+    min-height: 100%;
+    display: flex;
+    /* display: box; */
+    /* display: -webkit-box; */
+    /* display: -moz-box; */
+}
+
+div.vimrc-area {
+    padding: 30px;
+    background-color: #92B2B2;
+    /* display:inline-block; */
+    /* margin-bottom: 20px; */
+}
+
+div.vimrc-area h1 {
+    margin: 0;
+}
+
+div.vimrc-area header {
     margin-bottom: 20px;
 }
 
-#terminal-body{
-    padding:0;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
+
+div#terminal-body {
+    /* padding: 20px; */
+    /* height: 100%; */
+    /* padding: 10px; */
+    /* display:inline-block; */
+    /* position: fixed; */
+    /* top: 0; */
+    /* right: 0; */
 }
 
 ul.color-schema{

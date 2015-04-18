@@ -1,11 +1,6 @@
-/**
- * style.css (https://github.com/chjj/tty.js)
- * Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
- */
-
-html.maximized {
-  overflow: hidden;
-}
+/* html.maximized { */
+  /* overflow: hidden; */
+/* } */
 
 
 /* Only allow plaintext?
@@ -15,25 +10,12 @@ html.maximized {
 }
 */
 
-/**
- * Terminal
- */
-
 .window {
-  padding-top: 15px;
-  /*border: #fafafa solid 1px;*/
+  /* padding-top: 15px; */
   background: #272829;
-  position: absolute;
-  /*
-  top: 20px;
-  left: 20px;
-  */
+  /* position: absolute; */
   z-index: 1000;
-  
-  /*
-  width:100%;
-  height:100%;
-  */
+  /* border-radius: 3px !important; */
 }
 
 .maximized .window {
@@ -45,60 +27,65 @@ html.maximized {
   box-shadow: none;
 }
 
-.bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 13px;
-  padding: 1px 0;
-  font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
-  color: #fafafa;
-}
+/* .bar { */
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  /* right: 0; */
+  /* height: 13px; */
+  /* padding: 1px 0; */
+  /* font-family: "DejaVu Sans Mono", "Liberation Mono", monospace; */
+  /* color: #fafafa; */
+/* } */
 
+/* .title { */
+  /* position: absolute; */
+  /* right: 5px; */
+  /* top: 2px; */
+  /* font-size: 11px; */
+  /* cursor: default; */
+/* } */
 
-.title {
-  position: absolute;
-  right: 5px;
-  top: 2px;
-  font-size: 11px;
-  cursor: default;
-}
+/* .tab { */
+  /* font-size: 16px; */
+  /* margin-left: 8px; */
+  /* margin-top: -2px; */
+  /* float: left; */
+  /* cursor: pointer; */
+/* } */
 
-.tab {
-  font-size: 16px;
-  margin-left: 8px;
-  margin-top: -2px;
-  float: left;
-  cursor: pointer;
-}
+/* .tab:hover { */
+  /* font-weight: bold; */
+/* } */
 
-.tab:hover {
-  font-weight: bold;
-}
+/* .grip { */
+  /* position: absolute; */
+  /* bottom: -10px; */
+  /* right: -10px; */
+  /* width: 22px; */
+  /* height: 22px; */
+  /* cursor: se-resize; */
+  /* z-index: -1; */
+  /* background: transparent; */
+/* } */
 
-.grip {
-  position: absolute;
-  bottom: -10px;
-  right: -10px;
-  width: 22px;
-  height: 22px;
-  cursor: se-resize;
-  z-index: -1;
-  background: transparent;
-}
-
-.grip:hover {
-}
+/* .grip:hover { */
+/* } */
 
 .terminal {
-  border: #000 solid 5px;
-  color: #f0f0f0;
-  background: #000;
-
-  font-family: Consolas, 'Courier New', Courier, Monaco, monospace;
-  font-size: 20px;
+  /* border: #000 solid 5px; */
+  /* color: #f0f0f0; */
+  border: #232C31 solid 5px !important;
+  background: #232C31 !important;
+  /* border: #000 solid 5px !important; */
+  /* background: #000 !important; */
+  /* font-family: Consolas, 'Courier New', Courier, Monaco, monospace; */
+  /* font-family: 'Consolas', 'Courier New', 'Courier', 'Monaco', monospace; */
+  /* font-family: 'Source Sans Pro', 'Source Code Pro', sans-serif; */
+  font-family: 'Inconsolata', 'Source Sans Pro', 'Source Code Pro', sans-serif;
+  font-size: 12px;
   line-height: 1;
+  word-wrap: break-word;
 }
 
 .reverse-video {
@@ -106,22 +93,8 @@ html.maximized {
   background: #f0f0f0;
 }
 
-/**
- * Page
- */
-
-#open {
-  top: 10px;
-  font: 20px/1.5 sans-serif;
-  padding: 10px;
-  height: 50px;
-  cursor: pointer;
-  margin: 30px 0 0 0;
-  border: none;
-  -webkit-appearance: none;
-}
-
 #terminal-body{
-  height: 585px;
+    background-color: #888A7B;
+    padding: 30px 6px;
+  /* height: 585px; */
 }
-

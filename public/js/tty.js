@@ -61,7 +61,8 @@ tty.open = function() {
 
   tty.elements = {
     root: document.documentElement,
-    body: document.getElementById('terminal-body'),
+    // body: document.getElementById('terminal-body'),
+    body: document.getElementById('console'),
     open: document.getElementById('open'),
   };
 
@@ -285,13 +286,12 @@ Window.prototype.bind = function() {
   });
   */
   
-  /* mosuke resize forbit
+  // mosuke resize forbit
   on(grip, 'mousedown', function(ev) {
     self.focus();
     self.resizing(ev);
     return cancel(ev);
   });
-  */
 
   on(el, 'mousedown', function(ev) {
     if (ev.target !== el && ev.target !== bar) return;
