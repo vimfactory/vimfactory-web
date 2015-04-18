@@ -55,9 +55,9 @@
               <label>
                 <% if element['type'] == 'text' %>
                   <%= element['message'] %>
-                  <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>">
+                  <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['disabled'] %> >
                 <% else %>
-                  <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>">
+                  <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['checked'] %> <%= element['disabled'] %> >
                   <%= element['message'] %>
                 <% end %>
               </label>

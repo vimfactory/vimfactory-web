@@ -49,9 +49,15 @@ default:
   - name: t_Co
     type: checkbox
     message: 色の種類：256色
+    disabled: disabled
+    checked: checked
   - name: fileformats
     type: checkbox
     message: 対応改行コード：unix,dos,mac
+    disabled: disabled
+    checked: checked
   - name: encoding
     type: checkbox
     message: 文字コード：utf-8
+    disabled: disabled
+    checked: checked
