@@ -70,6 +70,7 @@ module VimFactory
       molokai
       jellybeans
       solarized
+      hybrid
     )
 
     # デフォルトオプション
