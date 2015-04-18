@@ -1,0 +1,34 @@
+<style type="text/css">
+<!--
+.jellybeans pre { white-space: pre-wrap; font-family: monospace; color: #d7d7d7; background-color: #121212; }
+.jellybeans .StringDelimiter { color: #5f5f00; }
+.jellybeans .Function { color: #ffd787; }
+.jellybeans .rubyInstanceVariable { color: #d7afff; }
+.jellybeans .rubyClass { color: #008787; }
+.jellybeans .Comment { color: #808080; }
+.jellybeans .Identifier { color: #d7afff; }
+.jellybeans .PreProc { color: #87afd7; }
+.jellybeans .Type { color: #ffaf5f; }
+.jellybeans .String { color: #87af5f; }
+-->
+</style>
+<div class="jellybeans">
+<pre>
+<span id="L1" class="LineNr"> 1 </span><span class="Comment"># The Greeter class</span>
+<span id="L2" class="LineNr"> 2 </span><span class="rubyClass">class</span> <span class="Type">Greeter</span>
+<span id="L3" class="LineNr"> 3 </span>  <span class="PreProc">def</span> <span class="Function">initialize</span>(name)
+<span id="L4" class="LineNr"> 4 </span>    <span class="rubyInstanceVariable">@name</span> = name.capitalize
+<span id="L5" class="LineNr"> 5 </span>  <span class="PreProc">end</span>
+<span id="L6" class="LineNr"> 6 </span>
+<span id="L7" class="LineNr"> 7 </span>  <span class="PreProc">def</span> <span class="Function">salute</span>
+<span id="L8" class="LineNr"> 8 </span>    puts <span class="StringDelimiter">&quot;</span><span class="String">Hello </span><span class="Identifier">#{</span><span class="rubyInstanceVariable">@name</span><span class="Identifier">}</span><span class="String">!</span><span class="StringDelimiter">&quot;</span>
+<span id="L9" class="LineNr"> 9 </span>  <span class="PreProc">end</span>
+<span id="L10" class="LineNr">10 </span><span class="rubyClass">end</span>
+<span id="L11" class="LineNr">11 </span>
+<span id="L12" class="LineNr">12 </span><span class="Comment"># Create a new object</span>
+<span id="L13" class="LineNr">13 </span>g = <span class="Type">Greeter</span>.new(<span class="StringDelimiter">&quot;</span><span class="String">world</span><span class="StringDelimiter">&quot;</span>)
+<span id="L14" class="LineNr">14 </span>
+<span id="L15" class="LineNr">15 </span><span class="Comment"># Output &quot;Hello World!&quot;</span>
+<span id="L16" class="LineNr">16 </span>g.salute
+</pre>
+</div>

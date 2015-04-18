@@ -16,7 +16,7 @@
       <div id="setting-color" class="tab-pane fade in active">
         <h5>お好みのカラーを選択</h5>
         <% @colorscheme_options.each_with_index do |colorscheme, index| %>
-          <div class="colorscheme <%= colorscheme %>">
+          <div class="colorscheme">
             <div class="radio">
               <label>
                 <% if index == 0 %>
@@ -27,7 +27,7 @@
                 <span class="colorschme-name"><%= colorscheme %></span>
               </label>
             </div>
-            <%= erb :colorscheme_sample %>
+            <%= erb :"colorschemes/#{colorscheme}" %>
           </div>
         <% end %>
       </div>
