@@ -1,0 +1,33 @@
+<style type="text/css">
+<!--
+.molokai pre { white-space: pre-wrap; font-family: monospace; color: #d0d0d0; background-color: #121212; }
+.molokai .Function { color: #87ff00; }
+.molokai .Define { color: #5fd7ff; }
+.molokai .Comment { color: #5f5f5f; }
+.molokai .Delimiter { color: #626262; }
+.molokai .LineNr { color: #bcbcbc; background-color: #303030; padding-bottom: 1px; }
+.molokai .Identifier { color: #ff8700; }
+.molokai .Type { color: #5fd7ff; }
+.molokai .String { color: #afaf87; }
+-->
+</style>
+<div class="molokai">
+<pre>
+<span class="LineNr"> 1 </span><span class="Comment"># The Greeter class</span>
+<span class="LineNr"> 2 </span><span class="Define">class</span> <span class="Type">Greeter</span>
+<span class="LineNr"> 3 </span>  <span class="Define">def</span> <span class="Function">initialize</span>(name)
+<span class="LineNr"> 4 </span>    <span class="Identifier">@name</span> = name.capitalize
+<span class="LineNr"> 5 </span>  <span class="Define">end</span>
+<span class="LineNr"> 6 </span>
+<span class="LineNr"> 7 </span>  <span class="Define">def</span> <span class="Function">salute</span>
+<span class="LineNr"> 8 </span>    puts <span class="Delimiter">&quot;</span><span class="String">Hello </span><span class="Delimiter">#{</span><span class="Identifier">@name</span><span class="Delimiter">}</span><span class="String">!</span><span class="Delimiter">&quot;</span>
+<span class="LineNr"> 9 </span>  <span class="Define">end</span>
+<span class="LineNr">10 </span><span class="Define">end</span>
+<span class="LineNr">11 </span>
+<span class="LineNr">12 </span><span class="Comment"># Create a new object</span>
+<span class="LineNr">13 </span>g = <span class="Type">Greeter</span>.new(<span class="Delimiter">&quot;</span><span class="String">world</span><span class="Delimiter">&quot;</span>)
+<span class="LineNr">14 </span>
+<span class="LineNr">15 </span><span class="Comment"># Output &quot;Hello World!&quot;</span>
+<span class="LineNr">16 </span>g.salute
+</pre>
+</div>

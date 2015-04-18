@@ -53,3 +53,9 @@ ul.color-schema li{
     height: 100%;
     width: 100%;
 }
+
+.colorscheme pre {
+    line-height: 1;
+    font-size: 11px !important;
+    border-radius: 10px;
+}
