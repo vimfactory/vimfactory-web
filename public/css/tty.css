@@ -119,9 +119,10 @@ body {
   border: #000 solid 5px;
   /*font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;*/
   font-family: 'Inconsolata', 'Source Sans Pro', 'Source Code Pro', sans-serif;
-  font-size: 11px;
+  font-size: 16px;
   color: #f0f0f0;
   background: #000;
+  line-height: 1;
 }
 
 .reverse-video {
