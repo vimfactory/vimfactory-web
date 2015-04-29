@@ -1,7 +1,36 @@
-/* html.maximized { */
-  /* overflow: hidden; */
-/* } */
+/**
+ * style.css (https://github.com/chjj/tty.js)
+ * Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
+ */
 
+/*
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  background: #fff;
+}
+
+html.dark {
+  background: #333;
+}
+
+html.maximized {
+  overflow: hidden;
+}
+
+body {
+  margin: 25px;
+}
+*/
 
 /* Only allow plaintext?
 [contenteditable=""],
@@ -10,12 +39,23 @@
 }
 */
 
+/**
+ * Terminal
+ */
+
 .window {
-  /* padding-top: 15px; */
+  padding-top: 15px;
+  border: #fafafa solid 1px;
   background: #272829;
-  /* position: absolute; */
+  position: absolute;
+/*
+  top: 20px;
+  left: 20px;
+*/
   z-index: 1000;
-  /* border-radius: 3px !important; */
+/*
+  box-shadow: rgba(0, 0, 0, 0.8) 2px 2px 20px;
+*/
 }
 
 .maximized .window {
@@ -27,65 +67,62 @@
   box-shadow: none;
 }
 
-/* .bar { */
-  /* position: absolute; */
-  /* top: 0; */
-  /* left: 0; */
-  /* right: 0; */
-  /* height: 13px; */
-  /* padding: 1px 0; */
-  /* font-family: "DejaVu Sans Mono", "Liberation Mono", monospace; */
-  /* color: #fafafa; */
-/* } */
+.bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 13px;
+  padding: 1px 0;
+  font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+  color: #fafafa;
+}
 
-/* .title { */
-  /* position: absolute; */
-  /* right: 5px; */
-  /* top: 2px; */
-  /* font-size: 11px; */
-  /* cursor: default; */
-/* } */
+.dark .bar,
+.maximized .bar {
+}
 
-/* .tab { */
-  /* font-size: 16px; */
-  /* margin-left: 8px; */
-  /* margin-top: -2px; */
-  /* float: left; */
-  /* cursor: pointer; */
-/* } */
+.title {
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  font-size: 11px;
+  cursor: default;
+}
 
-/* .tab:hover { */
-  /* font-weight: bold; */
-/* } */
+.tab {
+  font-size: 16px;
+  margin-left: 8px;
+  margin-top: -2px;
+  float: left;
+  cursor: pointer;
+}
 
-/* .grip { */
-  /* position: absolute; */
-  /* bottom: -10px; */
-  /* right: -10px; */
-  /* width: 22px; */
-  /* height: 22px; */
-  /* cursor: se-resize; */
-  /* z-index: -1; */
-  /* background: transparent; */
-/* } */
+.tab:hover {
+  font-weight: bold;
+}
 
-/* .grip:hover { */
-/* } */
+.grip {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 22px;
+  height: 22px;
+  cursor: se-resize;
+  z-index: -1;
+  background: transparent;
+}
+
+.grip:hover {
+}
 
 .terminal {
-  /* border: #000 solid 5px; */
-  /* color: #f0f0f0; */
-  border: #232C31 solid 5px !important;
-  background: #232C31 !important;
-  /* border: #000 solid 5px !important; */
-  /* background: #000 !important; */
-  /* font-family: Consolas, 'Courier New', Courier, Monaco, monospace; */
-  /* font-family: 'Consolas', 'Courier New', 'Courier', 'Monaco', monospace; */
-  /* font-family: 'Source Sans Pro', 'Source Code Pro', sans-serif; */
+  border: #000 solid 5px;
+  /*font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;*/
   font-family: 'Inconsolata', 'Source Sans Pro', 'Source Code Pro', sans-serif;
-  font-size: 12px;
-  line-height: 1;
-  word-wrap: break-word;
+  font-size: 11px;
+  color: #f0f0f0;
+  background: #000;
 }
 
 .reverse-video {
@@ -93,8 +130,70 @@
   background: #f0f0f0;
 }
 
-#terminal-body{
-    background-color: #888A7B;
-    padding: 30px 6px;
-  /* height: 585px; */
+/**
+ * Page
+ */
+
+/*
+h1 {
+  font: 20px/1.5 sans-serif;
+  background: #333;
+  margin: -25px -25px 0 -25px;
+  height: 30px;
+  padding: 10px 25px;
+  color: white;
+  border-top: #e15729 solid 10px;
 }
+*/
+
+/*#open, #lights {
+  font: 20px/1.5 sans-serif;
+  position: fixed;
+  right: 0;
+  padding: 10px;
+  height: 50px;
+  color: white;
+  cursor: pointer;
+  margin: 0;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+}
+*/
+
+#open {
+  top: 10px;
+  background: #333;
+}
+
+/*
+#lights {
+  font-size: 18px;
+  height: 46px;
+  top: 60px;
+  background: #555;
+}
+*/
+
+#open:hover, #lights:hover {
+  color: slategrey;
+  background: white;
+}
+
+#open:active, #lights:active {
+  color: orange;
+}
+
+/*
+#help {
+  font: 12px/1.5 sans-serif;
+  color: #999;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
+*/
+
+/*
+.dark h1, .dark #help { display: none; }
+*/

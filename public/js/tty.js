@@ -1,7 +1,7 @@
- /**
-  * tty.js
-  * Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
-  */
+/**
+ * tty.js
+ * Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
+ */
 
 ;(function() {
 
@@ -13,8 +13,15 @@ var document = this.document
   , window = this
   , root
   , body
-  , open;
+  , h1
+  , open
+  , lights;
 
+/**
+ * Initial Document Title
+ */
+
+var initialTitle = document.title;
 
 /**
  * Helpers
@@ -61,36 +68,39 @@ tty.open = function() {
 
   tty.elements = {
     root: document.documentElement,
-    // body: document.getElementById('terminal-body'),
+    //body: document.body,
     body: document.getElementById('console'),
+    h1: document.getElementsByTagName('h1')[0],
     open: document.getElementById('open'),
+    lights: document.getElementById('lights')
   };
 
   root = tty.elements.root;
   body = tty.elements.body;
+  h1 = tty.elements.h1;
   open = tty.elements.open;
+  lights = tty.elements.lights;
 
   if (open) {
     on(open, 'click', function() {
-      //mosuke add
+
+      //start mosuke add
       $("#welcome").addClass("hide");
       $("body").css( "background-image", "url('')" );
       $("#main-content").removeClass("hide");
 
-      // tty.socket.emit('tmp_id', $("#tmp_id").val());
       tty.socket.emit('tmp_id', $("#connection_id").val());
+      //end mosuke add
 
       new Window;
     });
   }
 
-  /* mosuke
   if (lights) {
     on(lights, 'click', function() {
       tty.toggleLights();
     });
   }
-  */
 
   tty.socket.on('connect', function() {
     tty.reset();
@@ -100,7 +110,6 @@ tty.open = function() {
   tty.socket.on('data', function(id, data) {
     if (!tty.terms[id]) return;
     tty.terms[id].write(data);
-    
     //mosuke add
     terminal_id = id;
   });
@@ -112,6 +121,8 @@ tty.open = function() {
 
   // XXX Clean this up.
   tty.socket.on('sync', function(terms) {
+    console.log('Attempting to sync...');
+    console.log(terms);
 
     tty.reset();
 
@@ -121,7 +132,7 @@ tty.open = function() {
     Object.keys(terms).forEach(function(key) {
       var data = terms[key]
         , win = new Window
-          tab = win.tabs[0];
+        , tab = win.tabs[0];
 
       delete tty.terms[tab.id];
       tab.pty = data.pty;
@@ -132,7 +143,7 @@ tty.open = function() {
       tty.emit('open tab', tab);
       tab.emit('open');
     });
-    
+
     tty.socket.emit = emit;
   });
 
@@ -162,11 +173,9 @@ tty.open = function() {
       }
     }
   });
-  
 
   tty.emit('load');
   tty.emit('open');
-  
 };
 
 /**
@@ -188,13 +197,12 @@ tty.reset = function() {
 /**
  * Lights
  */
-/* mosuke
+
 tty.toggleLights = function() {
   root.className = !root.className
     ? 'dark'
     : '';
 };
-*/
 
 /**
  * Window
@@ -208,7 +216,7 @@ function Window(socket) {
   var el
     , grip
     , bar
-    //, button
+    , button
     , title;
 
   el = document.createElement('div');
@@ -219,13 +227,11 @@ function Window(socket) {
 
   bar = document.createElement('div');
   bar.className = 'bar';
-  
-  /*
+
   button = document.createElement('div');
   button.innerHTML = '~';
   button.title = 'new/close';
   button.className = 'tab';
-  */
 
   title = document.createElement('div');
   title.className = 'title';
@@ -235,7 +241,7 @@ function Window(socket) {
   this.element = el;
   this.grip = grip;
   this.bar = bar;
-  //this.button = button;
+  this.button = button;
   this.title = title;
 
   this.tabs = [];
@@ -246,7 +252,7 @@ function Window(socket) {
 
   el.appendChild(grip);
   el.appendChild(bar);
-  //bar.appendChild(button);
+  bar.appendChild(button);
   bar.appendChild(title);
   body.appendChild(el);
 
@@ -260,9 +266,6 @@ function Window(socket) {
     tty.emit('open window', self);
     self.emit('open');
   });
-  
-  //mosuke
-  //self.maximize();
 }
 
 inherits(Window, EventEmitter);
@@ -272,10 +275,9 @@ Window.prototype.bind = function() {
     , el = this.element
     , bar = this.bar
     , grip = this.grip
-    //, button = this.button
+    , button = this.button
     , last = 0;
-  
-  /*
+
   on(button, 'click', function(ev) {
     if (ev.ctrlKey || ev.altKey || ev.metaKey || ev.shiftKey) {
       self.destroy();
@@ -284,9 +286,7 @@ Window.prototype.bind = function() {
     }
     return cancel(ev);
   });
-  */
-  
-  // mosuke resize forbit
+
   on(grip, 'mousedown', function(ev) {
     self.focus();
     self.resizing(ev);
@@ -304,9 +304,8 @@ Window.prototype.bind = function() {
       return self.maximize();
     }
     last = new Date;
-    
-    //mosuke drag forbid
-    //self.drag(ev);
+
+    self.drag(ev);
 
     return cancel(ev);
   });
@@ -346,8 +345,198 @@ Window.prototype.destroy = function() {
   this.emit('close');
 };
 
+/* mosuke deleted (forbit window drag)
+Window.prototype.drag = function(ev) {
+  var self = this
+    , el = this.element;
+
+  if (this.minimize) return;
+
+  var drag = {
+    left: el.offsetLeft,
+    top: el.offsetTop,
+    pageX: ev.pageX,
+    pageY: ev.pageY
+  };
+
+  el.style.opacity = '0.60';
+  el.style.cursor = 'move';
+  root.style.cursor = 'move';
+  
+  function move(ev) {
+    el.style.left =
+      (drag.left + ev.pageX - drag.pageX) + 'px';
+    el.style.top =
+      (drag.top + ev.pageY - drag.pageY) + 'px';
+  }
+
+  function up() {
+    el.style.opacity = '';
+    el.style.cursor = '';
+    root.style.cursor = '';
+
+    off(document, 'mousemove', move);
+    off(document, 'mouseup', up);
+
+    var ev = {
+      left: el.style.left.replace(/\w+/g, ''),
+      top: el.style.top.replace(/\w+/g, '')
+    };
+
+    tty.emit('drag window', self, ev);
+    self.emit('drag', ev);
+  }
+
+  on(document, 'mousemove', move);
+  on(document, 'mouseup', up);
+};
+*/
+
+Window.prototype.resizing = function(ev) {
+  var self = this
+    , el = this.element
+    , term = this.focused;
+
+  if (this.minimize) delete this.minimize;
+
+  var resize = {
+    w: el.clientWidth,
+    h: el.clientHeight
+  };
+
+  el.style.overflow = 'hidden';
+  el.style.opacity = '0.70';
+  el.style.cursor = 'se-resize';
+  root.style.cursor = 'se-resize';
+  term.element.style.height = '100%';
+
+  function move(ev) {
+    var x, y;
+    y = el.offsetHeight - term.element.clientHeight;
+    x = ev.pageX - el.offsetLeft;
+    y = (ev.pageY - el.offsetTop) - y;
+    el.style.width = x + 'px';
+    el.style.height = y + 'px';
+  }
+
+  function up() {
+    var x, y;
+
+    x = el.clientWidth / resize.w;
+    y = el.clientHeight / resize.h;
+    x = (x * term.cols) | 0;
+    y = (y * term.rows) | 0;
+
+    self.resize(x, y);
+
+    el.style.width = '';
+    el.style.height = '';
+
+    el.style.overflow = '';
+    el.style.opacity = '';
+    el.style.cursor = '';
+    root.style.cursor = '';
+    term.element.style.height = '';
+
+    off(document, 'mousemove', move);
+    off(document, 'mouseup', up);
+  }
+
+  on(document, 'mousemove', move);
+  on(document, 'mouseup', up);
+};
+
+Window.prototype.maximize = function() {
+  if (this.minimize) return this.minimize();
+
+  var self = this
+    , el = this.element
+    , term = this.focused
+    , x
+    , y;
+
+  var m = {
+    cols: term.cols,
+    rows: term.rows,
+    left: el.offsetLeft,
+    top: el.offsetTop,
+    root: root.className
+  };
+
+  this.minimize = function() {
+    delete this.minimize;
+
+    el.style.left = m.left + 'px';
+    el.style.top = m.top + 'px';
+    el.style.width = '';
+    el.style.height = '';
+    term.element.style.width = '';
+    term.element.style.height = '';
+    el.style.boxSizing = '';
+    self.grip.style.display = '';
+    root.className = m.root;
+
+    self.resize(m.cols, m.rows);
+
+    tty.emit('minimize window', self);
+    self.emit('minimize');
+  };
+
+  window.scrollTo(0, 0);
+
+  x = root.clientWidth / term.element.offsetWidth;
+  y = root.clientHeight / term.element.offsetHeight;
+  x = (x * term.cols) | 0;
+  y = (y * term.rows) | 0;
+
+  el.style.left = '0px';
+  el.style.top = '0px';
+  el.style.width = '100%';
+  el.style.height = '100%';
+  term.element.style.width = '100%';
+  term.element.style.height = '100%';
+  el.style.boxSizing = 'border-box';
+  this.grip.style.display = 'none';
+  root.className = 'maximized';
+
+  this.resize(x, y);
+
+  tty.emit('maximize window', this);
+  this.emit('maximize');
+};
+
+Window.prototype.resize = function(cols, rows) {
+  this.cols = cols;
+  this.rows = rows;
+
+  this.each(function(term) {
+    term.resize(cols, rows);
+  });
+
+  tty.emit('resize window', this, cols, rows);
+  this.emit('resize', cols, rows);
+};
+
+Window.prototype.each = function(func) {
+  var i = this.tabs.length;
+  while (i--) {
+    func(this.tabs[i], i);
+  }
+};
+
 Window.prototype.createTab = function() {
   return new Tab(this, this.socket);
+};
+
+Window.prototype.highlight = function() {
+  var self = this;
+
+  this.element.style.borderColor = 'orange';
+  setTimeout(function() {
+    self.element.style.borderColor = '';
+  }, 200);
+
+  this.focus();
 };
 
 Window.prototype.focusTab = function(next) {
@@ -381,19 +570,32 @@ Window.prototype.previousTab = function() {
 function Tab(win, socket) {
   var self = this;
 
-  y = Math.ceil(($(window).height()-13-10)/20);
-  x = Math.ceil(($(window).width()*0.65)/12);
-  var cols = x
-    , rows = y;
+  var cols = win.cols
+    , rows = win.rows;
 
   Terminal.call(this, {
     cols: cols,
     rows: rows
   });
-  
+
+  var button = document.createElement('div');
+  button.className = 'tab';
+  button.innerHTML = '\u2022';
+  win.bar.appendChild(button);
+
+  on(button, 'click', function(ev) {
+    if (ev.ctrlKey || ev.altKey || ev.metaKey || ev.shiftKey) {
+      self.destroy();
+    } else {
+      self.focus();
+    }
+    return cancel(ev);
+  });
+
   this.id = '';
   this.socket = socket || tty.socket;
   this.window = win;
+  this.button = button;
   this.element = null;
   this.process = '';
   this.open();
@@ -420,6 +622,32 @@ Tab.prototype.handler = function(data) {
   this.socket.emit('data', this.id, data);
 };
 
+// We could just hook in `tab.on('title', ...)`
+// in the constructor, but this is faster.
+Tab.prototype.handleTitle = function(title) {
+  if (!title) return;
+
+  title = sanitize(title);
+  this.title = title;
+
+  if (Terminal.focus === this) {
+    document.title = title;
+    // if (h1) h1.innerHTML = title;
+  }
+
+  if (this.window.focused === this) {
+    this.window.bar.title = title;
+    // this.setProcessName(this.process);
+  }
+};
+
+Tab.prototype._write = Tab.prototype.write;
+
+Tab.prototype.write = function(data) {
+  if (this.window.focused !== this) this.button.style.color = 'red';
+  return this._write(data);
+};
+
 Tab.prototype._focus = Tab.prototype.focus;
 
 Tab.prototype.focus = function() {
@@ -433,12 +661,16 @@ Tab.prototype.focus = function() {
       if (win.focused.element.parentNode) {
         win.focused.element.parentNode.removeChild(win.focused.element);
       }
+      win.focused.button.style.fontWeight = '';
     }
 
     win.element.appendChild(this.element);
     win.focused = this;
 
     win.title.innerHTML = this.process;
+    document.title = this.title || initialTitle;
+    this.button.style.fontWeight = 'bold';
+    this.button.style.color = '';
   }
 
   this.handleTitle(this.title);
@@ -449,6 +681,55 @@ Tab.prototype.focus = function() {
 
   tty.emit('focus tab', this);
   this.emit('focus');
+};
+
+Tab.prototype._resize = Tab.prototype.resize;
+
+Tab.prototype.resize = function(cols, rows) {
+  this.socket.emit('resize', this.id, cols, rows);
+  this._resize(cols, rows);
+  tty.emit('resize tab', this, cols, rows);
+  this.emit('resize', cols, rows);
+};
+
+Tab.prototype.__destroy = Tab.prototype.destroy;
+
+Tab.prototype._destroy = function() {
+  if (this.destroyed) return;
+  this.destroyed = true;
+
+  var win = this.window;
+
+  this.button.parentNode.removeChild(this.button);
+  if (this.element.parentNode) {
+    this.element.parentNode.removeChild(this.element);
+  }
+
+  if (tty.terms[this.id]) delete tty.terms[this.id];
+  splice(win.tabs, this);
+
+  if (win.focused === this) {
+    win.previousTab();
+  }
+
+  if (!win.tabs.length) {
+    win.destroy();
+  }
+
+  // if (!tty.windows.length) {
+  //   document.title = initialTitle;
+  //   if (h1) h1.innerHTML = initialTitle;
+  // }
+
+  this.__destroy();
+};
+
+Tab.prototype.destroy = function() {
+  if (this.destroyed) return;
+  this.socket.emit('kill', this.id);
+  this._destroy();
+  tty.emit('close tab', this);
+  this.emit('close');
 };
 
 Tab.prototype.hookKeys = function() {
@@ -587,12 +868,13 @@ Tab.prototype.setProcessName = function(name) {
   }
 
   this.process = name;
+  this.button.title = name;
 
   if (this.window.focused === this) {
     // if (this.title) {
     //   name += ' (' + this.title + ')';
     // }
-    //this.window.title.innerHTML = name;
+    this.window.title.innerHTML = name;
   }
 };
 
@@ -629,7 +911,6 @@ function load() {
   off(document, 'load', load);
   off(document, 'DOMContentLoaded', load);
   tty.open();
-  
 }
 
 on(document, 'load', load);
@@ -639,6 +920,7 @@ setTimeout(load, 200);
 /**
  * Expose
  */
+
 tty.Window = Window;
 tty.Tab = Tab;
 tty.Terminal = Terminal;
