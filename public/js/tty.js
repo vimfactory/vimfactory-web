@@ -215,7 +215,6 @@ function Window(socket) {
 
   var el
     , grip
-    , bar
     , button
     , title;
 
@@ -224,9 +223,6 @@ function Window(socket) {
 
   grip = document.createElement('div');
   grip.className = 'grip';
-
-  bar = document.createElement('div');
-  bar.className = 'bar';
 
   button = document.createElement('div');
   button.innerHTML = '~';
@@ -240,7 +236,6 @@ function Window(socket) {
   this.socket = socket || tty.socket;
   this.element = el;
   this.grip = grip;
-  this.bar = bar;
   this.button = button;
   this.title = title;
 
@@ -251,9 +246,6 @@ function Window(socket) {
   this.rows = Terminal.geometry[1];
 
   el.appendChild(grip);
-  el.appendChild(bar);
-  bar.appendChild(button);
-  bar.appendChild(title);
   body.appendChild(el);
 
   tty.windows.push(this);
@@ -273,7 +265,6 @@ inherits(Window, EventEmitter);
 Window.prototype.bind = function() {
   var self = this
     , el = this.element
-    , bar = this.bar
     , grip = this.grip
     , button = this.button
     , last = 0;
@@ -294,7 +285,7 @@ Window.prototype.bind = function() {
   });
 
   on(el, 'mousedown', function(ev) {
-    if (ev.target !== el && ev.target !== bar) return;
+    if (ev.target !== el) return;
 
     self.focus();
 
@@ -581,7 +572,6 @@ function Tab(win, socket) {
   var button = document.createElement('div');
   button.className = 'tab';
   button.innerHTML = '\u2022';
-  win.bar.appendChild(button);
 
   on(button, 'click', function(ev) {
     if (ev.ctrlKey || ev.altKey || ev.metaKey || ev.shiftKey) {
@@ -633,11 +623,6 @@ Tab.prototype.handleTitle = function(title) {
   if (Terminal.focus === this) {
     document.title = title;
     // if (h1) h1.innerHTML = title;
-  }
-
-  if (this.window.focused === this) {
-    this.window.bar.title = title;
-    // this.setProcessName(this.process);
   }
 };
 
