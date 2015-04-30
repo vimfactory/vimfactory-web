@@ -47,7 +47,6 @@ body {
   padding-top: 15px;
   border: #fafafa solid 1px;
   background: #272829;
-  position: absolute;
 /*
   top: 20px;
   left: 20px;
@@ -182,6 +181,11 @@ h1 {
 
 #open:active, #lights:active {
   color: orange;
+}
+
+#console-wrapper {
+  height: 100%;
+  width: 100%;
 }
 
 /*
