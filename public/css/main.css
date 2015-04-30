@@ -26,34 +26,44 @@ div#main-content {
 
 div#vimrc {
     min-height: 100%;
-    width: 40%;
-}
-
-div#vimrc h1 {
-    margin: 0;
+    width: 32%;
+    border-right: 1px solid #ccc;
 }
 
 div#vimrc header {
-    margin-bottom: 10px;
+    padding: 35px 13px;
+    border-bottom: 1px solid #ccc;
+}
+
+div#vimrc header h1 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 200%;
+    text-align: center;
+    color: #666;
 }
 
 div#vimrc-inner {
-    padding: 10px 20px;
+    padding: 15px 13px;
+    font-size: 85%;
+}
+
+div#vimrc h4 {
+    font-size: 14px;
 }
 
 div#terminal {
     min-height: 100%;
-    width: 60%;
+    width: 68%;
     position: fixed;
     top: 0;
     right: 0;
+    background-color: #f8f8f8;
 }
 
 div#terminal-inner {
     height: 100%;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 13px;
 }
 
 #console-wrapper {
