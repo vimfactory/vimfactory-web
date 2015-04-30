@@ -56,14 +56,14 @@ $("#setting-btn").click(function(event){
     data: JSON.stringify({"connection_id": connection_id, "vimrc_contents": results}),
     success: function(data) {
       //vim reload
-      $("#terminal-body").append("<div class=\"vim-reloading\"></div>");
-      $("#terminal-body > .window").hide();
+      $("#terminal-inner").append("<div class=\"vim-reloading\"></div>");
+      $("#terminal-inner .tab-content").hide();
       tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
       setTimeout(function(){
         //start vim
         tty.socket.emit('data', terminal_id, "vim\r")
         setTimeout(function(){
-          $("#terminal-body > .window").show();
+          $("#terminal-inner .tab-content").show();
           $(".vim-reloading").hide();
         },500)
       },500);

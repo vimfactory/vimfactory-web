@@ -1,3 +1,6 @@
+/**
+ * Global
+ */
 html, body {
     height: 100%;
 }
@@ -6,6 +9,14 @@ body {
     background-image: url("../img/dark_geometric.png")
 }
 
+div#main-content {
+    height: 100%;
+    width: 100%;
+}
+
+/**
+ * Welcome Page
+ */
 #welcome {
     color: #d2d0cf !important;
 }
@@ -19,31 +30,103 @@ body {
     text-align: center;
 }
 
-.vimrc-area{
-    margin-bottom: 20px;
+/**
+ * vimrc
+ */
+div#vimrc {
+    min-height: 100%;
+    width: 32%;
+    border-right: 1px solid #ccc;
 }
 
-#terminal-body{
-    padding:0;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
+div#vimrc header {
+    padding: 35px 13px;
+    border-bottom: 1px solid #ccc;
 }
 
-ul.color-schema{
+div#vimrc header h1 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 200%;
+    text-align: center;
+    color: #666;
+}
+
+div#vimrc-inner {
+    padding: 15px 13px;
+    font-size: 85%;
+}
+
+div#vimrc h4 {
+    font-size: 14px;
+}
+
+section#setting-basic td {
+    border: none;
+}
+
+section#setting-basic .table-right {
+    text-align: right;
+}
+
+section#setting-basic .table-right input[type="text"] {
+    text-align: right;
+}
+
+ul.color-schema {
     padding: 0;
 }
 
-ul.color-schema li{
+ul.color-schema li {
     display: inline;
     margin: 0 10px;
 }
 
-.footer {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    margin-top: 40px;
+.colorscheme pre {
+    line-height: 1;
+    font-size: 11px !important;
+    border-radius: 10px;
+}
+
+.setting-btn-area {
+    text-align: center;
+}
+
+/**
+ * terminal
+ */
+div#terminal {
+    width: 68%;
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #f8f8f8;
+}
+
+div#terminal-inner {
+    height: 100%;
+    padding: 10px 13px;
+}
+
+div#terminal-inner section.tab-content {
+    margin-top: 8px;
+}
+
+div#terminal-inner li a {
+    padding: 7px 14px;
+    border-radius: 2px;
+    color: #444;
+}
+
+div#terminal-inner li.active > a {
+    background-color: #626262;
+    color: #fff;
+}
+
+#console-wrapper {
+    height: 100%;
+    width: 100%;
 }
 
 .vim-reloading {
@@ -52,10 +135,4 @@ ul.color-schema li{
     background-position: center center;
     height: 100%;
     width: 100%;
-}
-
-.colorscheme pre {
-    line-height: 1;
-    font-size: 11px !important;
-    border-radius: 10px;
 }

@@ -1,73 +1,110 @@
 <%= erb :welcome %>
-<div id="main-content" class="raw hide">
-  <div class="vimrc-area col-xs-4">
-    <h1>Vim::Factory</h1>
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="active">
-        <a href="#setting-color" data-toggle="tab">カラー</a>
-      </li>
-      <li role="presentation">
-        <a href="#setting-basic" data-toggle="tab">基本設定</a>
-      </li>
-    </ul>
-    <div id="setting-contents" class="tab-content">
+<div id="main-content" class="hide">
 
-      <% # カラースキーマ設定 %>
-      <div id="setting-color" class="tab-pane fade in active">
-        <h5>お好みのカラーを選択</h5>
-        <% @colorscheme_options.each_with_index do |colorscheme, index| %>
-          <div class="colorscheme">
-            <div class="radio">
-              <label>
-                <% if index == 0 %>
-                  <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>" checked>
-                <% else %>
-                  <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>">
-                <% end %>
-                <span class="colorschme-name"><%= colorscheme %></span>
-              </label>
-            </div>
-            <%= erb :"colorschemes/#{colorscheme}" %>
-          </div>
-        <% end %>
-      </div>
+  <div id="vimrc">
+    <!-- ヘッダ -->
+    <header>
+        <h1>Vim::Factory</h1>
+    </header>
 
-      <% # 基本設定 %>
-      <div id="setting-basic" class="tab-pane fade">
-        <% @basic_options.each do |genre, elements| %>
-          <h4>
-            <% if genre == 'tab' %>
-              タブ
-            <% elsif genre == 'indent' %>
-              インデント
-            <% elsif genre == 'search' %>
-              検索
-            <% elsif genre == 'cursor' %>
-              カーソル
-            <% elsif genre == 'visual' %>
-              表示・装飾
-            <% elsif genre == 'default' %>
-              固定設定
-            <% end %>
-          </h4>
-          <% elements.each do |element| %>
-            <div class="checkbox">
-              <label>
-                <% if element['type'] == 'text' %>
-                  <%= element['message'] %>
-                  <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['disabled'] %> >
-                <% else %>
-                  <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['checked'] %> <%= element['disabled'] %> >
-                  <%= element['message'] %>
-                <% end %>
-              </label>
+    <div id="vimrc-inner">
+      <!-- ナビゲーション -->
+      <nav>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active">
+            <a href="#setting-basic" data-toggle="tab">Settings</a>
+          </li>
+          <li role="presentation">
+            <a href="#setting-color" data-toggle="tab">Color</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- vim設定欄 -->
+      <section id="setting-contents" class="tab-content">
+
+        <!-- 基本設定 -->
+        <section id="setting-basic" class="tab-pane fade in active">
+          <% @basic_options.each do |genre, elements| %>
+            <h4>
+              <% if genre == 'tab' %>
+                タブ
+              <% elsif genre == 'indent' %>
+                インデント
+              <% elsif genre == 'search' %>
+                検索
+              <% elsif genre == 'cursor' %>
+                カーソル
+              <% elsif genre == 'visual' %>
+                表示・装飾
+              <% elsif genre == 'default' %>
+                固定設定
+              <% end %>
+            </h4>
+            <table class="table table-condensed">
+              <% elements.each do |element| %>
+                <tr>
+                  <td class="table-left"><%= element['message'] %></td>
+                  <td class="table-right">
+                    <% if element['type'] == 'text' %>
+                        <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['disabled'] %> size="6">
+                    <% else %>
+                        <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['checked'] %> <%= element['disabled'] %> >
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+          <% end %>
+        </section>
+
+        <!--  カラースキーマ設定 -->
+        <section id="setting-color" class="tab-pane fade">
+          <h4>お好みのカラーを選択</h4>
+          <% @colorscheme_options.each_with_index do |colorscheme, index| %>
+            <div class="colorscheme">
+              <div class="radio">
+                <label>
+                  <% if index == 0 %>
+                    <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>" checked>
+                  <% else %>
+                    <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>">
+                  <% end %>
+                  <span class="colorschme-name"><%= colorscheme %></span>
+                </label>
+              </div>
+              <%= erb :"colorschemes/#{colorscheme}" %>
             </div>
           <% end %>
-        <% end %>
-      </div>
-      <button type="button" id="setting-btn" class="btn btn-primary btn-lg">これで設定する</button>
+        </section>
+        <div class="setting-btn-area">
+          <button type="button" id="setting-btn" class="btn btn-primary">Save & Refresh</button>
+        </div>
+      </section>
     </div>
   </div>
-  <div id="terminal-body" class="terminal-area col-xs-8">
+
+  <!-- ターミナル -->
+  <div id="terminal">
+    <div id="terminal-inner">
+      <nav>
+        <ul class="nav nav-pills">
+          <li role="presentation" class="active">
+            <a href="#console-wrapper" data-toggle="tab">Console</a>
+          </li>
+          <li role="presentation">
+            <a href="#vimrc-preview" data-toggle="tab">.vimrc Preview</a>
+          </li>
+        </ul>
+      </nav>
+      <section class="tab-content">
+        <section id="console-wrapper" class="tab-pane active">
+          <section id="console"></section>
+        </section>
+        <section id="vimrc-preview" class="tab-pane">
+          <p>preview</p>
+        </section>
+      </section>
+    </div>
   </div>
 </div>
