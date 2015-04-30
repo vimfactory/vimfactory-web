@@ -93,3 +93,7 @@ ul.color-schema li{
     font-size: 11px !important;
     border-radius: 10px;
 }
+
+.setting-btn-area {
+    text-align: center;
+}
