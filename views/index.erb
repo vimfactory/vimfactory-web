@@ -84,20 +84,24 @@
   <!-- ターミナル -->
   <div id="terminal">
     <div id="terminal-inner">
-      <ul class="nav nav-tabs">
-        <li role="presentation" class="active">
-          <a href="#console" data-toggle="tab">コンソール</a>
-        </li>
-        <li role="presentation">
-          <a href="#vimrc-preview" data-toggle="tab">.vimrc</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div id="console-wrapper">
-          <div id="console" class="tab-pane active"></div>
-        </div>
-        <div id="vimrc-preview" class="tab-pane">プレビュー</div>
-      </div>
+      <nav>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active">
+            <a href="#console-wrapper" data-toggle="tab">コンソール</a>
+          </li>
+          <li role="presentation">
+            <a href="#vimrc-preview" data-toggle="tab">.vimrc</a>
+          </li>
+        </ul>
+      </nav>
+      <section class="tab-content">
+        <section id="console-wrapper" class="tab-pane active">
+          <section id="console"></section>
+        </section>
+        <section id="vimrc-preview" class="tab-pane">
+          <p>preview</p>
+        </section>
+      </section>
     </div>
   </div>
 </div>
