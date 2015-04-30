@@ -69,6 +69,10 @@ section#setting-basic .table-right {
     text-align: right;
 }
 
+section#setting-basic .table-right input[type="text"] {
+    text-align: right;
+}
+
 ul.color-schema {
     padding: 0;
 }
