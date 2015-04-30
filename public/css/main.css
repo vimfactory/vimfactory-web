@@ -1,3 +1,6 @@
+/**
+ * Global
+ */
 html, body {
     height: 100%;
 }
@@ -6,6 +9,14 @@ body {
     background-image: url("../img/dark_geometric.png")
 }
 
+div#main-content {
+    height: 100%;
+    width: 100%;
+}
+
+/**
+ * Welcome Page
+ */
 #welcome {
     color: #d2d0cf !important;
 }
@@ -19,11 +30,9 @@ body {
     text-align: center;
 }
 
-div#main-content {
-    height: 100%;
-    width: 100%;
-}
-
+/**
+ * vimrc
+ */
 div#vimrc {
     min-height: 100%;
     width: 32%;
@@ -52,6 +61,36 @@ div#vimrc h4 {
     font-size: 14px;
 }
 
+section#setting-basic td {
+    border: none;
+}
+
+section#setting-basic .table-right {
+    text-align: right;
+}
+
+ul.color-schema {
+    padding: 0;
+}
+
+ul.color-schema li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.colorscheme pre {
+    line-height: 1;
+    font-size: 11px !important;
+    border-radius: 10px;
+}
+
+.setting-btn-area {
+    text-align: center;
+}
+
+/**
+ * terminal
+ */
 div#terminal {
     min-height: 100%;
     width: 68%;
@@ -71,15 +110,6 @@ div#terminal-inner {
   width: 100%;
 }
 
-ul.color-schema{
-    padding: 0;
-}
-
-ul.color-schema li{
-    display: inline;
-    margin: 0 10px;
-}
-
 .vim-reloading {
     background-image: url("../img/ajax-loader.gif");
     background-repeat: no-repeat;
@@ -88,12 +118,3 @@ ul.color-schema li{
     width: 100%;
 }
 
-.colorscheme pre {
-    line-height: 1;
-    font-size: 11px !important;
-    border-radius: 10px;
-}
-
-.setting-btn-area {
-    text-align: center;
-}
