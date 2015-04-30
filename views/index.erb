@@ -41,19 +41,20 @@
                 固定設定
               <% end %>
             </h4>
-            <% elements.each do |element| %>
-              <div class="checkbox">
-                <label>
-                  <% if element['type'] == 'text' %>
-                    <%= element['message'] %>
-                    <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['disabled'] %> >
-                  <% else %>
-                    <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['checked'] %> <%= element['disabled'] %> >
-                    <%= element['message'] %>
-                  <% end %>
-                </label>
-              </div>
-            <% end %>
+            <table class="table table-condensed">
+              <% elements.each do |element| %>
+                <tr>
+                  <td class="table-left"><%= element['message'] %></td>
+                  <td class="table-right">
+                    <% if element['type'] == 'text' %>
+                        <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['disabled'] %> size="6">
+                    <% else %>
+                        <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['checked'] %> <%= element['disabled'] %> >
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
           <% end %>
         </section>
 
