@@ -67,8 +67,7 @@ tty.open = function() {
   tty.terms = {};
 
   tty.elements = {
-    root: document.documentElement,
-    //body: document.body,
+    root: document.getElementById('console-wrapper'),
     body: document.getElementById('console'),
     h1: document.getElementsByTagName('h1')[0],
     open: document.getElementById('open'),
