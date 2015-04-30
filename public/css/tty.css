@@ -1,45 +1,4 @@
 /**
- * style.css (https://github.com/chjj/tty.js)
- * Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
- */
-
-/*
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-div {
-  border: 0;
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  background: #fff;
-}
-
-html.dark {
-  background: #333;
-}
-
-html.maximized {
-  overflow: hidden;
-}
-
-body {
-  margin: 25px;
-}
-*/
-
-/* Only allow plaintext?
-[contenteditable=""],
-[contenteditable="true"] {
-  -webkit-user-modify: read-write-plaintext-only !important;
-}
-*/
-
-/**
  * Terminal
  */
 
@@ -74,10 +33,6 @@ body {
   padding: 1px 0;
   font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
   color: #fafafa;
-}
-
-.dark .bar,
-.maximized .bar {
 }
 
 .title {
@@ -132,47 +87,10 @@ body {
 /**
  * Page
  */
-
-/*
-h1 {
-  font: 20px/1.5 sans-serif;
-  background: #333;
-  margin: -25px -25px 0 -25px;
-  height: 30px;
-  padding: 10px 25px;
-  color: white;
-  border-top: #e15729 solid 10px;
-}
-*/
-
-/*#open, #lights {
-  font: 20px/1.5 sans-serif;
-  position: fixed;
-  right: 0;
-  padding: 10px;
-  height: 50px;
-  color: white;
-  cursor: pointer;
-  margin: 0;
-  background: none;
-  border: none;
-  -webkit-appearance: none;
-}
-*/
-
 #open {
   top: 10px;
   background: #333;
 }
-
-/*
-#lights {
-  font-size: 18px;
-  height: 46px;
-  top: 60px;
-  background: #555;
-}
-*/
 
 #open:hover, #lights:hover {
   color: slategrey;
@@ -182,22 +100,3 @@ h1 {
 #open:active, #lights:active {
   color: orange;
 }
-
-#console-wrapper {
-  height: 100%;
-  width: 100%;
-}
-
-/*
-#help {
-  font: 12px/1.5 sans-serif;
-  color: #999;
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-}
-*/
-
-/*
-.dark h1, .dark #help { display: none; }
-*/

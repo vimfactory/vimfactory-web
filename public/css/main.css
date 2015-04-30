@@ -20,38 +20,45 @@ body {
 }
 
 div#main-content {
-    /* width: 100%; */
+    height: 100%;
+    width: 100%;
+}
+
+div#vimrc {
     min-height: 100%;
-    display: flex;
-    /* display: box; */
-    /* display: -webkit-box; */
-    /* display: -moz-box; */
+    width: 40%;
 }
 
-div.vimrc-area {
-    padding: 30px;
-    /* background-color: #92B2B2; */
-    /* display:inline-block; */
-    /* margin-bottom: 20px; */
-}
-
-div.vimrc-area h1 {
+div#vimrc h1 {
     margin: 0;
 }
 
-div.vimrc-area header {
-    margin-bottom: 20px;
+div#vimrc header {
+    margin-bottom: 10px;
 }
 
+div#vimrc-inner {
+    padding: 10px 20px;
+}
 
-div#terminal-body {
-    /* padding: 20px; */
-    /* height: 100%; */
-    /* padding: 10px; */
-    /* display:inline-block; */
-    /* position: fixed; */
-    /* top: 0; */
-    /* right: 0; */
+div#terminal {
+    min-height: 100%;
+    width: 60%;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+div#terminal-inner {
+    height: 100%;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#console-wrapper {
+  height: 100%;
+  width: 100%;
 }
 
 ul.color-schema{
@@ -61,12 +68,6 @@ ul.color-schema{
 ul.color-schema li{
     display: inline;
     margin: 0 10px;
-}
-
-.footer {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    margin-top: 40px;
 }
 
 .vim-reloading {
