@@ -91,7 +91,11 @@ tty.open = function() {
       tty.socket.emit('tmp_id', $("#connection_id").val());
       //end mosuke add
 
-      new Window;
+      win = new Window;
+      //mosuke add. automatically maximize
+      setTimeout(function(){
+        win.maximize();
+      },1000);
     });
   }
 

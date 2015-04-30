@@ -1,7 +1,7 @@
 <%= erb :welcome %>
 <div id="main-content" class="raw hide">
 
-  <div class="vimrc-area col-xs-6">
+  <div class="vimrc-area col-xs-5">
     <!-- ヘッダ -->
     <header>
       <h1>Vim::Factory</h1>
@@ -11,10 +11,10 @@
     <nav>
       <ul class="nav nav-tabs">
         <li role="presentation" class="active">
-          <a href="#setting-color" data-toggle="tab">カラー</a>
+          <a href="#setting-basic" data-toggle="tab">基本設定</a>
         </li>
         <li role="presentation">
-          <a href="#setting-basic" data-toggle="tab">基本設定</a>
+          <a href="#setting-color" data-toggle="tab">カラー</a>
         </li>
       </ul>
     </nav>
@@ -22,28 +22,8 @@
     <!-- vim設定欄 -->
     <section id="setting-contents" class="tab-content">
 
-      <!--  カラースキーマ設定 -->
-      <section id="setting-color" class="tab-pane fade in active">
-        <h4>お好みのカラーを選択</h4>
-        <% @colorscheme_options.each_with_index do |colorscheme, index| %>
-          <div class="colorscheme">
-            <div class="radio">
-              <label>
-                <% if index == 0 %>
-                  <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>" checked>
-                <% else %>
-                  <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>">
-                <% end %>
-                <span class="colorschme-name"><%= colorscheme %></span>
-              </label>
-            </div>
-            <%= erb :"colorschemes/#{colorscheme}" %>
-          </div>
-        <% end %>
-      </section>
-
       <!-- 基本設定 -->
-      <section id="setting-basic" class="tab-pane fade">
+      <section id="setting-basic" class="tab-pane fade in active">
         <% @basic_options.each do |genre, elements| %>
           <h4>
             <% if genre == 'tab' %>
@@ -75,13 +55,33 @@
           <% end %>
         <% end %>
       </section>
+
+      <!--  カラースキーマ設定 -->
+      <section id="setting-color" class="tab-pane fade">
+        <h4>お好みのカラーを選択</h4>
+        <% @colorscheme_options.each_with_index do |colorscheme, index| %>
+          <div class="colorscheme">
+            <div class="radio">
+              <label>
+                <% if index == 0 %>
+                  <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>" checked>
+                <% else %>
+                  <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>">
+                <% end %>
+                <span class="colorschme-name"><%= colorscheme %></span>
+              </label>
+            </div>
+            <%= erb :"colorschemes/#{colorscheme}" %>
+          </div>
+        <% end %>
+      </section>
       <button type="button" id="setting-btn" class="btn btn-primary btn-lg">これで設定する</button>
     </section>
 
   </div>
 
   <!-- ターミナル -->
-  <div id="terminal-body" class="terminal-area col-xs-6">
+  <div id="terminal-body" class="terminal-area col-xs-7">
     <ul class="nav nav-tabs">
       <li role="presentation" class="active">
         <a href="#console" data-toggle="tab">コンソール</a>
