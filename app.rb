@@ -6,6 +6,7 @@ require 'memcached'
 require 'yaml'
 require './lib/validator'
 require './lib/vimrc_creator'
+require './lib/vimrc_preview'
 require './lib/cache'
 
 configure do
@@ -71,4 +72,24 @@ post '/api/vimrc' do
 
   logger.info('success')
   [201, { vimrc_contents: params['vimrc_contents'] }.to_json]
+end
+
+# 現在のvimrc取得API
+post '/api/preview' do
+  begin
+    params = JSON.parse(request.body.read)
+
+    vimrc_path = "#{settings.vimrc_dir}/vimrc_#{$cache.get(params['connection_id'])}"
+    vimrc_preview = VimFactory::VimrcPreview.new(vimrc_path)
+    vimrc = vimrc_preview.get
+  rescue JSON::ParserError => e
+    logger.error(e.message)
+    return [400, { message: 'Requestbody should be JSON format' }.to_json]
+  rescue => e
+    logger.error(e.message)
+    return [500, { message: 'Unexpected error' }.to_json]
+  end
+
+  logger.info('success')
+  [200, { vimrc: vimrc }.to_json]
 end

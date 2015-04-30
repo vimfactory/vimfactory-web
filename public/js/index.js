@@ -55,21 +55,43 @@ $("#setting-btn").click(function(event){
     dataType: "json",
     data: JSON.stringify({"connection_id": connection_id, "vimrc_contents": results}),
     success: function(data) {
-      //vim reload
-      $("#terminal-inner").append("<div class=\"vim-reloading\"></div>");
-      $("#terminal-inner .tab-content").hide();
-      tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
-      setTimeout(function(){
-        //start vim
-        tty.socket.emit('data', terminal_id, "vim\r")
-        setTimeout(function(){
-          $("#terminal-inner .tab-content").show();
-          $(".vim-reloading").hide();
-        },500)
-      },500);
+      vim_reload();
+      vimrc_reload(connection_id);
     },
     error: function(data) {
     },
   });
 
 });
+
+function vim_reload(){
+  $("#terminal-inner").append("<div class=\"vim-reloading\"></div>");
+  $("#terminal-inner .tab-content").hide();
+  tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
+  setTimeout(function(){
+    //start vim
+    tty.socket.emit('data', terminal_id, "vim\r")
+    setTimeout(function(){
+      $("#terminal-inner .tab-content").show();
+      $(".vim-reloading").hide();
+    },500)
+  },500);
+}
+
+function vimrc_reload(connection_id){
+  $.ajax({
+    type: "POST",
+    url: "/api/preview",
+    contentType: "application/json",
+    dataType: "json",
+    data: JSON.stringify({"connection_id": connection_id}),
+    success: function(data) {
+      vimrc_html = data.vimrc.replace(/(\n|\r)/g, "<br />");
+      $("#vimrc-preview p").html(vimrc_html);
+    },
+    error: function(data) {
+      alert("Fail to reload vimrc: "+data.message);
+    },
+  });
+
+}
