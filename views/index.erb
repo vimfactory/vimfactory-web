@@ -103,12 +103,13 @@
         </section>
         <section id="vimrc-preview" class="tab-pane">
           <p>
-            syntax on<br />
-            colorscheme molokai<br />
-            set t_Co=256<br />
-            set fileformats=unix,dos,mac<br />
-            set encoding=utf-8<br />
-            set fileencodings=utf-8<br />
+          <% @default_options.each do |option, value| %>
+            <% if option == 'colorscheme' %>
+              <%= option %> <%= value %><br />
+            <% else %>
+              set <%= option %>=<%= value %><br />
+            <% end %>
+          <% end %>
           </p>
         </section>
       </section>

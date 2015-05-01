@@ -75,7 +75,9 @@ module VimFactory
 
     # デフォルトオプション
     DEFAULT_OPTIONS = {
+      'syntax' => 'on',
       't_Co' => 256,
+      'colorscheme' => 'molokai',
       'fileformats' => 'unix,dos,mac',
       'encoding' => 'utf-8',
       'fileencodings' => 'utf-8'

@@ -7,6 +7,7 @@ require 'yaml'
 require './lib/validator'
 require './lib/vimrc_creator'
 require './lib/vimrc_preview'
+require './lib/vimrc_option'
 require './lib/cache'
 
 configure do
@@ -41,6 +42,7 @@ end
 get '/' do
   @basic_options = YAML.load_file('data/basic_options.yml')
   @colorscheme_options = YAML.load_file('data/colorscheme_options.yml')
+  @default_options = VimFactory::VimrcOption::DEFAULT_OPTIONS
   @connection_id = $cache.generate_uniqid
   erb :index
 end
