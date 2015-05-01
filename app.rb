@@ -42,7 +42,8 @@ end
 get '/' do
   @basic_options = YAML.load_file('data/basic_options.yml')
   @colorscheme_options = YAML.load_file('data/colorscheme_options.yml')
-  @default_options = VimFactory::VimrcOption::DEFAULT_OPTIONS
+  static_options  = VimFactory::VimrcOption::STATIC_OPTIONS
+  @default_options = VimFactory::VimrcOption::DEFAULT_OPTIONS.merge(static_options)
   @connection_id = $cache.generate_uniqid
   erb :index
 end

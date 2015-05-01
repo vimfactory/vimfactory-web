@@ -17,7 +17,7 @@ module VimFactory
     # @return [void]
     def create
       File.open(@filepath, 'w') do |file|
-        @vimrc_contents.merge(VimrcOption::DEFAULT_OPTIONS).each do |option, value|
+        @vimrc_contents.merge(VimrcOption::STATIC_OPTIONS).each do |option, value|
           line = build_option_line(option, value)
           file.puts(line) if line.nil? == false
         end
