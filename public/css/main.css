@@ -30,6 +30,10 @@ div#main-content {
     font-weight: 400;
 }
 
+.welcome-top h1 small{
+    font-size: 40% !important;
+}
+
 .start {
     margin-top: 30px;
     text-align: center;
