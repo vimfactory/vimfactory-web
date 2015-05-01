@@ -56,7 +56,7 @@ $("#setting-btn").click(function(event){
     data: JSON.stringify({"connection_id": connection_id, "vimrc_contents": results}),
     success: function(data) {
       //vim reload
-      $("#terminal-inner").append("<div class=\"vim-reloading\"></div>");
+      start_loading();
       $("#terminal-inner .tab-content").hide();
       tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
       setTimeout(function(){
@@ -64,7 +64,7 @@ $("#setting-btn").click(function(event){
         tty.socket.emit('data', terminal_id, "vim\r")
         setTimeout(function(){
           $("#terminal-inner .tab-content").show();
-          $(".vim-reloading").hide();
+          stop_loading();
         },500)
       },500);
     },
@@ -73,3 +73,21 @@ $("#setting-btn").click(function(event){
   });
 
 });
+
+function start_loading(){
+  $.blockUI({ 
+    message: '<h1 class="loading-message">now loading...</h1>',
+    css: { 
+        border: 'none', 
+        padding: '15px', 
+        backgroundColor: 'transparent', 
+        '-webkit-border-radius': '10px', 
+        '-moz-border-radius': '10px', 
+        opacity: 1, 
+        color: '#fff' 
+    } });
+}
+
+function stop_loading(){
+  $.unblockUI();
+}
