@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-    background-image: url("../img/dark_geometric.png")
+    background-image: url("../img/gplaypattern.png")
 }
 
 div#main-content {
@@ -18,7 +18,7 @@ div#main-content {
  * Welcome Page
  */
 #welcome {
-    color: #d2d0cf !important;
+    color: #333 !important;
 }
 
 .welcome-top {
@@ -26,7 +26,12 @@ div#main-content {
     background-color: transparent !important;
 }
 
-.concept {
+.welcome-top h1 {
+    font-weight: 400;
+}
+
+.start {
+    margin-top: 30px;
     text-align: center;
 }
 
