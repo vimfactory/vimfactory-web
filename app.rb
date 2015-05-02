@@ -6,6 +6,8 @@ require 'memcached'
 require 'yaml'
 require './lib/validator'
 require './lib/vimrc_creator'
+require './lib/vimrc_preview'
+require './lib/vimrc_option'
 require './lib/cache'
 
 configure do
@@ -41,11 +43,13 @@ end
 get '/' do
   @basic_options = YAML.load_file('data/basic_options.yml')
   @colorscheme_options = YAML.load_file('data/colorscheme_options.yml')
+  fixed_options  = VimFactory::VimrcOption::FIXED_OPTIONS
+  @initial_options = VimFactory::VimrcOption::INITIAL_OPTIONS.merge(fixed_options)
   @connection_id = $cache.generate_uniqid
   erb :index
 end
 
-# vimrc書き込みAPI
+# vimrc作成
 post '/api/vimrc' do
   begin
     params = JSON.parse(request.body.read)
@@ -72,4 +76,22 @@ post '/api/vimrc' do
 
   logger.info('success')
   [201, { vimrc_contents: params['vimrc_contents'] }.to_json]
+end
+
+# vimrc取得
+get '/api/vimrc/:connection_id' do |id|
+  begin
+    vimrc_path = "#{settings.vimrc_dir}/vimrc_#{$cache.get(id)}"
+    vimrc_preview = VimFactory::VimrcPreview.new(vimrc_path)
+    vimrc = vimrc_preview.get
+  rescue Memcached::NotFound => e
+    logger.error(e.message)
+    return [404, { message: 'Vimrc is not found.' }.to_json]
+  rescue => e
+    logger.error(e.message)
+    return [500, { message: 'Unexpected error' }.to_json]
+  end
+
+  logger.info('success')
+  [200, { vimrc: vimrc }.to_json]
 end
