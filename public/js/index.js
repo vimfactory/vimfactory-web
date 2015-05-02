@@ -58,7 +58,8 @@ $("#setting-btn").click(function(event){
     data: JSON.stringify({"connection_id": connection_id, "vimrc_contents": results}),
     success: function(data) {
       $.when(
-        vim_reload()
+        vim_reload(),
+        vimrc_reload(connection_id)
       ).done(function(){
         stop_loading();
       })
