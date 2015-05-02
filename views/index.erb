@@ -103,7 +103,7 @@
         </section>
         <section id="vimrc-preview" class="tab-pane">
           <p>
-          <% @default_options.each do |option, value| %>
+          <% @initial_options.each do |option, value| %>
             <% if option == 'colorscheme' %>
               <%= option %> <%= value %><br />
             <% else %>
