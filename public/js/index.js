@@ -93,5 +93,22 @@ function vimrc_reload(connection_id){
       alert("Fail to reload vimrc: "+data.message);
     },
   });
+}
 
+function start_loading(){
+  $.blockUI({ 
+    message: '<h1 class="loading-message">now loading...</h1>',
+    css: { 
+        border: 'none', 
+        padding: '15px', 
+        backgroundColor: 'transparent', 
+        '-webkit-border-radius': '10px', 
+        '-moz-border-radius': '10px', 
+        opacity: 1, 
+        color: '#fff' 
+    } });
+}
+
+function stop_loading(){
+  $.unblockUI();
 }
