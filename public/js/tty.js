@@ -83,19 +83,23 @@ tty.open = function() {
   if (open) {
     on(open, 'click', function() {
 
-      //start mosuke add
+      //mosuke add
       $("#welcome").addClass("hide");
       $("body").css( "background-image", "url('')" );
       $("#main-content").removeClass("hide");
+      start_loading();
 
       tty.socket.emit('tmp_id', $("#connection_id").val());
-      //end mosuke add
 
       win = new Window;
       //mosuke add. automatically maximize
       setTimeout(function(){
         win.maximize();
+        setTimeout(function(){
+          stop_loading();
+        },2000);
       },1000);
+
     });
   }
 
