@@ -73,8 +73,8 @@ module VimFactory
       hybrid
     )
 
-    # デフォルトオプション
-    DEFAULT_OPTIONS = {
+    # 固定（変更不可かつ必ず設定される）オプション
+    FIXED_OPTIONS = {
       't_Co' => 256,
       'fileformats' => 'unix,dos,mac',
       'encoding' => 'utf-8',

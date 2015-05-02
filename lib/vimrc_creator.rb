@@ -8,7 +8,7 @@ module VimFactory
     # コンストラクタ
     # @param [Hash] vimrc_contents vimrcの設定値
     # @param [String] filepath 作成するvimrcのパス
-    def initialize(vimrc_contents, filepath)
+    def initialize(vimrc_contents = {}, filepath)
       @vimrc_contents = vimrc_contents
       @filepath = filepath.to_s
     end
@@ -17,7 +17,7 @@ module VimFactory
     # @return [void]
     def create
       File.open(@filepath, 'w') do |file|
-        @vimrc_contents.merge(VimrcOption::DEFAULT_OPTIONS).each do |option, value|
+        @vimrc_contents.merge(VimrcOption::FIXED_OPTIONS).each do |option, value|
           line = build_option_line(option, value)
           file.puts(line) if line.nil? == false
         end
