@@ -17,10 +17,10 @@ module VimFactory
 
     # Memcache上でユニークなIDを生成し、保存する
     def generate_uniqid
-      @uniqid = SecureRandom.base64(8)
+      @uniqid = SecureRandom.hex(8)
       begin
         loop do
-          @uniqid = SecureRandom.base64(8)
+          @uniqid = SecureRandom.hex(8)
           @mem.get(@uniqid)
         end
       rescue Memcached::NotFound => e

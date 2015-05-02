@@ -73,13 +73,13 @@ module VimFactory
       hybrid
     )
 
-    # デフォルトオプション
-    DEFAULT_OPTIONS = {
+    # 初期設定オプション
+    INITIAL_OPTIONS = {
       'colorscheme' => 'molokai'
     }
 
-    # 固定オプション
-    STATIC_OPTIONS = {
+    # 固定（変更不可かつ必ず設定される）オプション
+    FIXED_OPTIONS = {
       'syntax' => 'on',
       't_Co' => 256,
       'fileformats' => 'unix,dos,mac',

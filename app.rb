@@ -43,13 +43,13 @@ end
 get '/' do
   @basic_options = YAML.load_file('data/basic_options.yml')
   @colorscheme_options = YAML.load_file('data/colorscheme_options.yml')
-  static_options  = VimFactory::VimrcOption::STATIC_OPTIONS
-  @default_options = VimFactory::VimrcOption::DEFAULT_OPTIONS.merge(static_options)
+  fixed_options  = VimFactory::VimrcOption::FIXED_OPTIONS
+  @initial_options = VimFactory::VimrcOption::INITIAL_OPTIONS.merge(fixed_options)
   @connection_id = $cache.generate_uniqid
   erb :index
 end
 
-# vimrc書き込みAPI
+# vimrc作成
 post '/api/vimrc' do
   begin
     params = JSON.parse(request.body.read)
@@ -78,17 +78,15 @@ post '/api/vimrc' do
   [201, { vimrc_contents: params['vimrc_contents'] }.to_json]
 end
 
-# 現在のvimrc取得API
-post '/api/preview' do
+# vimrc取得
+get '/api/vimrc/:connection_id' do |id|
   begin
-    params = JSON.parse(request.body.read)
-
-    vimrc_path = "#{settings.vimrc_dir}/vimrc_#{$cache.get(params['connection_id'])}"
+    vimrc_path = "#{settings.vimrc_dir}/vimrc_#{$cache.get(id)}"
     vimrc_preview = VimFactory::VimrcPreview.new(vimrc_path)
     vimrc = vimrc_preview.get
-  rescue JSON::ParserError => e
+  rescue Memcached::NotFound => e
     logger.error(e.message)
-    return [400, { message: 'Requestbody should be JSON format' }.to_json]
+    return [404, { message: 'Vimrc is not found.' }.to_json]
   rescue => e
     logger.error(e.message)
     return [500, { message: 'Unexpected error' }.to_json]
