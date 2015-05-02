@@ -102,7 +102,15 @@
           <section id="console"></section>
         </section>
         <section id="vimrc-preview" class="tab-pane">
-          <p>preview</p>
+          <p>
+          <% @default_options.each do |option, value| %>
+            <% if option == 'colorscheme' %>
+              <%= option %> <%= value %><br />
+            <% else %>
+              set <%= option %>=<%= value %><br />
+            <% end %>
+          <% end %>
+          </p>
         </section>
       </section>
     </div>
