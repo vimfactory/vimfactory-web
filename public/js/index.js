@@ -87,11 +87,9 @@ function vim_reload(){
 function vimrc_reload(connection_id){
   var defer = $.Deferred();
   $.ajax({
-    type: "POST",
-    url: "/api/preview",
-    contentType: "application/json",
+    type: "GET",
+    url: "/api/vimrc/"+connection_id,
     dataType: "json",
-    data: JSON.stringify({"connection_id": connection_id}),
     success: function(data) {
       vimrc_html = data.vimrc.replace(/(\n|\r)/g, "<br />");
       $("#vimrc-preview p").html(vimrc_html);
