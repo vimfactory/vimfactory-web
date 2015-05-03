@@ -44,10 +44,10 @@ visual:
     message: タブや改行を可視化する
   - name: showcmd
     type: checkbox
-    message: コマンドをステータスラインに表示する。
+    message: コマンドをステータスラインに表示する
   - name: spell
     type: checkbox
-    message: スペルチェック機能を有効にする。
+    message: スペルチェック機能を有効にする
 default:
   - name: t_Co
     type: checkbox
