@@ -209,4 +209,28 @@ class TestVimrcCreator < Test::Unit::TestCase
     assert_equal(file.include?("set tabstop=4"), true)
     assert_equal(file.include?("colorscheme morning"), true)
   end
+
+  # 全オプションの書き込み処理2
+  def test_create_with_all_option2
+    @contents = {
+      "ruler" => true,
+      "number" => "foo", # 不正
+      "syntax" => "on",
+      "encoding" => "utf-9", # 不正
+      "tabstop" => 4,
+      "shiftwidth" => 1000, # 不正
+      "colorscheme" => "vimfactory"
+    }
+    @vimrc_creator = VimFactory::VimrcCreator.new(@contents, @@filepath)
+    @vimrc_creator.create
+
+    file = File.read(@@filepath).split("\n")
+    assert_equal(file.include?("set ruler"), true)
+    assert_equal(file.include?("set number"), false)
+    assert_equal(file.include?("set syntax=on"), true)
+    assert_equal(file.include?("set encoding=utf-9"), false)
+    assert_equal(file.include?("set tabstop=4"), true)
+    assert_equal(file.include?("set shiftwidth=1000"), false)
+    assert_equal(file.include?("colorscheme vimfactory"), false)
+  end
 end
