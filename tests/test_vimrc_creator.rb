@@ -219,7 +219,7 @@ class TestVimrcCreator < Test::Unit::TestCase
       "encoding" => "utf-9", # 不正
       "tabstop" => 4,
       "shiftwidth" => 1000, # 不正
-      "colorscheme" => "vimfactory"
+      "colorscheme" => "vimfactory" # 不正
     }
     @vimrc_creator = VimFactory::VimrcCreator.new(@contents, @@filepath)
     @vimrc_creator.create
