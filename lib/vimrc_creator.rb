@@ -33,14 +33,15 @@ module VimFactory
     def build_option_line(option, value)
       case
       when VimrcOption.toggle_option?(option)
-        return "set #{option}"   if value == true
+        return "set #{option}" if value == true
       when VimrcOption.string_option?(option)
         if VimrcOption::STRING_OPTIONS[option].include?(value)
           return "set #{option}=#{value}"
         end
       when VimrcOption.number_option?(option)
-        if VimrcOption::NUMBER_OPTIONS[option].include?(value)
-          return "set #{option}=#{value}"
+        return nil if value.nil? || value == ''
+        if VimrcOption::NUMBER_OPTIONS[option].include?(value.to_i)
+          return "set #{option}=#{value.to_i}"
         end
       when option == 'colorscheme'
         if VimrcOption::COLOR_SCHEMES.include?(value)
