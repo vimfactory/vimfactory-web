@@ -16,8 +16,11 @@ module VimFactory
       hlsearch
       ignorecase
       incsearch
+      list
       showmatch
+      showcmd
       smartindent
+      spell
       wildmenu
       wrap
       wrapscan

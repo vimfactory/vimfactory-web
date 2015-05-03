@@ -13,9 +13,6 @@ indent:
     type: text
     message: 自動インデントの各段階に使われる空白の数
 search:
-  - name: hlsearch
-    type: checkbox
-    message: 検索結果に色を付ける
   - name: ignorecase
     type: checkbox
     message: 検索時大文字小文字を区別しない
@@ -32,9 +29,6 @@ cursor:
   - name: cursorline
     type: checkbox
     message: カーソルがある行を強調表示する
-  - name: ruler
-    type: checkbox
-    message: カーソルが何行目の何列目に置かれているかを表示する
 visual:
   - name: number
     type: checkbox
@@ -45,6 +39,15 @@ visual:
   - name: wrap
     type: checkbox
     message: 長い行を折り返して表示する
+  - name: list
+    type: checkbox
+    message: タブや改行を可視化する
+  - name: showcmd
+    type: checkbox
+    message: コマンドをステータスラインに表示する。
+  - name: spell
+    type: checkbox
+    message: スペルチェック機能を有効にする。
 default:
   - name: t_Co
     type: checkbox

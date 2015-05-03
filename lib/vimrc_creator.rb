@@ -34,7 +34,7 @@ module VimFactory
       case
       when VimrcOption.toggle_option?(option)
         return "set #{option}"   if value == true
-        return "set no#{option}" if value == false
+        #return nil if value == false
       when VimrcOption.string_option?(option)
         if VimrcOption::STRING_OPTIONS[option].include?(value)
           return "set #{option}=#{value}"
