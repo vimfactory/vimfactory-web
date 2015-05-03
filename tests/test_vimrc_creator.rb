@@ -38,7 +38,7 @@ class TestVimrcCreator < Test::Unit::TestCase
     @vimrc_creator.create
 
     file = File.read(@@filepath).split("\n")
-    assert_equal(file.include?("set noruler"), true)
+    assert_equal(file.include?("set noruler"), false)
   end
 
   # toggle_optionの書き込み処理
