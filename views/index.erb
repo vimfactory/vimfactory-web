@@ -37,7 +37,7 @@
                 カーソル
               <% elsif genre == 'visual' %>
                 表示・装飾
-              <% elsif genre == 'default' %>
+              <% elsif genre == 'fixed' %>
                 固定設定
               <% end %>
             </h4>
@@ -47,9 +47,9 @@
                   <td class="table-left"><%= element['message'] %></td>
                   <td class="table-right">
                     <% if element['type'] == 'text' %>
-                        <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['disabled'] %> size="6">
+                        <input class="vimrc-contents genre-<%= genre %>" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['disabled'] %> size="6">
                     <% else %>
-                        <input class="vimrc-contents" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['checked'] %> <%= element['disabled'] %> >
+                        <input class="vimrc-contents genre-<%= genre %>" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['checked'] %> <%= element['disabled'] %> >
                     <% end %>
                   </td>
                 </tr>

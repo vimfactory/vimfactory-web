@@ -48,7 +48,7 @@ visual:
   - name: spell
     type: checkbox
     message: スペルチェック機能を有効にする
-default:
+fixed:
   - name: t_Co
     type: checkbox
     message: 色の種類：256色

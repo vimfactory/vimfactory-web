@@ -16,7 +16,7 @@ $("#setting-btn").click(function(event){
   var results = {};
   var connection_id = $('#connection_id').val();
 
-  $(".vimrc-contents").map(function(){
+  $(".vimrc-contents:not(.genre-fixed)").map(function(){
 
     var key = $(this).attr('name');
     var val;
