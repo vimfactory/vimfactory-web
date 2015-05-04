@@ -25,6 +25,7 @@ div#main-content {
 .welcome-top {
     text-align: center;
     background-color: transparent !important;
+    margin-bottom: 0;
 }
 
 .welcome-top h1 {
@@ -39,7 +40,7 @@ div#main-content {
 }
 
 .app-subtitle {
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
 }
 
 .start {
