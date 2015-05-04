@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-    background-image: url("../img/dark_geometric.png")
+    background-image: url("../img/gplaypattern.png")
 }
 
 div#main-content {
@@ -18,15 +18,52 @@ div#main-content {
  * Welcome Page
  */
 #welcome {
-    color: #d2d0cf !important;
+    color: #6b6b6b !important;
+    margin-bottom: 30px;
 }
 
 .welcome-top {
     text-align: center;
     background-color: transparent !important;
+    margin-bottom: 0;
 }
 
-.concept {
+.welcome-top h1 {
+    color: #333 !important;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+}
+
+.welcome-top h1 small{
+    font-size: 34% !important;
+    letter-spacing: normal;
+}
+
+.app-subtitle {
+    letter-spacing: 0.1em;
+}
+
+.start {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.attention {
+    font-size: 15px !important;
+}
+
+.about {
+    text-align: center;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+}
+
+.footer p {
     text-align: center;
 }
 
@@ -135,3 +172,4 @@ div#terminal-inner li.active > a {
 .loading-message { 
     font-size: 23px;
 }
+
