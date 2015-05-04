@@ -63,12 +63,12 @@ class TestVimrcCreator < Test::Unit::TestCase
   # string_optionの書き込み処理
   # キーが妥当、値が妥当
   def test_create_with_valid_string_option
-    @contents = { "syntax" => "on" }
+    @contents = { "syntax_on" => true }
     @vimrc_creator = VimFactory::VimrcCreator.new(@contents, @@filepath)
     @vimrc_creator.create
 
     file = File.read(@@filepath).split("\n")
-    assert_equal(file.include?("set syntax=on"), true)
+    assert_equal(file.include?("syntax on"), true)
   end
 
   # string_optionの書き込み処理
@@ -192,11 +192,33 @@ class TestVimrcCreator < Test::Unit::TestCase
     assert_equal(file, fixed_options)
   end
 
+  # 特殊オプションの書き込み処理
+  # 妥当な値
+  def test_create_with_special_option
+    @contents = { "syntax_off" => true }
+    @vimrc_creator = VimFactory::VimrcCreator.new(@contents, @@filepath)
+    @vimrc_creator.create
+
+    file = File.read(@@filepath).split("\n")
+    assert_equal(file.include?("syntax off"), true)
+  end
+
+  # 特殊オプションの書き込み処理
+  # 存在しない不正なな値
+  def test_create_with_invalid_special_option
+    @contents = { "syntax_foo" => true }
+    @vimrc_creator = VimFactory::VimrcCreator.new(@contents, @@filepath)
+    @vimrc_creator.create
+
+    file = File.read(@@filepath).split("\n")
+    assert_equal(file, fixed_options)
+  end
+
   # 全オプションの書き込み処理
   def test_create_with_all_option
     @contents = {
       "ruler" => true,
-      "syntax" => "on",
+      "syntax_on" => true,
       "tabstop" => 4,
       "colorscheme" => "morning"
     }
@@ -205,7 +227,7 @@ class TestVimrcCreator < Test::Unit::TestCase
 
     file = File.read(@@filepath).split("\n")
     assert_equal(file.include?("set ruler"), true)
-    assert_equal(file.include?("set syntax=on"), true)
+    assert_equal(file.include?("syntax on"), true)
     assert_equal(file.include?("set tabstop=4"), true)
     assert_equal(file.include?("colorscheme morning"), true)
   end
@@ -215,7 +237,7 @@ class TestVimrcCreator < Test::Unit::TestCase
     @contents = {
       "ruler" => true,
       "number" => "foo", # 不正
-      "syntax" => "on",
+      "syntax_on" => true,
       "encoding" => "utf-9", # 不正
       "tabstop" => 4,
       "shiftwidth" => 1000, # 不正
@@ -227,7 +249,7 @@ class TestVimrcCreator < Test::Unit::TestCase
     file = File.read(@@filepath).split("\n")
     assert_equal(file.include?("set ruler"), true)
     assert_equal(file.include?("set number"), false)
-    assert_equal(file.include?("set syntax=on"), true)
+    assert_equal(file.include?("syntax on"), true)
     assert_equal(file.include?("set encoding=utf-9"), false)
     assert_equal(file.include?("set tabstop=4"), true)
     assert_equal(file.include?("set shiftwidth=1000"), false)

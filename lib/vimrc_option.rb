@@ -31,7 +31,6 @@ module VimFactory
     STRING_OPTIONS = {
       'encoding'      => %w(utf-8 sjis euc-jp euc-kr euc-cn latin1),
       'fileformat'    => %w(dos unix mac),
-      'syntax'        => %w(on off enable clear),
       'fileformats'   => %w(unix,dos,mac),
       'encoding'      => %w(utf-8),
       'fileencodings' => %w(utf-8)
@@ -76,6 +75,19 @@ module VimFactory
       hybrid
     )
 
+    # 特殊形式オプション
+    # 値をそのまま使う
+    SPECIAL_OPTIONS = {
+      'syntax_on' => 'syntax on',
+      'syntax_off' => 'syntax off',
+      'syntax_enable' => 'syntax enable',
+      'syntax_clear' => 'syntax clear',
+      'filetype_on' => 'filetype on',
+      'filetype_off' => 'filetype off',
+      'filetype_indent_on' => 'filetype indent on',
+      'filetype_plugin_indent_on' => 'filetype plugin indent on'
+    }
+
     # 初期設定オプション
     INITIAL_OPTIONS = {
       'colorscheme' => 'molokai'
@@ -83,11 +95,11 @@ module VimFactory
 
     # 固定（変更不可かつ必ず設定される）オプション
     FIXED_OPTIONS = {
-      'syntax' => 'on',
       't_Co' => 256,
       'fileformats' => 'unix,dos,mac',
       'encoding' => 'utf-8',
-      'fileencodings' => 'utf-8'
+      'fileencodings' => 'utf-8',
+      'syntax_on' => true
     }
 
     # トグル形式のオプションか確認する
@@ -109,6 +121,13 @@ module VimFactory
     # @return [Boolean] 数値形式のオプションであればtrue、そうでなければfalse
     def self.number_option?(option)
       NUMBER_OPTIONS.include?(option)
+    end
+
+    # 特殊形式のオプションか確認する
+    # @param [String] option オプション名
+    # @return [Boolean] 特殊形式のオプションであればtrue、そうでなければfalse
+    def self.special_option?(option)
+      SPECIAL_OPTIONS.include?(option)
     end
   end
 end
