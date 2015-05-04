@@ -47,6 +47,10 @@ div#main-content {
     text-align: center;
 }
 
+.attention {
+    font-size: 15px !important;
+}
+
 .about {
     text-align: center;
 }
