@@ -18,7 +18,7 @@ div#main-content {
  * Welcome Page
  */
 #welcome {
-    color: #333 !important;
+    color: #6b6b6b !important;
     margin-bottom: 30px;
 }
 
@@ -28,11 +28,18 @@ div#main-content {
 }
 
 .welcome-top h1 {
+    color: #333 !important;
+    letter-spacing: 0.1em;
     font-weight: 400;
 }
 
 .welcome-top h1 small{
-    font-size: 40% !important;
+    font-size: 34% !important;
+    letter-spacing: normal;
+}
+
+.app-subtitle {
+    letter-spacing: 0.2em;
 }
 
 .start {
