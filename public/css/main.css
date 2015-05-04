@@ -40,6 +40,10 @@ div#main-content {
     text-align: center;
 }
 
+.about {
+    text-align: center;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
