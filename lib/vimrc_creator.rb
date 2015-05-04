@@ -43,6 +43,8 @@ module VimFactory
         if VimrcOption::NUMBER_OPTIONS[option].include?(value.to_i)
           return "set #{option}=#{value.to_i}"
         end
+      when VimrcOption.special_option?(option)
+        return VimrcOption::SPECIAL_OPTIONS[option]
       when option == 'colorscheme'
         if VimrcOption::COLOR_SCHEMES.include?(value)
           return "colorscheme #{value}"

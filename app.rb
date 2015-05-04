@@ -41,10 +41,9 @@ assets do
 end
 
 get '/' do
-  @basic_options = YAML.load_file('data/basic_options.yml')
-  @colorscheme_options = YAML.load_file('data/colorscheme_options.yml')
-  fixed_options  = VimFactory::VimrcOption::FIXED_OPTIONS
-  @initial_options = VimFactory::VimrcOption::INITIAL_OPTIONS.merge(fixed_options)
+  @basic_options = YAML.load_file(settings.basic_options_path)
+  @colorscheme_options = YAML.load_file(settings.colorscheme_options_path)
+  @initial_options = File.read(settings.vimrc_default_path).split("\n")
   @connection_id = $cache.generate_uniqid
   erb :index
 end
