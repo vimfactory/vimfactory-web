@@ -47,6 +47,8 @@ $("#setting-btn").click(function(event){
     results[key] = val;
 
   });
+  
+  start_loading();
 
   $.ajax({
     type: "POST",
@@ -55,21 +57,66 @@ $("#setting-btn").click(function(event){
     dataType: "json",
     data: JSON.stringify({"connection_id": connection_id, "vimrc_contents": results}),
     success: function(data) {
-      //vim reload
-      $("#terminal-inner").append("<div class=\"vim-reloading\"></div>");
-      $("#terminal-inner .tab-content").hide();
-      tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
-      setTimeout(function(){
-        //start vim
-        tty.socket.emit('data', terminal_id, "vim\r")
-        setTimeout(function(){
-          $("#terminal-inner .tab-content").show();
-          $(".vim-reloading").hide();
-        },500)
-      },500);
-    },
-    error: function(data) {
+      $.when(
+        vim_reload(),
+        vimrc_reload(connection_id)
+      ).done(function(){
+        stop_loading();
+      })
     },
   });
 
 });
+
+function vim_reload(){
+  var defer = $.Deferred();
+  $("#terminal-inner .tab-content").hide();
+  tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
+  setTimeout(function(){
+    //start vim
+    tty.socket.emit('data', terminal_id, "vim\r")
+    setTimeout(function(){
+      $("#terminal-inner .tab-content").show();
+      defer.resolve();
+    },500)
+  },500);
+
+  return defer.promise();
+}
+
+function vimrc_reload(connection_id){
+  var defer = $.Deferred();
+  $.ajax({
+    type: "GET",
+    url: "/api/vimrc/"+connection_id,
+    dataType: "json",
+    success: function(data) {
+      vimrc_html = data.vimrc.replace(/(\n|\r)/g, "<br />");
+      $("#vimrc-preview p").html(vimrc_html);
+      defer.resolve();
+    },
+    error: function(data) {
+      alert("Fail to reload vimrc: "+data.message);
+    },
+  });
+
+  return defer.promise();
+}
+
+function start_loading(){
+  $.blockUI({ 
+    message: '<h1 class="loading-message">now loading...</h1>',
+    css: { 
+        border: 'none', 
+        padding: '15px', 
+        backgroundColor: 'transparent', 
+        '-webkit-border-radius': '10px', 
+        '-moz-border-radius': '10px', 
+        opacity: 1, 
+        color: '#fff' 
+    } });
+}
+
+function stop_loading(){
+  $.unblockUI();
+}

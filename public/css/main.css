@@ -150,11 +150,10 @@ div#terminal-inner li.active > a {
     width: 100%;
 }
 
-.vim-reloading {
-    background-image: url("../img/ajax-loader.gif");
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 100%;
-    width: 100%;
+/**
+ * loading
+ */
+.loading-message { 
+    font-size: 23px;
 }
 

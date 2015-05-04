@@ -16,8 +16,11 @@ module VimFactory
       hlsearch
       ignorecase
       incsearch
+      list
       showmatch
+      showcmd
       smartindent
+      spell
       wildmenu
       wrap
       wrapscan
@@ -73,8 +76,14 @@ module VimFactory
       hybrid
     )
 
-    # デフォルトオプション
-    DEFAULT_OPTIONS = {
+    # 初期設定オプション
+    INITIAL_OPTIONS = {
+      'colorscheme' => 'molokai'
+    }
+
+    # 固定（変更不可かつ必ず設定される）オプション
+    FIXED_OPTIONS = {
+      'syntax' => 'on',
       't_Co' => 256,
       'fileformats' => 'unix,dos,mac',
       'encoding' => 'utf-8',
