@@ -28,6 +28,7 @@ assets do
   js :libs, [
     '/bower_components/jquery/dist/jquery.min.js',
     '/bower_components/jquery.blockUI.js/jquery.blockUI.js',
+    '/bower_components/bootstrap/index.js',
     '/bower_components/socket.io-client/dist/socket.io.min.js',
     '/bower_components/term/index.js'
   ]
