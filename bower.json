@@ -16,6 +16,7 @@
   "dependencies": {
     "jquery": "2.1.3",
     "jquery.blockUI.js": "git://github.com/malsup/blockui",
+    "bootstrap": "3.3.1",
     "socket.io-client": "0.9.11",
     "term": "https://raw.githubusercontent.com/chjj/term.js/master/src/term.js"
   }
