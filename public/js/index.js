@@ -62,7 +62,7 @@ $("#setting-btn").click(function(event){
         vimrc_reload(connection_id)
       ).done(function(){
         stop_loading();
-      })
+      });
     },
   });
 
@@ -74,11 +74,11 @@ function vim_reload(){
   tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
   setTimeout(function(){
     //start vim
-    tty.socket.emit('data', terminal_id, "vim\r")
+    tty.socket.emit('data', terminal_id, "vim\r");
     setTimeout(function(){
       $("#terminal-inner .tab-content").show();
       defer.resolve();
-    },500)
+    },500);
   },500);
 
   return defer.promise();

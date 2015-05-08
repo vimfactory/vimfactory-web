@@ -21,16 +21,14 @@ assets do
   serve '/css', from: 'public/css'
   serve '/bower_components', from: 'bower_components'
 
-  js :app, '/js/app.js', [
-    '/js/*.js'
-  ]
-
-  js :libs, [
+  js :app, [
     '/bower_components/jquery/dist/jquery.min.js',
     '/bower_components/jquery.blockUI.js/jquery.blockUI.js',
     '/bower_components/bootstrap/dist/js/bootstrap.min.js',
     '/bower_components/socket.io-client/dist/socket.io.min.js',
-    '/bower_components/term/index.js'
+    '/bower_components/term/index.js',
+    '/js/index.js',
+    '/js/tty.js'
   ]
 
   css :app, '/css/app.css', [
@@ -41,7 +39,7 @@ assets do
     '/bower_components/bootstrap/dist/css/bootstrap.min.css'
   ]
 
-  js_compression :jsmin
+  js_compression :simple
   css_compression :simple
 end
 
