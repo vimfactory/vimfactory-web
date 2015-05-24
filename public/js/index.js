@@ -120,3 +120,12 @@ function start_loading(){
 function stop_loading(){
   $.unblockUI();
 }
+
+$('.programing-lang').change(function() {
+  var ext = $(this).val();
+  tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
+  setTimeout(function(){
+    console.log("export vimfactory_ext="+ext+"&&vim");
+    tty.socket.emit('data', terminal_id, "export vimfactory_ext="+ext+"&&vim\r");
+  },1000);
+});
