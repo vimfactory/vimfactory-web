@@ -1,10 +1,10 @@
-# vimrc-generator-web
-vimrc-generatorのフロントエンド兼APIリポジトリ
+# vimfactory-web
+vimfactoryのフロントエンド兼APIリポジトリ
 
 ## SETUP
 ```
 // cloneする
-$ git clone git@bitbucket.org:itea_lab/vimrc-generator-web.git
+$ git clone git@gitlab.com:vimfactory/vimfactory-web.git
 
 // 依存関係にあるrubygemsをインストールする
 $ bundle install --path vendor/bundle
