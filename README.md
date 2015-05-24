@@ -14,10 +14,6 @@ $ bower install
 
 // WEBサーバを起動する
 $ bundle exec rackup --host 0.0.0.0
-
-//以下のファイルのを設置する
-$ cp config/config.yml.org config/config.yml
-$ cp public/js/config.json.org public/js/config.json
 ```
 
 ### bundler自体のインストール
