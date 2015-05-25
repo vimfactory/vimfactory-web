@@ -53,6 +53,7 @@ $("#setting-btn").click(function(event){
     post_vimrc(connection_id, results)
   ).done(function(){
     stop_loading();
+    $("#console .terminal").focus();
   });
 
 });
