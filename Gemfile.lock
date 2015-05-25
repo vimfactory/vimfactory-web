@@ -77,3 +77,6 @@ DEPENDENCIES
   sinatra-contrib (= 1.4.2)
   test-unit
   thin (= 1.6.3)
+
+BUNDLED WITH
+   1.10.2
