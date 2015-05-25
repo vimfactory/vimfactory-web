@@ -3,12 +3,12 @@ tab:
     type: checkbox
     message:
       ja: 入力でタブの代わりにスペースを利用する
-      en: To insert space characters instead of tab
+      en: Use spaces when <Tab> is inserted
   - name: tabstop
     type: text
     message:
       ja: タブの表示幅
-      en: width of tab
+      en: Number of spaces that <Tab> in file uses
 indent:
   - name: autoindent
     type: checkbox
