@@ -98,10 +98,9 @@
         </ul>
         <form class="navbar-form navbar-right">
           <select class="form-control programing-lang">
-            <option value="rb">ruby</option>
-            <option value="php">php</option>
-            <option value="html">html</option>
-            <option value="py">python</option>
+            <% @programlang_options.each do |lang| %>
+              <option value="<%= lang['ext'] %>"><%= lang['lang'] %></option>
+            <% end %>
           </select>
         </form>
       </nav>

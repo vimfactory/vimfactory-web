@@ -46,6 +46,7 @@ end
 get '/' do
   @basic_options = YAML.load_file(settings.basic_options_path)
   @colorscheme_options = YAML.load_file(settings.colorscheme_options_path)
+  @programlang_options = YAML.load_file(settings.programlang_options_path)
   @initial_options = File.read(settings.vimrc_default_path).split("\n")
   @connection_id = $cache.generate_uniqid
   erb :index
