@@ -92,13 +92,17 @@ tty.open = function() {
       tty.socket.emit('tmp_id', $("#connection_id").val());
 
       win = new Window;
-      //mosuke add. automatically maximize
-      setTimeout(function(){
-        win.maximize();
-        setTimeout(function(){
-          stop_loading();
-        },2000);
-      },1000);
+      var console_content= null;
+      var observe_console = function() {
+        if (console_content != $('#console').text()) {
+          if (console_content != null) {
+            stop_loading();
+            clearInterval(observer);
+          }
+          console_content = $('#console').text();
+        }
+      };
+      observer = setInterval(observe_console, 1000);
 
     });
   }
