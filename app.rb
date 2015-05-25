@@ -52,6 +52,10 @@ get '/' do
   erb :index
 end
 
+get '/hosting/:user_id' do |id|
+  erb :hosting
+end
+
 # vimrc作成
 post '/api/vimrc' do
   begin
