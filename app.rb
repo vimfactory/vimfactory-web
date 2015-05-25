@@ -66,14 +66,6 @@ get '/' do
   erb :index
 end
 
-get '/hosting/:user_id' do |id|
-  erb :hosting
-end
-
-get '/test' do
-  session[:locale]
-end
-
 # vimrc作成
 post '/api/vimrc' do
   begin
