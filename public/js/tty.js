@@ -568,7 +568,7 @@ Window.prototype.previousTab = function() {
 function Tab(win, socket) {
   var self = this;
   
-  x = Math.floor(($(body).width())/8)-1;
+  x = Math.floor(($(body).width())/8)-2;
   y = Math.floor(($(window).height()-50)/17);
 
   var cols = x
