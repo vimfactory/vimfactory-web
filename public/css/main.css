@@ -148,12 +148,19 @@ div#terminal-inner {
     padding: 10px 13px;
 }
 
+/*
 div#terminal-inner section.tab-content {
     margin-top: 8px;
+}
+*/
+
+div#terminal-inner .navbar {
+    margin-bottom: 0;
 }
 
 div#terminal-inner li a {
     padding: 7px 14px;
+    margin: 7px 0px;
     border-radius: 2px;
     color: #444;
 }

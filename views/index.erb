@@ -87,8 +87,8 @@
   <!-- ターミナル -->
   <div id="terminal">
     <div id="terminal-inner">
-      <nav>
-        <ul class="nav nav-pills">
+      <nav class="navbar">
+        <ul class="nav navbar-nav">
           <li role="presentation" class="active">
             <a href="#console-wrapper" data-toggle="tab">Console</a>
           </li>
@@ -96,13 +96,15 @@
             <a href="#vimrc-preview" data-toggle="tab">.vimrc Preview</a>
           </li>
         </ul>
+        <form class="navbar-form navbar-right">
+          <select class="form-control programing-lang">
+            <option value="rb">ruby</option>
+            <option value="php">php</option>
+            <option value="html">html</option>
+            <option value="py">python</option>
+          </select>
+        </form>
       </nav>
-      <select class="form-control programing-lang">
-        <option value="rb">ruby</option>
-        <option value="php">php</option>
-        <option value="html">html</option>
-        <option value="py">python</option>
-      </select>
       <section class="tab-content">
         <section id="console-wrapper" class="tab-pane active">
           <section id="console"></section>
