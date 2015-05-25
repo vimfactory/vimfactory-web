@@ -54,10 +54,6 @@ tty.elements;
 
 tty.open = function() {
   if (document.location.pathname) {
-    //var parts = document.location.pathname.split('/')
-    //  , base = parts.slice(0, parts.length - 1).join('/') + '/'
-    //  , resource = base.substring(1) + 'socket.io';
-
     var resource = 'socket.io'
     tty.socket = io.connect(null, { resource: resource });
   } else {
