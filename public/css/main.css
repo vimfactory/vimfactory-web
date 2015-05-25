@@ -69,6 +69,12 @@ div#main-content {
     margin: 5px 0;
 }
 
+.language {
+    position: fixed;
+    right: 15px;
+    top: 7px;
+}
+
 /**
  * vimrc
  */

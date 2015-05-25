@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/config_file'
 require 'sinatra/assetpack'
+require 'sinatra/r18n'
 require 'json'
 require 'memcached'
 require 'yaml'
@@ -14,6 +15,17 @@ configure do
   enable :logging
   config_file './config/config.yml'
   $cache = VimFactory::Cache.new('localhost:11211')
+end
+
+before do
+  session[:locale] = 'ja'
+  @locale = 'ja'
+end
+
+before '/en/*' do
+  session[:locale] = 'en'
+  @locale = 'en'
+  request.path_info = '/' + params[:splat][0]
 end
 
 assets do
@@ -44,6 +56,8 @@ assets do
 end
 
 get '/' do
+  @top_msg = t.top
+  @settings_msg = t.settings
   @basic_options = YAML.load_file(settings.basic_options_path)
   @colorscheme_options = YAML.load_file(settings.colorscheme_options_path)
   @programlang_options = YAML.load_file(settings.programlang_options_path)
@@ -54,6 +68,10 @@ end
 
 get '/hosting/:user_id' do |id|
   erb :hosting
+end
+
+get '/test' do
+  session[:locale]
 end
 
 # vimrc作成

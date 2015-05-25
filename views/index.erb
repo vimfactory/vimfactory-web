@@ -1,14 +1,10 @@
 <%= erb :welcome %>
 <div id="main-content" class="hide">
-
   <div id="vimrc">
-    <!-- ヘッダ -->
     <header>
         <h1>Vim::Factory</h1>
     </header>
-
     <div id="vimrc-inner">
-      <!-- ナビゲーション -->
       <nav>
         <ul class="nav nav-tabs">
           <li role="presentation" class="active">
@@ -19,32 +15,14 @@
           </li>
         </ul>
       </nav>
-
-      <!-- vim設定欄 -->
       <section id="setting-contents" class="tab-content">
-
-        <!-- 基本設定 -->
         <section id="setting-basic" class="tab-pane fade in active">
           <% @basic_options.each do |genre, elements| %>
-            <h4>
-              <% if genre == 'tab' %>
-                タブ
-              <% elsif genre == 'indent' %>
-                インデント
-              <% elsif genre == 'search' %>
-                検索
-              <% elsif genre == 'cursor' %>
-                カーソル
-              <% elsif genre == 'visual' %>
-                表示・装飾
-              <% elsif genre == 'fixed' %>
-                固定設定
-              <% end %>
-            </h4>
+            <h4><%= @settings_msg['genre-title'][genre] %></h4>
             <table class="table table-condensed">
               <% elements.each do |element| %>
                 <tr>
-                  <td class="table-left"><%= element['message'] %></td>
+                  <td class="table-left"><%= element['message'][@locale] %></td>
                   <td class="table-right">
                     <% if element['type'] == 'text' %>
                         <input class="vimrc-contents genre-<%= genre %>" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['disabled'] %> size="6">
@@ -58,9 +36,8 @@
           <% end %>
         </section>
 
-        <!--  カラースキーマ設定 -->
         <section id="setting-color" class="tab-pane fade">
-          <h4>お好みのカラーを選択</h4>
+          <h4><%= @settings_msg['color-title'] %></h4>
           <% @colorscheme_options.each_with_index do |colorscheme, index| %>
             <div class="colorscheme">
               <div class="radio">
@@ -84,7 +61,6 @@
     </div>
   </div>
 
-  <!-- ターミナル -->
   <div id="terminal">
     <div id="terminal-inner">
       <nav class="navbar">

@@ -6,6 +6,7 @@ gem 'sinatra-assetpack', '0.3.3'
 gem 'json', '1.8.1'
 gem 'thin', '1.6.3'
 gem 'memcached', '1.8.0'
+gem 'sinatra-r18n'
 
 group :development, :test do
   gem 'pry'
