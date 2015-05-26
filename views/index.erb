@@ -45,7 +45,9 @@
                   <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme['name'] %>" <%= "checked" if index == 0 %>>
                   <span class="colorschme-name"><%= colorscheme['name'] %></span>
                 </label>
-                <a class="glyphicon glyphicon-link" href="<%= colorscheme['url'] %>" target=”_blank”></a>
+                <a href="<%= colorscheme['url'] %>" target=”_blank”>
+                  <span class="glyphicon glyphicon-link"></span>
+                </a>
               </div>
               <%= erb :"colorschemes/#{colorscheme['name']}" %>
             </div>
@@ -82,7 +84,7 @@
           <section id="console"></section>
         </section>
         <section id="vimrc-preview" class="tab-pane">
-          <p>
+          <p class="well">
             <% @initial_options.each do |option_line| %>
               <%= option_line %><br/>
             <% end %>
