@@ -48,35 +48,43 @@ $("#setting-btn").click(function(event){
 
   });
   
-  start_loading();
+  $.when(
+    start_loading(),
+    post_vimrc(connection_id, results)
+  ).done(function(){
+    stop_loading();
+  });
 
+});
+
+function post_vimrc(id, vimrc_contents){
+  var defer = $.Deferred();
   $.ajax({
     type: "POST",
     url: "/api/vimrc",
     contentType: "application/json",
     dataType: "json",
-    data: JSON.stringify({"connection_id": connection_id, "vimrc_contents": results}),
+    data: JSON.stringify({"connection_id": id, "vimrc_contents": vimrc_contents}),
     success: function(data) {
       $.when(
         vim_reload(),
-        vimrc_reload(connection_id)
+        vimrc_reload(id)
       ).done(function(){
-        stop_loading();
+        defer.resolve();
       });
     },
   });
 
-});
+  return defer.promise();
+}
 
 function vim_reload(){
   var defer = $.Deferred();
-  $("#terminal-inner .tab-content").hide();
   tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
   setTimeout(function(){
     //start vim
     tty.socket.emit('data', terminal_id, "vim\r");
     setTimeout(function(){
-      $("#terminal-inner .tab-content").show();
       defer.resolve();
     },500);
   },500);
@@ -104,6 +112,7 @@ function vimrc_reload(connection_id){
 }
 
 function start_loading(){
+  $("#console").css("visibility","hidden");
   $.blockUI({ 
     message: '<h1 class="loading-message">now loading...</h1>',
     css: { 
@@ -114,9 +123,23 @@ function start_loading(){
         '-moz-border-radius': '10px', 
         opacity: 1, 
         color: '#fff' 
-    } });
+    }
+  });
 }
 
 function stop_loading(){
+  $("#console").css("visibility","visible");
   $.unblockUI();
 }
+
+$('.programing-lang').change(function() {
+  var ext = $(this).val();
+  start_loading();
+  tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r");
+  setTimeout(function(){
+    tty.socket.emit('data', terminal_id, "export vimfactory_ext="+ext+"&&vim\r");
+    setTimeout(function(){
+      stop_loading();
+    },500);
+  },1000);
+});

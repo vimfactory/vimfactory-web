@@ -1,0 +1,8 @@
+- ext: rb
+  lang: ruby
+- ext: php
+  lang: php
+- ext: html
+  lang: html
+- ext: py
+  lang: python
