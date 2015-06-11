@@ -1,0 +1,15 @@
+top:
+  subtitle: "Experience Vim world on browser."
+  about-title: "What's Vim::Factory?"
+  about-desc: "Vim::Factory is the web service which make you experience your favorite vim on browser.<br />We support you to find your favorite vim setting.<br />And it is α version. Looking forward to growing Vim::Factory!!"
+  start-title: "Let's try Vim::Factory"
+  start-desc: "This service is required to operate vim. We recommend to use PC.<br />Have a nice Vim!!"
+settings:
+  genre-title:
+    tab   : "tab"
+    indent: "indent"
+    search: "search"
+    cursor: "cursor"
+    visual: "visual"
+    fixed : "fixed option"
+  color-title: "Choose your favorite color." 
