@@ -1,3 +1,9 @@
-- molokai
-- jellybeans
-- hybrid
+- name: molokai
+  install: true
+  url: https://github.com/tomasr/molokai
+- name: jellybeans
+  install: true
+  url: https://github.com/nanotech/jellybeans.vim
+- name: hybrid
+  install: true
+  url: https://github.com/w0ng/vim-hybrid

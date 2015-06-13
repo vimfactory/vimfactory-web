@@ -12,4 +12,4 @@ settings:
     cursor: "cursor"
     visual: "visual"
     fixed : "fixed option"
-  color-title: "Choose your favorite color." 
+  color-title: "Choose your favorite color.<br />(Following color is necessary to install.)" 

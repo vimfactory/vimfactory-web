@@ -42,15 +42,12 @@
             <div class="colorscheme">
               <div class="radio">
                 <label>
-                  <% if index == 0 %>
-                    <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>" checked>
-                  <% else %>
-                    <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme%>">
-                  <% end %>
-                  <span class="colorschme-name"><%= colorscheme %></span>
+                  <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme['name'] %>" <%= "checked" if index == 0 %>>
+                  <span class="colorschme-name"><%= colorscheme['name'] %></span>
                 </label>
+                <a class="glyphicon glyphicon-link" href="<%= colorscheme['url'] %>" target=”_blank”></a>
               </div>
-              <%= erb :"colorschemes/#{colorscheme}" %>
+              <%= erb :"colorschemes/#{colorscheme['name']}" %>
             </div>
           <% end %>
         </section>
