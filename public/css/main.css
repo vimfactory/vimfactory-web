@@ -133,6 +133,12 @@ ul.color-schema li {
     border-radius: 10px;
 }
 
+.colorscheme-link {
+    vertical-align: middle;
+    font-size: 19px;
+    margin-left: 3px;
+}
+
 .setting-btn-area {
     text-align: center;
 }
