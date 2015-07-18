@@ -67,7 +67,7 @@ visual:
     type: checkbox
     message: 
       ja: タブや改行を可視化する
-      en: Show <Tab> and <EOL>
+      en: Show &lt;Tab&gt; and &lt;EOL&gt;
   - name: showcmd
     type: checkbox
     message: 
