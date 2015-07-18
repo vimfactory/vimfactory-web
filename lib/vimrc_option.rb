@@ -73,6 +73,7 @@ module VimFactory
       jellybeans
       solarized
       hybrid
+      railscasts
     )
 
     # 特殊形式オプション

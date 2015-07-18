@@ -1,9 +1,9 @@
 - name: molokai
   install: true
   url: https://github.com/tomasr/molokai
+- name: railscasts
+  install: true
+  url: https://github.com/jpo/vim-railscasts-theme
 - name: jellybeans
   install: true
   url: https://github.com/nanotech/jellybeans.vim
-- name: hybrid
-  install: true
-  url: https://github.com/w0ng/vim-hybrid

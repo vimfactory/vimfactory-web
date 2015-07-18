@@ -1,0 +1,28 @@
+<style type="text/css">
+<!--
+.railscasts pre { white-space: pre-wrap; font-family: monospace; color: #e4e4e4; background-color: #121212; }
+.railscasts .Special { color: #005f00; }
+.railscasts .rubyConstant { color: #d75f5f; }
+.railscasts .rubyStringDelimiter { color: #87af5f; }
+.railscasts .String { color: #87af5f; }
+.railscasts .Comment { color: #af875f; }
+.railscasts .LineNr { color: #6c6c6c; }
+.railscasts .Identifier { color: #ffd75f; }
+.railscasts .PreProc { color: #ff8700; }
+.railscasts .rubyInstanceVariable { color: #d7d7ff; }
+.railscasts .rubyClass { color: #ffffff; }
+-->
+</style>
+
+<div class="railscasts">
+<pre>
+<span class="LineNr"> 1 </span><span class="Comment"># The Greeter class</span>
+<span class="LineNr"> 2 </span><span class="rubyClass">class</span> <span class="rubyConstant">Greeter</span>
+<span class="LineNr"> 3 </span>  <span class="PreProc">def</span> <span class="Identifier">initialize</span>(name)
+<span class="LineNr"> 4 </span>    <span class="rubyInstanceVariable">@name</span> = name.capitalize
+<span class="LineNr"> 5 </span>  <span class="PreProc">end</span>
+<span class="LineNr"> 6 </span>
+<span class="LineNr"> 7 </span>  <span class="PreProc">def</span> <span class="Identifier">salute</span>
+<span class="LineNr"> 8 </span>    puts <span class="rubyStringDelimiter">&quot;</span><span class="String">Hello </span><span class="Special">#{</span><span class="rubyInstanceVariable">@name</span><span class="Special">}</span><span class="String">!</span><span class="rubyStringDelimiter">&quot;</span>
+</pre>
+</div>
