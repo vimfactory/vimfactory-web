@@ -134,7 +134,7 @@ div#terminal {
 
 div#terminal-inner {
     height: 100%;
-    padding: 10px 13px;
+    padding: 0px 13px;
 }
 
 div#terminal-inner .navbar {

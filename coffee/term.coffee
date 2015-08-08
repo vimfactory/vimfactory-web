@@ -70,6 +70,9 @@ class Terminal
     @rows = Math.floor(window.innerHeight / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
+    
+    @navbar = @document.getElementById('console-navbar')
+    @navbarHeight = @navbar.clientHeight
 
     @scrollback = 1000000
     @buffSize = 100000
@@ -1520,7 +1523,7 @@ class Terminal
     oldRows = @rows
     @computeCharSize()
     @cols = x or Math.floor(@body.clientWidth / @charSize.width)
-    @rows = y or Math.floor(window.innerHeight / @charSize.height)
+    @rows = y or Math.floor((window.innerHeight - @navbarHeight) / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
 

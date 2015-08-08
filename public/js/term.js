@@ -48,6 +48,8 @@
       this.rows = Math.floor(window.innerHeight / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
+      this.navbar = this.document.getElementById('console-navbar');
+      this.navbarHeight = this.navbar.clientHeight;
       this.scrollback = 1000000;
       this.buffSize = 100000;
       this.visualBell = 100;
@@ -1512,7 +1514,7 @@
       oldRows = this.rows;
       this.computeCharSize();
       this.cols = x || Math.floor(this.body.clientWidth / this.charSize.width);
-      this.rows = y || Math.floor(window.innerHeight / this.charSize.height);
+      this.rows = y || Math.floor((window.innerHeight - this.navbarHeight) / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
       if ((!x && !y) && oldCols === this.cols && oldRows === this.rows) {
