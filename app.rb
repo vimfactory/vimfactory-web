@@ -37,9 +37,7 @@ assets do
     '/bower_components/jquery/dist/jquery.min.js',
     '/bower_components/jquery.blockUI.js/jquery.blockUI.js',
     '/bower_components/bootstrap/dist/js/bootstrap.min.js',
-    '/bower_components/term/index.js',
-#    '/js/index.js',
-#    '/js/tty.js'
+    '/js/*.js',
   ]
 
   css :app, '/css/app.css', [

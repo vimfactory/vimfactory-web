@@ -48,3 +48,9 @@ $ bundle exec ruby tests/[テストしたいファイル].rb
 ```
 $ bundle exec sass sass/main.sass ./public/css/butterfly.css
 ```
+
+### coffeeコンパイル
+```
+$ coffee -o ./public/js/ -c coffee/
+$ coffee -o ./public/js/ -c coffee/ext/
+```

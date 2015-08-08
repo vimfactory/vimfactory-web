@@ -49,7 +49,7 @@ class Terminal
   constructor: (@parent, @out, @ctl=->) ->
     # Global elements
     @document = @parent.ownerDocument
-    @body = @document.getElementsByTagName('body')[0]
+    @body = @document.getElementById('console')
     @forceWidth = @body.getAttribute(
       'data-force-unicode-width') is 'yes'
 
