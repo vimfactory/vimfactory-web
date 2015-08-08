@@ -6,9 +6,11 @@ html {
     min-height: 100%;
 }
 
+/*
 body {
     background-image: url("../img/gplaypattern.png")
 }
+*/
 
 div#main-content {
     height: 100%;
