@@ -14,4 +14,5 @@ group :development, :test do
   gem 'rb-readline'
   gem 'rubocop'
   gem 'test-unit'
+  gem 'sass'
 end

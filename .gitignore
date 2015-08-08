@@ -1,5 +1,7 @@
 /.bundle
 *.pid
+*.map
+.sass-cache/
 vendor/bundle
 logs/*.log
 logs/*.log.*
