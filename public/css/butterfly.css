@@ -3064,8 +3064,10 @@ section#console .cursor.reverse-video {
 section#console .bold {
   font-weight: bold; }
 
+/*
 section#console .underline, .nbsp {
   text-decoration: underline; }
+*/
 
 /* Not supported, emulated */
 /* .blink */
