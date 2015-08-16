@@ -131,7 +131,7 @@ div#terminal {
     right: 0;
     background-color: #f8f8f8;
 }
-/*
+
 div#terminal-inner {
     height: 100%;
     padding: 10px 13px;
@@ -157,7 +157,7 @@ div#terminal-inner li.active > a {
     height: 100%;
     width: 100%;
 }
-*/
+
 /**
  * loading
  */
