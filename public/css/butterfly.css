@@ -65,7 +65,7 @@
   src: url("/fonts/SourceCodePro-Black.otf") format("woff");
   font-weight: 900; }
 
-body {
+section#console {
   font-family: "SourceCodePro";
   line-height: 1.2; }
 
