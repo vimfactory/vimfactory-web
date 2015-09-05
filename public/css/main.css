@@ -2,164 +2,101 @@
  * Global
  */
 html {
-    position: relative;
-    min-height: 100%;
-}
+  position: relative;
+  min-height: 100%; }
 
 body {
-    background-image: url("../img/gplaypattern.png")
-}
+  background-image: url("../img/gplaypattern.png"); }
+
+h1.loading-message {
+  font-size: 23px; }
 
 div#main {
-    height: 100%;
-    width: 100%;
-}
-
-.loading-message {
-    font-size: 23px;
-}
-
-/**
- * Welcome
- */
-.welcome-top {
-    text-align: center;
-    background-color: transparent !important;
-    margin-bottom: 0;
-}
-
-.app-subtitle {
-    letter-spacing: 0.1em;
-}
-
-.start {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.attention {
-    font-size: 15px !important;
-}
-
-.about {
-    text-align: center;
-}
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 30px;
-}
-
-.footer p {
-    text-align: center;
-    margin: 5px 0;
-}
-
-.language {
-    position: fixed;
-    right: 15px;
-    top: 7px;
-}
-
-/**
- * left-contents
- */
-div#left-contents {
+  height: 100%;
+  width: 100%;
+  /**
+   * left-contents
+   */
+  /**
+   * right-contents
+   */ }
+  div#main div#left-contents {
     min-height: 100%;
     width: 32%;
-    border-right: 1px solid #ccc;
-}
-
-div#left-contents header {
-    padding: 35px 13px;
-    border-bottom: 1px solid #ccc;
-}
-
-div#left-contents header h1 {
-    margin: 0;
-    font-weight: normal;
-    font-size: 200%;
-    text-align: center;
-    color: #666;
-}
-
-div#vim-settings {
-    padding: 15px 13px;
-    font-size: 85%;
-}
-
-div#left-contents h4 {
-    font-size: 14px;
-}
-
-div#setting-basic td {
-    border: none;
-}
-
-div#setting-basic .table-right {
-    text-align: right;
-}
-
-div#setting-basic .table-right input[type="text"] {
-    text-align: right;
-}
-
-ul.color-schema {
-    padding: 0;
-}
-
-ul.color-schema li {
-    display: inline;
-    margin: 0 10px;
-}
-
-.colorscheme pre {
-    line-height: 1;
-    font-size: 11px !important;
-    border-radius: 10px;
-}
-
-.colorscheme-link {
-    vertical-align: middle;
-    font-size: 19px;
-    margin-left: 3px;
-}
-
-.setting-btn-area {
-    text-align: center;
-}
-
-/**
- * right-contents
- */
-div#right-contents {
+    border-right: 1px solid #ccc; }
+    div#main div#left-contents header {
+      padding: 35px 13px;
+      border-bottom: 1px solid #ccc; }
+      div#main div#left-contents header h1 {
+        margin: 0;
+        font-weight: normal;
+        font-size: 200%;
+        text-align: center;
+        color: #666; }
+    div#main div#left-contents h4 {
+      font-size: 14px; }
+    div#main div#left-contents div#vim-settings {
+      padding: 15px 13px;
+      font-size: 85%; }
+      div#main div#left-contents div#vim-settings div#setting-basic td {
+        border: none; }
+      div#main div#left-contents div#vim-settings div#setting-basic td.table-right {
+        text-align: right; }
+      div#main div#left-contents div#vim-settings div#setting-basic td.table-right input[type="text"] {
+        text-align: right; }
+      div#main div#left-contents div#vim-settings div#setting-color i.colorscheme-link {
+        vertical-align: middle;
+        font-size: 19px;
+        margin-left: 3px; }
+      div#main div#left-contents div#vim-settings div#setting-color div.setting-btn-area {
+        text-align: center; }
+  div#main div#right-contents {
     width: 68%;
     min-height: 100%;
     position: fixed;
     top: 0;
     right: 0;
     background-color: #f8f8f8;
-    padding: 0px 13px;
-}
+    padding: 0px 13px; }
+    div#main div#right-contents nav.navbar {
+      margin-bottom: 0; }
+    div#main div#right-contents li a {
+      padding: 7px 14px;
+      margin: 7px 0px;
+      border-radius: 2px;
+      color: #444; }
+    div#main div#right-contents li.active > a {
+      background-color: #626262;
+      color: #fff; }
+    div#main div#right-contents div#terminal {
+      height: 100%;
+      width: 100%; }
 
-div#right-contents .navbar {
-    margin-bottom: 0;
-}
+/**
+ * Welcome
+ */
+div#welcome div#language {
+  position: fixed;
+  right: 15px;
+  top: 7px; }
+div#welcome div#welcome-top {
+  text-align: center;
+  background-color: transparent !important;
+  margin-bottom: 0; }
+  div#welcome div#welcome-top p {
+    letter-spacing: 0.1em; }
+div#welcome div#container div#about {
+  text-align: center; }
+div#welcome div#container div#start {
+  margin-top: 30px;
+  text-align: center; }
+div#welcome footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px; }
+  div#welcome footer p {
+    text-align: center;
+    margin: 5px 0; }
 
-div#right-contents li a {
-    padding: 7px 14px;
-    margin: 7px 0px;
-    border-radius: 2px;
-    color: #444;
-}
-
-div#right-contents li.active > a {
-    background-color: #626262;
-    color: #fff;
-}
-
-#terminal {
-    height: 100%;
-    width: 100%;
-}
+/*# sourceMappingURL=main.css.map */
