@@ -6,17 +6,28 @@ html {
     min-height: 100%;
 }
 
-/*
 body {
     background-image: url("../img/gplaypattern.png")
 }
-*/
 
-div#main-content {
+div#main {
     height: 100%;
     width: 100%;
 }
-/*
+
+.loading-message {
+    font-size: 23px;
+}
+
+/**
+ * Welcome
+ */
+.welcome-top {
+    text-align: center;
+    background-color: transparent !important;
+    margin-bottom: 0;
+}
+
 .app-subtitle {
     letter-spacing: 0.1em;
 }
@@ -50,23 +61,22 @@ div#main-content {
     right: 15px;
     top: 7px;
 }
-*/
 
 /**
- * vimrc
+ * left-contents
  */
-div#vimrc {
+div#left-contents {
     min-height: 100%;
     width: 32%;
     border-right: 1px solid #ccc;
 }
 
-div#vimrc header {
+div#left-contents header {
     padding: 35px 13px;
     border-bottom: 1px solid #ccc;
 }
 
-div#vimrc header h1 {
+div#left-contents header h1 {
     margin: 0;
     font-weight: normal;
     font-size: 200%;
@@ -74,24 +84,24 @@ div#vimrc header h1 {
     color: #666;
 }
 
-div#vimrc-inner {
+div#vim-settings {
     padding: 15px 13px;
     font-size: 85%;
 }
 
-div#vimrc h4 {
+div#left-contents h4 {
     font-size: 14px;
 }
 
-section#setting-basic td {
+div#setting-basic td {
     border: none;
 }
 
-section#setting-basic .table-right {
+div#setting-basic .table-right {
     text-align: right;
 }
 
-section#setting-basic .table-right input[type="text"] {
+div#setting-basic .table-right input[type="text"] {
     text-align: right;
 }
 
@@ -121,51 +131,35 @@ ul.color-schema li {
 }
 
 /**
- * terminal
+ * right-contents
  */
-div#terminal {
+div#right-contents {
     width: 68%;
     min-height: 100%;
     position: fixed;
     top: 0;
     right: 0;
     background-color: #f8f8f8;
-}
-
-div#terminal-inner {
-    height: 100%;
     padding: 0px 13px;
 }
 
-div#terminal-inner .navbar {
+div#right-contents .navbar {
     margin-bottom: 0;
 }
 
-div#terminal-inner li a {
+div#right-contents li a {
     padding: 7px 14px;
     margin: 7px 0px;
     border-radius: 2px;
     color: #444;
 }
 
-div#terminal-inner li.active > a {
+div#right-contents li.active > a {
     background-color: #626262;
     color: #fff;
 }
 
-#console {
-    background-color: black;
-}
-
-#console-wrapper {
+#terminal {
     height: 100%;
     width: 100%;
 }
-
-/**
- * loading
- */
-.loading-message { 
-    font-size: 23px;
-}
-

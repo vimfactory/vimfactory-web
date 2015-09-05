@@ -49,7 +49,7 @@ class Terminal
   constructor: (@parent, @out, @ctl=->) ->
     # Global elements
     @document = @parent.ownerDocument
-    @body = @document.getElementById('console')
+    @body = @document.getElementById('terminal')
     @forceWidth = @body.getAttribute(
       'data-force-unicode-width') is 'yes'
 
@@ -70,8 +70,8 @@ class Terminal
     @rows = Math.floor(window.innerHeight / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
-    
-    @navbar = @document.getElementById('console-navbar')
+
+    @navbar = @document.getElementById('terminal-navbar')
     @navbarHeight = @navbar.clientHeight
 
     @scrollback = 1000000

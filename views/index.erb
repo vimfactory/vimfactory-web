@@ -1,11 +1,12 @@
 <%= erb :welcome %>
 <input id="connection_id" type="hidden" value="<%= @connection_id %>">
-<div id="main-content" class="hide">
-  <div id="vimrc">
+<div id="main" class="hide">
+
+  <div id="left-contents">
     <header>
         <h1>Vim::Factory</h1>
     </header>
-    <div id="vimrc-inner">
+    <div id="vim-settings">
       <nav>
         <ul class="nav nav-tabs">
           <li role="presentation" class="active">
@@ -16,8 +17,8 @@
           </li>
         </ul>
       </nav>
-      <section id="setting-contents" class="tab-content">
-        <section id="setting-basic" class="tab-pane fade in active">
+      <div id="setting-contents" class="tab-content">
+        <div id="setting-basic" class="tab-pane fade in active">
           <% @basic_options.each do |genre, elements| %>
             <h4><%= @settings_msg['genre-title'][genre] %></h4>
             <table class="table table-condensed">
@@ -35,9 +36,8 @@
               <% end %>
             </table>
           <% end %>
-        </section>
-
-        <section id="setting-color" class="tab-pane fade">
+        </div>
+        <div id="setting-color" class="tab-pane fade">
           <h4><%= @settings_msg['color-title'] %></h4>
           <% @colorscheme_options.each_with_index do |colorscheme, index| %>
             <div class="colorscheme">
@@ -53,45 +53,44 @@
               <%= erb :"colorschemes/#{colorscheme['name']}" %>
             </div>
           <% end %>
-        </section>
+        </div>
         <div class="setting-btn-area">
           <button type="button" id="setting-btn" class="btn btn-primary">Save & Refresh</button>
         </div>
-      </section>
+      </div>
     </div>
   </div>
 
-  <div id="terminal">
-    <div id="terminal-inner">
-      <nav id="console-navbar" class="navbar">
-        <ul class="nav navbar-nav">
-          <li role="presentation" class="active">
-            <a href="#console-wrapper" data-toggle="tab">Console</a>
-          </li>
-          <li role="presentation">
-            <a href="#vimrc-preview" data-toggle="tab">.vimrc Preview</a>
-          </li>
-        </ul>
-        <form class="navbar-form navbar-right">
-          <select class="form-control programing-lang">
-            <% @programlang_options.each do |lang| %>
-              <option value="<%= lang['ext'] %>"><%= lang['lang'] %></option>
-            <% end %>
-          </select>
-        </form>
-      </nav>
-      <section class="tab-content">
-        <section id="console-wrapper" class="tab-pane active">
-          <section id="console"></section>
-        </section>
-        <section id="vimrc-preview" class="tab-pane">
-          <p class="well">
-            <% @initial_options.each do |option_line| %>
-              <%= option_line %><br/>
-            <% end %>
-          </p>
-        </section>
-      </section>
+  <div id="right-contents">
+    <nav id="terminal-navbar" class="navbar">
+      <ul class="nav navbar-nav">
+        <li role="presentation" class="active">
+          <a href="#terminal-wrapper" data-toggle="tab">Terminal</a>
+        </li>
+        <li role="presentation">
+          <a href="#vimrc-preview" data-toggle="tab">.vimrc Preview</a>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <select class="form-control programing-lang">
+          <% @programlang_options.each do |lang| %>
+            <option value="<%= lang['ext'] %>"><%= lang['lang'] %></option>
+          <% end %>
+        </select>
+      </form>
+    </nav>
+
+    <div class="tab-content">
+      <div id="terminal-wrapper" class="tab-pane active">
+        <div id="terminal"></div>
+      </div>
+      <div id="vimrc-preview" class="tab-pane">
+        <p class="well">
+          <% @initial_options.each do |option_line| %>
+            <%= option_line %><br/>
+          <% end %>
+        </p>
+      </div>
     </div>
   </div>
 </div>

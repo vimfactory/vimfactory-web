@@ -21,12 +21,10 @@ openTs = (new Date()).getTime()
 
 $ = document.querySelectorAll.bind(document)
 
-#document.addEventListener 'DOMContentLoaded', ->
-
 jQuery("#open").click ->
   jQuery("#welcome").addClass("hide")
   jQuery("body").css( "background-image", "url('')" )
-  jQuery("#main-content").removeClass("hide")
+  jQuery("#main").removeClass("hide")
 
   send = (data) ->
     ws.send 'S' + data
@@ -45,14 +43,14 @@ jQuery("#open").click ->
 
   start_loading()
 
-  console_content = null
-  observe_console = ->
-    if console_content != jQuery('#console').text()
-      if console_content != null
+  terminal_content = null
+  observe_terminal = ->
+    if terminal_content != jQuery('#terminal .line').text()
+      if terminal_content != null
         stop_loading()
         clearInterval(observer)
-      console_content = jQuery('#console .line').text()
-  observer = setInterval(observe_console, 1000)
+      terminal_content = jQuery('#terminal .line').text()
+  observer = setInterval(observe_terminal, 1000)
 
   wsUrl += document.location.host + '/ws' + location.pathname + '?id=' + id
   ws = new WebSocket wsUrl
