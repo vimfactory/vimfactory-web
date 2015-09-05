@@ -2624,6 +2624,32 @@
       ISOLatin: null
     };
 
+    Terminal.prototype.reload_vim = function(command) {
+      var defer, end_vim, exec_command, start_vim, term;
+      defer = jQuery.Deferred();
+      term = this;
+      start_vim = function() {
+        return term.send("vim\r");
+      };
+      end_vim = function() {
+        return term.send("\x1b\x1b:wq\r");
+      };
+      exec_command = function(cmd) {
+        return term.send(cmd + "\r");
+      };
+      end_vim();
+      setTimeout(function() {
+        exec_command(command);
+        return setTimeout(function() {
+          start_vim();
+          return setTimeout(function() {
+            return defer.resolve();
+          }, 300);
+        }, 500);
+      }, 1000);
+      return defer.promise();
+    };
+
     return Terminal;
 
   })();

@@ -1,5 +1,15 @@
 # vimrc設定ボタンを押した際の動作
 $("#setting-btn").click ->
+  connection_id = $('#connection_id').val()
+  vimrc_contents = create_vimrc_conetns_json()
+
+  $.when(
+    start_loading(),
+    post_vimrc(connection_id, vimrc_contents)
+  ).done ->
+    stop_loading()
+
+create_vimrc_conetns_json = ->
   ### 
   json形式
   {
@@ -15,7 +25,6 @@ $("#setting-btn").click ->
   ###
   
   results = {}
-  connection_id = $('#connection_id').val()
 
   $(".vimrc-contents:not(.genre-fixed)").map ->
 
@@ -43,14 +52,8 @@ $("#setting-btn").click ->
     #値がある形式
     val = $(this).val()
     results[key] = val
-
-  $.when(
-    start_loading(),
-    post_vimrc(connection_id, results)
-  ).done ->
-    stop_loading()
-    $("#console .terminal").focus()
-
+  
+  return results
 
 post_vimrc = (id, vimrc_contents) ->
   defer = $.Deferred()
@@ -62,28 +65,14 @@ post_vimrc = (id, vimrc_contents) ->
     data: JSON.stringify({"connection_id": id, "vimrc_contents": vimrc_contents}),
     success: (data) ->
       $.when(
-        vim_reload(),
-        vimrc_reload(id)
+        window.butterfly.reload_vim(),
+        update_vimrc(id)
       ).done ->
         defer.resolve()
 
   return defer.promise();
 
-
-vim_reload = ->
-  defer = $.Deferred()
-  tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r")
-  setTimeout ->
-    #start vim
-    tty.socket.emit('data', terminal_id, "vim\r")
-    setTimeout ->
-      defer.resolve()
-    ,500
-  ,500
-  return defer.promise()
-
-
-vimrc_reload = (connection_id) ->
+update_vimrc = (connection_id) ->
   defer = $.Deferred()
   $.ajax
     type: "GET",
@@ -119,11 +108,9 @@ vimrc_reload = (connection_id) ->
 
 $('.programing-lang').change ->
   ext = $(this).val()
+  cmd = "export vimfactory_ext="+ext
   start_loading()
-  tty.socket.emit('data', terminal_id, "\x1b\x1b:wq\r")
+  window.butterfly.reload_vim(cmd)
   setTimeout ->
-    tty.socket.emit('data', terminal_id, "export vimfactory_ext="+ext+"&&vim\r")
-    setTimeout ->
-      stop_loading()
-    ,500
-  ,1000
+    stop_loading()
+  ,2000

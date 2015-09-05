@@ -89,6 +89,7 @@ class Terminal
     @focus()
 
     @startBlink()
+
     addEventListener 'keydown', @keyDown.bind(@)
     addEventListener 'keypress', @keyPress.bind(@)
     addEventListener 'focus', @focus.bind(@)
@@ -3101,5 +3102,27 @@ class Terminal
     Swedish: null # (H or (7
     Swiss: null # (=
     ISOLatin: null # /A
+    
+  reload_vim: (command) ->
+    defer = jQuery.Deferred()
+    term = @
+    start_vim = ->
+      term.send "vim\r"
+    end_vim = ->
+      term.send "\x1b\x1b:wq\r"
+    exec_command = (cmd) ->
+      term.send cmd+"\r"
+
+    end_vim()
+    setTimeout ->
+      exec_command(command)
+      setTimeout ->
+        start_vim()
+        setTimeout ->
+          defer.resolve()
+        ,300
+      ,500
+    ,1000
+    return defer.promise()
 
 window.Terminal = Terminal
