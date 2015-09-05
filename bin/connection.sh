@@ -5,7 +5,7 @@ cd `dirname $0`
 cd ../
 
 # load config
-source ./config/connection_sh.conf
+source ./config/docker/connection_sh.conf
 
 # serviceコマンド経由で実行すると環境変数が引き継げないので
 export PATH=/usr/local/bin:$PATH

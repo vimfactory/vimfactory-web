@@ -28,7 +28,7 @@ begin
   failed ||= 0
 
   #コンテナ作成
-  docker_config = YAML::load_file("./config/docker_option.yml")
+  docker_config = YAML::load_file("./config/docker/docker_option.yml")
   container = Docker::Container.create(docker_config)
   container_id = container.json["Id"][0,12]
   logger.info("[#{connection_id}] Create container(#{container_id}).")
