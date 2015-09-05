@@ -126,7 +126,7 @@
       this.queue = '';
       this.scrollTop = 0;
       this.scrollBottom = this.rows - 1;
-      this.scrollLock = false;
+      this.scrollLock = true;
       this.applicationKeypad = false;
       this.applicationCursor = false;
       this.originMode = false;

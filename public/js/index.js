@@ -56,7 +56,6 @@
 
   post_vimrc = function(id, vimrc_contents) {
     var defer;
-    console.log("start post_vimrc");
     defer = $.Deferred();
     $.ajax({
       type: "POST",
@@ -69,7 +68,6 @@
       }),
       success: function(data) {
         return $.when(window.butterfly.reload_vim(), update_vimrc(id)).done(function() {
-          console.log("done post_vimrc");
           return defer.resolve();
         });
       }
@@ -98,7 +96,6 @@
   };
 
   this.start_loading = function() {
-    console.log("start loading");
     $("#terminal").css("visibility", "hidden");
     return $.blockUI({
       message: '<h1 class="loading-message">now loading...</h1>',
@@ -115,7 +112,6 @@
   };
 
   this.stop_loading = function() {
-    console.log("stop loading");
     $("#terminal").css("visibility", "visible");
     return $.unblockUI();
   };

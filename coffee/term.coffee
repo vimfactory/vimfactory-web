@@ -140,7 +140,7 @@ class Terminal
 
     @scrollTop = 0
     @scrollBottom = @rows - 1
-    @scrollLock = false
+    @scrollLock = true
 
     # modes
     @applicationKeypad = false
