@@ -5,9 +5,6 @@ html {
   position: relative;
   min-height: 100%; }
 
-body {
-  background-image: url("../img/gplaypattern.png"); }
-
 h1.loading-message {
   font-size: 23px; }
 
@@ -48,7 +45,7 @@ div#main {
         vertical-align: middle;
         font-size: 19px;
         margin-left: 3px; }
-      div#main div#left-contents div#vim-settings div#setting-color div.setting-btn-area {
+      div#main div#left-contents div#vim-settings div#setting-btn-area {
         text-align: center; }
   div#main div#right-contents {
     width: 68%;
