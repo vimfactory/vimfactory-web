@@ -109,3 +109,17 @@ get '/api/vimrc/:connection_id' do |id|
   logger.info('success')
   [200, { vimrc: vimrc }.to_json]
 end
+
+get '/api/connection_id/:connection_id' do |id|
+  begin
+    $cache.get(id)
+  rescue Memcached::NotFound => e
+    logger.error(e.message)
+    return [404, { message: "connection_id `#{id}` is not found" }.to_json]
+  rescue => e
+    logger.error(e.message)
+    return [500, { message: 'Unexpected error' }.to_json]
+  end
+
+  [200, { connection_id: id }.to_json]
+end
