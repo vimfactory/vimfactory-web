@@ -1,0 +1,106 @@
+/**
+ * Global
+ */
+html
+  position: relative
+  min-height: 100%
+
+body
+  background-image: url("../img/gplaypattern.png")
+
+h1.loading-message
+  font-size: 23px
+
+div#main
+  height: 100%
+  width: 100%
+
+  /**
+   * left-contents
+   */
+  div#left-contents
+    min-height: 100%
+    width: 32%
+    border-right: 1px solid #ccc
+    header
+      padding: 35px 13px
+      border-bottom: 1px solid #ccc
+      h1
+        margin: 0
+        font-weight: normal
+        font-size: 200%
+        text-align: center
+        color: #666
+    h4
+      font-size: 14px
+    div#vim-settings
+      padding: 15px 13px
+      font-size: 85%
+      div#setting-basic
+        td
+          border: none
+        td.table-right
+          text-align: right
+        td.table-right input[type="text"]
+          text-align: right
+      div#setting-color
+        i.colorscheme-link
+          vertical-align: middle
+          font-size: 19px
+          margin-left: 3px
+        div.setting-btn-area
+          text-align: center
+
+  /**
+   * right-contents
+   */
+  div#right-contents
+    width: 68%
+    min-height: 100%
+    position: fixed
+    top: 0
+    right: 0
+    background-color: #f8f8f8
+    padding: 0px 13px
+    nav.navbar
+      margin-bottom: 0
+    li a
+      padding: 7px 14px
+      margin: 7px 0px
+      border-radius: 2px
+      color: #444
+    li.active > a
+      background-color: #626262
+      color: #fff
+    div#terminal
+      height: 100%
+      width: 100%
+
+/**
+ * Welcome
+ */
+div#welcome
+  div#language
+    position: fixed
+    right: 15px
+    top: 7px
+  div#welcome-top
+    text-align: center
+    background-color: transparent !important
+    margin-bottom: 0
+    p
+      letter-spacing: 0.1em
+  div#container
+    div#about
+      text-align: center
+    div#start
+      margin-top: 30px
+      text-align: center
+  footer
+    position: absolute
+    bottom: 0
+    width: 100%
+    height: 30px
+    p
+      text-align: center
+      margin: 5px 0
