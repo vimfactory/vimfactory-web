@@ -135,7 +135,196 @@ body {
 /* You should have received a copy of the GNU General Public License */
 /* along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 /* The color theme is defined in this one: */
-/* @import 16_colors */
+/* *-* coding: utf-8 *-* */
+/* This file is part of butterfly */
+/* butterfly Copyright (C) 2014  Florian Mounier */
+/* This program is free software: you can redistribute it and/or modify */
+/* it under the terms of the GNU General Public License as published by */
+/* the Free Software Foundation, either version 3 of the License, or */
+/* (at your option) any later version. */
+/* This program is distributed in the hope that it will be useful, */
+/* but WITHOUT ANY WARRANTY; without even the implied warranty of */
+/* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the */
+/* GNU General Public License for more details. */
+/* You should have received a copy of the GNU General Public License */
+/* along with this program.  If not, see <http://www.gnu.org/licenses/>. */
+/* Here are the 16 "normal" colors for theming */
+div #terminal .bg-color-0 {
+  background-color: #2e3436; }
+  div #terminal .bg-color-0.reverse-video {
+    color: #2e3436 !important; }
+
+div #terminal .fg-color-0 {
+  color: #2e3436;
+  text-shadow: 0 0 6px rgba(46, 52, 54, 0.5); }
+  div #terminal .fg-color-0.reverse-video {
+    background-color: #2e3436 !important; }
+
+div #terminal .bg-color-1 {
+  background-color: #cc0000; }
+  div #terminal .bg-color-1.reverse-video {
+    color: #cc0000 !important; }
+
+div #terminal .fg-color-1 {
+  color: #cc0000;
+  text-shadow: 0 0 6px rgba(204, 0, 0, 0.5); }
+  div #terminal .fg-color-1.reverse-video {
+    background-color: #cc0000 !important; }
+
+div #terminal .bg-color-2 {
+  background-color: #4e9a06; }
+  div #terminal .bg-color-2.reverse-video {
+    color: #4e9a06 !important; }
+
+div #terminal .fg-color-2 {
+  color: #4e9a06;
+  text-shadow: 0 0 6px rgba(78, 154, 6, 0.5); }
+  div #terminal .fg-color-2.reverse-video {
+    background-color: #4e9a06 !important; }
+
+div #terminal .bg-color-3 {
+  background-color: #c4a000; }
+  div #terminal .bg-color-3.reverse-video {
+    color: #c4a000 !important; }
+
+div #terminal .fg-color-3 {
+  color: #c4a000;
+  text-shadow: 0 0 6px rgba(196, 160, 0, 0.5); }
+  div #terminal .fg-color-3.reverse-video {
+    background-color: #c4a000 !important; }
+
+div #terminal .bg-color-4 {
+  background-color: #3465a4; }
+  div #terminal .bg-color-4.reverse-video {
+    color: #3465a4 !important; }
+
+div #terminal .fg-color-4 {
+  color: #3465a4;
+  text-shadow: 0 0 6px rgba(52, 101, 164, 0.5); }
+  div #terminal .fg-color-4.reverse-video {
+    background-color: #3465a4 !important; }
+
+div #terminal .bg-color-5 {
+  background-color: #75507b; }
+  div #terminal .bg-color-5.reverse-video {
+    color: #75507b !important; }
+
+div #terminal .fg-color-5 {
+  color: #75507b;
+  text-shadow: 0 0 6px rgba(117, 80, 123, 0.5); }
+  div #terminal .fg-color-5.reverse-video {
+    background-color: #75507b !important; }
+
+div #terminal .bg-color-6 {
+  background-color: #06989a; }
+  div #terminal .bg-color-6.reverse-video {
+    color: #06989a !important; }
+
+div #terminal .fg-color-6 {
+  color: #06989a;
+  text-shadow: 0 0 6px rgba(6, 152, 154, 0.5); }
+  div #terminal .fg-color-6.reverse-video {
+    background-color: #06989a !important; }
+
+div #terminal .bg-color-7 {
+  background-color: #d3d7cf; }
+  div #terminal .bg-color-7.reverse-video {
+    color: #d3d7cf !important; }
+
+div #terminal .fg-color-7 {
+  color: #d3d7cf;
+  text-shadow: 0 0 6px rgba(211, 215, 207, 0.5); }
+  div #terminal .fg-color-7.reverse-video {
+    background-color: #d3d7cf !important; }
+
+div #terminal .bg-color-8 {
+  background-color: #555753; }
+  div #terminal .bg-color-8.reverse-video {
+    color: #555753 !important; }
+
+div #terminal .fg-color-8 {
+  color: #555753;
+  text-shadow: 0 0 6px rgba(85, 87, 83, 0.5); }
+  div #terminal .fg-color-8.reverse-video {
+    background-color: #555753 !important; }
+
+div #terminal .bg-color-9 {
+  background-color: #ef2929; }
+  div #terminal .bg-color-9.reverse-video {
+    color: #ef2929 !important; }
+
+div #terminal .fg-color-9 {
+  color: #ef2929;
+  text-shadow: 0 0 6px rgba(239, 41, 41, 0.5); }
+  div #terminal .fg-color-9.reverse-video {
+    background-color: #ef2929 !important; }
+
+div #terminal .bg-color-10 {
+  background-color: #8ae234; }
+  div #terminal .bg-color-10.reverse-video {
+    color: #8ae234 !important; }
+
+div #terminal .fg-color-10 {
+  color: #8ae234;
+  text-shadow: 0 0 6px rgba(138, 226, 52, 0.5); }
+  div #terminal .fg-color-10.reverse-video {
+    background-color: #8ae234 !important; }
+
+div #terminal .bg-color-11 {
+  background-color: #fce94f; }
+  div #terminal .bg-color-11.reverse-video {
+    color: #fce94f !important; }
+
+div #terminal .fg-color-11 {
+  color: #fce94f;
+  text-shadow: 0 0 6px rgba(252, 233, 79, 0.5); }
+  div #terminal .fg-color-11.reverse-video {
+    background-color: #fce94f !important; }
+
+div #terminal .bg-color-12 {
+  background-color: #729fcf; }
+  div #terminal .bg-color-12.reverse-video {
+    color: #729fcf !important; }
+
+div #terminal .fg-color-12 {
+  color: #729fcf;
+  text-shadow: 0 0 6px rgba(114, 159, 207, 0.5); }
+  div #terminal .fg-color-12.reverse-video {
+    background-color: #729fcf !important; }
+
+div #terminal .bg-color-13 {
+  background-color: #ad7fa8; }
+  div #terminal .bg-color-13.reverse-video {
+    color: #ad7fa8 !important; }
+
+div #terminal .fg-color-13 {
+  color: #ad7fa8;
+  text-shadow: 0 0 6px rgba(173, 127, 168, 0.5); }
+  div #terminal .fg-color-13.reverse-video {
+    background-color: #ad7fa8 !important; }
+
+div #terminal .bg-color-14 {
+  background-color: #34e2e2; }
+  div #terminal .bg-color-14.reverse-video {
+    color: #34e2e2 !important; }
+
+div #terminal .fg-color-14 {
+  color: #34e2e2;
+  text-shadow: 0 0 6px rgba(52, 226, 226, 0.5); }
+  div #terminal .fg-color-14.reverse-video {
+    background-color: #34e2e2 !important; }
+
+div #terminal .bg-color-15 {
+  background-color: #eeeeec; }
+  div #terminal .bg-color-15.reverse-video {
+    color: #eeeeec !important; }
+
+div #terminal .fg-color-15 {
+  color: #eeeeec;
+  text-shadow: 0 0 6px rgba(238, 238, 236, 0.5); }
+  div #terminal .fg-color-15.reverse-video {
+    background-color: #eeeeec !important; }
+
 /* *-* coding: utf-8 *-* */
 /* This file is part of butterfly */
 /* butterfly Copyright (C) 2014  Florian Mounier */
@@ -2792,26 +2981,26 @@ div #terminal .fg-color-255 {
     background-color: #eeeeee !important; }
 
 div #terminal .bg-color-256 {
-  background-color: #000; }
+  background-color: #110f13; }
   div #terminal .bg-color-256.reverse-video {
-    color: #000 !important; }
+    color: #110f13 !important; }
 
 div #terminal .fg-color-256 {
-  color: #000;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5); }
+  color: #110f13;
+  text-shadow: 0 0 6px rgba(17, 15, 19, 0.5); }
   div #terminal .fg-color-256.reverse-video {
-    background-color: #000 !important; }
+    background-color: #110f13 !important; }
 
 div #terminal .bg-color-257 {
-  background-color: #fff; }
+  background-color: #f4ead5; }
   div #terminal .bg-color-257.reverse-video {
-    color: #fff !important; }
+    color: #f4ead5 !important; }
 
 div #terminal .fg-color-257 {
-  color: #fff;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.5); }
+  color: #f4ead5;
+  text-shadow: 0 0 6px rgba(244, 234, 213, 0.5); }
   div #terminal .fg-color-257.reverse-video {
-    background-color: #fff !important; }
+    background-color: #f4ead5 !important; }
 
 /*@import layout */
 /* *-* coding: utf-8 *-* */
@@ -2831,7 +3020,7 @@ div #terminal .fg-color-257 {
   transition: 300ms; }
 
 .cursor.reverse-video {
-  box-shadow: 0 0 0.5 #fff; }
+  box-shadow: 0 0 0.5 #f4ead5; }
 
 /* *-* coding: utf-8 *-* */
 /* This file is part of butterfly */
@@ -2869,8 +3058,8 @@ div #terminal .fg-color-257 {
   visibility: hidden; }
 
 .reverse-video {
-  color: #000;
-  background-color: #fff; }
+  color: #110f13;
+  background-color: #f4ead5; }
 
 .blur .cursor.reverse-video {
   background: none; }
