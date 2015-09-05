@@ -1,0 +1,10 @@
+Cmd:
+  - "/bin/sh"
+  - "/root/bootvim.sh"
+Image: "mosuke5/vimonly"
+Tty: true
+OpenStdin: true
+StdinOnce: false
+HostConfig:
+  Binds:
+    - "/home/vimfactory/vimrcs:/home/you/vimrcs"
