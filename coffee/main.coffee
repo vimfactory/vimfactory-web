@@ -21,7 +21,12 @@ openTs = (new Date()).getTime()
 
 $ = document.querySelectorAll.bind(document)
 
-document.addEventListener 'DOMContentLoaded', ->
+#document.addEventListener 'DOMContentLoaded', ->
+
+jQuery("#open").click ->
+  jQuery("#welcome").addClass("hide")
+  jQuery("body").css( "background-image", "url('')" )
+  jQuery("#main-content").removeClass("hide")
 
   send = (data) ->
     ws.send 'S' + data
@@ -37,6 +42,7 @@ document.addEventListener 'DOMContentLoaded', ->
     wsUrl = 'ws://'
 
   id = document.getElementById('connection_id').value
+
   wsUrl += document.location.host + '/ws' + location.pathname + '?id=' + id
   ws = new WebSocket wsUrl
 

@@ -153,6 +153,10 @@ div#terminal-inner li.active > a {
     color: #fff;
 }
 
+#console {
+    background-color: black;
+}
+
 #console-wrapper {
     height: 100%;
     width: 100%;

@@ -11,8 +11,11 @@
 
   $ = document.querySelectorAll.bind(document);
 
-  document.addEventListener('DOMContentLoaded', function() {
+  jQuery("#open").click(function() {
     var ctl, id, lastData, queue, send, t_queue, term, treat, ws, wsUrl;
+    jQuery("#welcome").addClass("hide");
+    jQuery("body").css("background-image", "url('')");
+    jQuery("#main-content").removeClass("hide");
     send = function(data) {
       return ws.send('S' + data);
     };
