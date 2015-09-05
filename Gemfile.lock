@@ -7,7 +7,11 @@ GEM
     backports (3.6.4)
     coderay (1.1.0)
     daemons (1.1.9)
+    docker-api (1.22.4)
+      excon (>= 0.38.0)
+      json
     eventmachine (1.0.4)
+    excon (0.45.4)
     jsmin (1.0.1)
     json (1.8.1)
     memcached (1.8.0)
@@ -71,6 +75,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  docker-api (= 1.22.4)
   json (= 1.8.1)
   memcached (= 1.8.0)
   pry

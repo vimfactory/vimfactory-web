@@ -6,6 +6,7 @@ vendor/bundle
 logs/*.log
 logs/*.log.*
 config/*.yml
+config/*.conf
 config/thin/*.yml
 public/js/config.js
 bower_components
