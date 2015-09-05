@@ -12,7 +12,7 @@
   $ = document.querySelectorAll.bind(document);
 
   jQuery("#open").click(function() {
-    var ctl, id, lastData, queue, send, t_queue, term, treat, ws, wsUrl;
+    var console_content, ctl, id, lastData, observe_console, observer, queue, send, t_queue, term, treat, ws, wsUrl;
     jQuery("#welcome").addClass("hide");
     jQuery("body").css("background-image", "url('')");
     jQuery("#main-content").removeClass("hide");
@@ -33,6 +33,18 @@
       wsUrl = 'ws://';
     }
     id = document.getElementById('connection_id').value;
+    start_loading();
+    console_content = null;
+    observe_console = function() {
+      if (console_content !== jQuery('#console').text()) {
+        if (console_content !== null) {
+          stop_loading();
+          clearInterval(observer);
+        }
+        return console_content = jQuery('#console .line').text();
+      }
+    };
+    observer = setInterval(observe_console, 1000);
     wsUrl += document.location.host + '/ws' + location.pathname + '?id=' + id;
     ws = new WebSocket(wsUrl);
     ws.addEventListener('open', function() {

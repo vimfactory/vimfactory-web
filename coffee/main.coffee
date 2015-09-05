@@ -43,6 +43,17 @@ jQuery("#open").click ->
 
   id = document.getElementById('connection_id').value
 
+  start_loading()
+
+  console_content = null
+  observe_console = ->
+    if console_content != jQuery('#console').text()
+      if console_content != null
+        stop_loading()
+        clearInterval(observer)
+      console_content = jQuery('#console .line').text()
+  observer = setInterval(observe_console, 1000)
+
   wsUrl += document.location.host + '/ws' + location.pathname + '?id=' + id
   ws = new WebSocket wsUrl
 
