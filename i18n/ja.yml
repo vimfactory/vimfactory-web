@@ -1,9 +1,9 @@
-top: 
+top:
   subtitle: "Vimの設定をその場で「即体感」"
   about-title: "Vim::Factoryとは？"
-  about-desc: "Vim::Factoryは選択したVimの設定を、その場ブラウザ上で「即体感」できるサービスです。<br />数多くあり複雑なVimの設定を容易にし、あなたお気に入りのVim探しをサポートします。<br />まだα版です。今後の進化にご期待ください。"
+  about-desc: "Vim::Factoryは選択したVimの設定を、ブラウザ上で「即体感」できるサービスです。数多くあり複雑なVimの設定を容易にし、あなたお気に入りのVim探しをサポートします。まだα版です。今後の進化にご期待ください。"
   start-title: "Vim::Factoryをはじめる"
-  start-desc: "本サービスはvimを操作します。PCでのご利用をお勧めいたします。<br />早速、Vim::Factoryをはじめよう！"
+  start-desc: "本サービスはvimを操作します。PCでのご利用をお勧めいたします。"
 settings:
   genre-title:
     tab   : "タブ"
@@ -12,4 +12,4 @@ settings:
     cursor: "カーソル"
     visual: "ビジュアル"
     fixed : "固定設定"
-  color-title: "お好みのカラーを選んでください。<br />(実際にご利用するにはインストールが必要です)" 
+  color-title: "お好みのカラーを選んでください。<br />(実際にご利用するにはインストールが必要です)"
