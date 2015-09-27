@@ -4,6 +4,11 @@
 html
   position: relative
   min-height: 100%
+  height: 100%
+
+body
+  min-height: 100%
+  height: 100%
 
 h1.loading-message
   font-size: 23px
@@ -77,27 +82,46 @@ div#main
  * Welcome
  */
 div#welcome
+  // background-image: url("../img/dark_geometric.png")
+  background-color: #292929
+  color: #fff
+  height: 100%
+  padding: 50px 50px 0 50px
+  background-image: -webkit-radial-gradient(center, circle cover, #456 0%, #1a1a1a 100%)
+  h1
+    text-align: center
+    margin: 0 0 8px 0
+    letter-spacing: 5px
+    font-size: 45px
+    font-family: "Maven Pro", "Verdana", sans-serif
+    font-weight: normal
+  h3
+    margin: 0 0 8px 0
+  p
+    text-align: center
+    margin: 14px 0
   div#language
     position: fixed
     right: 15px
     top: 7px
-  div#welcome-top
+  div#logo
     text-align: center
-    background-color: transparent !important
-    margin-bottom: 0
+    margin: 20px 0
+  div#start
+    margin: 40px 0 80px
+    text-align: center
+    button#open
+      padding: 13px 42px
+      background-color: #d75f5f
+      color: #fff
+      border: none
+  div#about
+    text-align: center
+    margin-bottom: 40px
     p
-      letter-spacing: 0.1em
-  div#container
-    div#about
-      text-align: center
-    div#start
-      margin-top: 30px
-      text-align: center
+      width: 60%
+      margin: 0 auto
+      line-height: 2.2
   footer
-    position: absolute
-    bottom: 0
     width: 100%
-    height: 30px
-    p
-      text-align: center
-      margin: 5px 0
+    margin: 10px 0

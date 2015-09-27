@@ -3,7 +3,12 @@
  */
 html {
   position: relative;
-  min-height: 100%; }
+  min-height: 100%;
+  height: 100%; }
+
+body {
+  min-height: 100%;
+  height: 100%; }
 
 h1.loading-message {
   font-size: 23px; }
@@ -72,28 +77,48 @@ div#main {
 /**
  * Welcome
  */
-div#welcome div#language {
-  position: fixed;
-  right: 15px;
-  top: 7px; }
-div#welcome div#welcome-top {
-  text-align: center;
-  background-color: transparent !important;
-  margin-bottom: 0; }
-  div#welcome div#welcome-top p {
-    letter-spacing: 0.1em; }
-div#welcome div#container div#about {
-  text-align: center; }
-div#welcome div#container div#start {
-  margin-top: 30px;
-  text-align: center; }
-div#welcome footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 30px; }
-  div#welcome footer p {
+div#welcome {
+  background-color: #292929;
+  color: #fff;
+  height: 100%;
+  padding: 50px 50px 0 50px;
+  background-image: -webkit-radial-gradient(center, circle cover, #456 0%, #1a1a1a 100%); }
+  div#welcome h1 {
     text-align: center;
-    margin: 5px 0; }
+    margin: 0 0 8px 0;
+    letter-spacing: 5px;
+    font-size: 45px;
+    font-family: "Maven Pro", "Verdana", sans-serif;
+    font-weight: normal; }
+  div#welcome h3 {
+    margin: 0 0 8px 0; }
+  div#welcome p {
+    text-align: center;
+    margin: 14px 0; }
+  div#welcome div#language {
+    position: fixed;
+    right: 15px;
+    top: 7px; }
+  div#welcome div#logo {
+    text-align: center;
+    margin: 20px 0; }
+  div#welcome div#start {
+    margin: 40px 0 80px;
+    text-align: center; }
+    div#welcome div#start button#open {
+      padding: 13px 42px;
+      background-color: #d75f5f;
+      color: #fff;
+      border: none; }
+  div#welcome div#about {
+    text-align: center;
+    margin-bottom: 40px; }
+    div#welcome div#about p {
+      width: 60%;
+      margin: 0 auto;
+      line-height: 2.2; }
+  div#welcome footer {
+    width: 100%;
+    margin: 10px 0; }
 
 /*# sourceMappingURL=main.css.map */
