@@ -82,7 +82,6 @@ div#main
  * Welcome
  */
 div#welcome
-  // background-image: url("../img/dark_geometric.png")
   background-color: #292929
   color: #fff
   height: 100%
@@ -90,23 +89,26 @@ div#welcome
   background-image: -webkit-radial-gradient(center, circle cover, #456 0%, #1a1a1a 100%)
   h1
     text-align: center
-    margin: 0 0 8px 0
     letter-spacing: 5px
-    font-size: 45px
+    font-size: 70px
     font-family: "Maven Pro", "Verdana", sans-serif
     font-weight: normal
-  h3
-    margin: 0 0 8px 0
+    padding: 100px 0 30px 0
+    margin: 0
+  h1:before
+    content: "<"
+    font-weight: bold
+    margin-right: 15px
+    color: #d75f5f
+  h1:after
+    content: ">"
+    font-weight: bold
+    margin-left: 15px
+    color: #d75f5f
   p
     text-align: center
-    margin: 14px 0
-  div#language
-    position: fixed
-    right: 15px
-    top: 7px
-  div#logo
-    text-align: center
-    margin: 20px 0
+    margin: 0
+    font-size: 22px
   div#start
     margin: 40px 0 80px
     text-align: center
@@ -115,13 +117,9 @@ div#welcome
       background-color: #d75f5f
       color: #fff
       border: none
-  div#about
-    text-align: center
-    margin-bottom: 40px
-    p
-      width: 60%
-      margin: 0 auto
-      line-height: 2.2
   footer
     width: 100%
     margin: 10px 0
+    a
+      color: #fff
+      text-decoration: underline

@@ -85,23 +85,26 @@ div#welcome {
   background-image: -webkit-radial-gradient(center, circle cover, #456 0%, #1a1a1a 100%); }
   div#welcome h1 {
     text-align: center;
-    margin: 0 0 8px 0;
     letter-spacing: 5px;
-    font-size: 45px;
+    font-size: 70px;
     font-family: "Maven Pro", "Verdana", sans-serif;
-    font-weight: normal; }
-  div#welcome h3 {
-    margin: 0 0 8px 0; }
+    font-weight: normal;
+    padding: 100px 0 30px 0;
+    margin: 0; }
+  div#welcome h1:before {
+    content: "<";
+    font-weight: bold;
+    margin-right: 15px;
+    color: #d75f5f; }
+  div#welcome h1:after {
+    content: ">";
+    font-weight: bold;
+    margin-left: 15px;
+    color: #d75f5f; }
   div#welcome p {
     text-align: center;
-    margin: 14px 0; }
-  div#welcome div#language {
-    position: fixed;
-    right: 15px;
-    top: 7px; }
-  div#welcome div#logo {
-    text-align: center;
-    margin: 20px 0; }
+    margin: 0;
+    font-size: 22px; }
   div#welcome div#start {
     margin: 40px 0 80px;
     text-align: center; }
@@ -110,15 +113,11 @@ div#welcome {
       background-color: #d75f5f;
       color: #fff;
       border: none; }
-  div#welcome div#about {
-    text-align: center;
-    margin-bottom: 40px; }
-    div#welcome div#about p {
-      width: 60%;
-      margin: 0 auto;
-      line-height: 2.2; }
   div#welcome footer {
     width: 100%;
     margin: 10px 0; }
+    div#welcome footer a {
+      color: #fff;
+      text-decoration: underline; }
 
 /*# sourceMappingURL=main.css.map */
