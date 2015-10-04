@@ -27,29 +27,32 @@ create_vimrc_conetns_json = ->
   results = {}
 
   $(".vimrc-contents:not(.genre-fixed)").map ->
-
     key = $(this).attr('name')
     val
+    console.log(key)
 
     #colorscheme
     if key=="colorscheme"
       if $(this).prop('checked')
         val = $(this).val()
         results[key] = val
-      return;
+      return
 
     #checkbox(true or false) type
-    if $(this).attr('type')=='checkbox'
-
+    if $(this).attr('type') == 'checkbox'
       if $(this).prop('checked')
         val = true
       else
         val = false
-      
       results[key] = val
       return
+    
+    #selectbox
+    else if $(this).attr('type') == 'select'
+      results[key] = $(this).val()
+      return
 
-    #値がある形式
+    #textbox
     val = $(this).val()
     results[key] = val
   

@@ -5,7 +5,11 @@ tab:
       ja: 入力でタブの代わりにスペースを利用する
       en: Use spaces when <Tab> is inserted
   - name: tabstop
-    type: text
+    type: selectbox
+    values:
+      - 2
+      - 4
+      - 8
     message:
       ja: タブの表示幅
       en: Number of spaces that <Tab> in file uses
@@ -16,7 +20,11 @@ indent:
       ja: 直前の行から新しい行のインデントを得る
       en: Copy indent from current line when starting a new line
   - name: shiftwidth
-    type: text
+    type: selectbox
+    values:
+      - 2
+      - 4
+      - 8
     message: 
       ja: 自動インデントの各段階に使われる空白の数
       en: Sets spaces used for (auto)indent
