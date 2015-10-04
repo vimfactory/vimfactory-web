@@ -9,10 +9,14 @@ html
 body
   min-height: 100%
   height: 100%
+  font-family: "Maven Pro", "Verdana", sans-serif
 
-h1.loading-message
-  font-size: 23px
+  h1.loading-message
+    font-size: 23px
 
+/**
+ * Main Page
+ */
 div#main
   height: 100%
   width: 100%
@@ -29,10 +33,11 @@ div#main
       border-bottom: 1px solid #ccc
       h1
         margin: 0
-        font-weight: normal
-        font-size: 200%
         text-align: center
         color: #666
+        font-weight: normal
+        font-size: 220%
+        font-family: "Maven Pro", "Verdana", sans-serif
     h4
       font-size: 14px
     div#vim-settings
@@ -52,6 +57,12 @@ div#main
           margin-left: 3px
       div#setting-btn-area
         text-align: center
+        button
+          background-color: #d75f5f
+          border: none
+          &:hover
+            background-color: #bb2f2f
+            opacity: 0.9
 
   /**
    * right-contents
@@ -117,6 +128,9 @@ div#welcome
       background-color: #d75f5f
       color: #fff
       border: none
+      &:hover
+        background-color: #bb2f2f
+        opacity: 0.9
   footer
     width: 100%
     margin: 10px 0
