@@ -43,13 +43,13 @@
       div.className = 'line';
       this.body.appendChild(div);
       this.children = [div];
-      this.computeCharSize();
-      this.cols = Math.floor(this.body.clientWidth / this.charSize.width);
-      this.rows = Math.floor(window.innerHeight / this.charSize.height);
-      px = window.innerHeight % this.charSize.height;
-      this.body.style['padding-bottom'] = px + "px";
       this.navbar = this.document.getElementById('terminal-navbar');
       this.navbarHeight = this.navbar.clientHeight;
+      this.computeCharSize();
+      this.cols = Math.floor(this.body.clientWidth / this.charSize.width);
+      this.rows = Math.floor((window.innerHeight - this.navbarHeight) / this.charSize.height);
+      px = window.innerHeight % this.charSize.height;
+      this.body.style['padding-bottom'] = px + "px";
       this.scrollback = 1000000;
       this.buffSize = 100000;
       this.visualBell = 100;

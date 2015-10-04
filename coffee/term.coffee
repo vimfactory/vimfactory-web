@@ -65,14 +65,14 @@ class Terminal
     @body.appendChild(div)
     @children = [div]
 
-    @computeCharSize()
-    @cols = Math.floor(@body.clientWidth / @charSize.width)
-    @rows = Math.floor(window.innerHeight / @charSize.height)
-    px = window.innerHeight % @charSize.height
-    @body.style['padding-bottom'] = "#{px}px"
-
     @navbar = @document.getElementById('terminal-navbar')
     @navbarHeight = @navbar.clientHeight
+
+    @computeCharSize()
+    @cols = Math.floor(@body.clientWidth / @charSize.width)
+    @rows = Math.floor((window.innerHeight-@navbarHeight) / @charSize.height)
+    px = window.innerHeight % @charSize.height
+    @body.style['padding-bottom'] = "#{px}px"
 
     @scrollback = 1000000
     @buffSize = 100000
