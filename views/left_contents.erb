@@ -26,7 +26,7 @@
                 <% elsif element['type'] == 'checkbox' %>
                     <input class="vimrc-contents genre-<%= genre %>" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['checked'] %> <%= element['disabled'] %> >
                 <% elsif element['type'] == 'selectbox' %>
-                  <select type="select" class="vimrc-contents genre-<%= genre %> form-control" name="<%= element['name'] %>">
+                  <select type="select" class="vimrc-contents genre-<%= genre %>" name="<%= element['name'] %>">
                     <% element['values'].each do |val| %>
                       <option value="<%= val %>"><%= val %></option>
                     <% end %>
