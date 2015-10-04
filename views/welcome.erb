@@ -1,34 +1,20 @@
 <div id="welcome">
-  <div class="language">
+  <div id="language">
+    <% if false %>
     <% if @locale == 'ja' %>
       <a href="/en/">English</a>
     <% else %>
       <a href="/">Japanese</a>
     <% end %>
+    <% end %>
   </div>
-  <div class="welcome-top jumbotron">
-    <h1 class="app-title">Vim::Factory<small> ver.α</small></h1>
-    <p class="app-subtitle"><%= @top_msg["subtitle"] %><p>
+  <h1>Vim::Factory</h1>
+  <p><%= @top_msg["subtitle"] %></p>
+  <div id="start">
+    <button id="open" class="btn btn-default btn-lg">Get Started</button>
+    <input id="connection_id" type="hidden" value="<%= @connection_id %>">
   </div>
-  <div class="container">
-    <div class="about">
-      <h3 class="featurette-heading"><%= @top_msg["about-title"] %></h2>
-      <p class="lead">
-        <%= @top_msg["about-desc"] %>
-      </p>
-    </div>
-    <div class="start">
-      <h3 class="featurette-heading"><%= @top_msg["start-title"] %></h2>
-      <p class="lead">
-        <%= @top_msg["start-desc"] %>
-      </p>
-      <button id="open" class="btn btn-default btn-lg">Let's Try Vim::Factory !!</button>
-      <input id="connection_id" type="hidden" value="<%= @connection_id %>">
-    </div>
-  </div>
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2015 Created by @mosuke5 & @mogulla3</p>
-    </div>
+  <footer>
+    <p>&copy; 2015 Created by <a href="https://twitter.com/mosuke5">@mosuke5</a> &amp; <a href="https://twitter.com/mogulla3">@mogulla3</a></p>
   </footer>
 </div>

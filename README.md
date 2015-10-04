@@ -43,3 +43,14 @@ commit/push前にチェック
 // テスト実行
 $ bundle exec ruby tests/[テストしたいファイル].rb
 ```
+
+### sassコンパイル
+```
+$ bundle exec sass sass/butterfly.sass ./public/css/butterfly.css
+```
+
+### coffeeコンパイル
+```
+$ coffee -o ./public/js/ -c coffee/
+$ coffee -o ./public/js/ -c coffee/ext/
+```
