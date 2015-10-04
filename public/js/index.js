@@ -32,7 +32,6 @@
       var key, val;
       key = $(this).attr('name');
       val;
-      console.log(key);
       if (key === "colorscheme") {
         if ($(this).prop('checked')) {
           val = $(this).val();
@@ -47,13 +46,9 @@
           val = false;
         }
         results[key] = val;
-        return;
       } else if ($(this).attr('type') === 'select') {
         results[key] = $(this).val();
-        return;
       }
-      val = $(this).val();
-      return results[key] = val;
     });
     return results;
   };
