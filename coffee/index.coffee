@@ -50,10 +50,6 @@ create_vimrc_conetns_json = ->
     else if $(this).attr('type') == 'select'
       results[key] = $(this).val()
       return
-
-    #textbox
-    val = $(this).val()
-    results[key] = val
   
   return results
 
