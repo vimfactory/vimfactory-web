@@ -28,7 +28,7 @@
 
   Terminal = (function() {
     function Terminal(parent, out1, ctl) {
-      var div, px;
+      var bodyStyle, div, px;
       this.parent = parent;
       this.out = out1;
       this.ctl = ctl != null ? ctl : function() {};
@@ -45,9 +45,16 @@
       this.children = [div];
       this.navbar = this.document.getElementById('terminal-navbar');
       this.navbarHeight = this.navbar.clientHeight;
+      bodyStyle = window.getComputedStyle(this.body, null);
+      this.terminalPaddingTop = parseInt(bodyStyle.paddingTop, 10) || 0;
+      this.terminalPaddingBottom = parseInt(bodyStyle.paddingBottom, 10) || 0;
+      this.terminalPaddingLeft = parseInt(bodyStyle.paddingLeft, 10) || 0;
+      this.terminalPaddingRight = parseInt(bodyStyle.paddingRight, 10) || 0;
+      this.terminalExtraAxis = this.navbarHeight + this.terminalPaddingTop + this.terminalPaddingBottom;
+      this.terminalExtraVertical = this.navbarHeight + this.terminalPaddingLeft + this.terminalPaddingRight;
       this.computeCharSize();
-      this.cols = Math.floor(this.body.clientWidth / this.charSize.width);
-      this.rows = Math.floor((window.innerHeight - this.navbarHeight) / this.charSize.height);
+      this.cols = Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width);
+      this.rows = Math.floor((window.innerHeight - this.terminalExtraAxis) / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
       this.scrollback = 1000000;
@@ -1513,8 +1520,8 @@
       oldCols = this.cols;
       oldRows = this.rows;
       this.computeCharSize();
-      this.cols = x || Math.floor(this.body.clientWidth / this.charSize.width);
-      this.rows = y || Math.floor((window.innerHeight - this.navbarHeight) / this.charSize.height);
+      this.cols = x || Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width);
+      this.rows = y || Math.floor((window.innerHeight - this.terminalExtraAxis) / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
       if ((!x && !y) && oldCols === this.cols && oldRows === this.rows) {

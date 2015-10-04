@@ -85,7 +85,8 @@ div#main {
       overflow: hidden; }
       div#main div#right-contents div#terminal-wrapper div#terminal {
         height: 100%;
-        width: 100%; }
+        width: 100%;
+        padding: 3px 5px 13px 5px; }
 
 /**
  * Welcome

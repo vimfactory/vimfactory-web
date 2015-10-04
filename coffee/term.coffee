@@ -68,9 +68,18 @@ class Terminal
     @navbar = @document.getElementById('terminal-navbar')
     @navbarHeight = @navbar.clientHeight
 
+    bodyStyle = window.getComputedStyle(@body, null)
+    @terminalPaddingTop    = parseInt(bodyStyle.paddingTop, 10) || 0
+    @terminalPaddingBottom = parseInt(bodyStyle.paddingBottom, 10) || 0
+    @terminalPaddingLeft   = parseInt(bodyStyle.paddingLeft, 10) || 0
+    @terminalPaddingRight  = parseInt(bodyStyle.paddingRight, 10) || 0
+    
+    @terminalExtraAxis     = @navbarHeight + @terminalPaddingTop + @terminalPaddingBottom
+    @terminalExtraVertical = @navbarHeight + @terminalPaddingLeft + @terminalPaddingRight
+    
     @computeCharSize()
-    @cols = Math.floor(@body.clientWidth / @charSize.width)
-    @rows = Math.floor((window.innerHeight-@navbarHeight) / @charSize.height)
+    @cols = Math.floor((@body.clientWidth - @terminalExtraVertical) / @charSize.width)
+    @rows = Math.floor((window.innerHeight - @terminalExtraAxis) / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
 
@@ -1523,8 +1532,8 @@ class Terminal
     oldCols = @cols
     oldRows = @rows
     @computeCharSize()
-    @cols = x or Math.floor(@body.clientWidth / @charSize.width)
-    @rows = y or Math.floor((window.innerHeight - @navbarHeight) / @charSize.height)
+    @cols = x or Math.floor((@body.clientWidth - @terminalExtraVertical) / @charSize.width)
+    @rows = y or Math.floor((window.innerHeight - @terminalExtraAxis) / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
 
