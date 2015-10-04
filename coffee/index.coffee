@@ -29,7 +29,6 @@ create_vimrc_conetns_json = ->
   $(".vimrc-contents:not(.genre-fixed)").map ->
     key = $(this).attr('name')
     val
-    console.log(key)
 
     #colorscheme
     if key=="colorscheme"
