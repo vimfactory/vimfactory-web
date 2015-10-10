@@ -1,0 +1,30 @@
+<nav id="terminal-navbar" class="navbar">
+  <ul class="nav navbar-nav">
+    <li role="presentation" class="active">
+      <a href="#terminal-wrapper" data-toggle="tab">Terminal</a>
+    </li>
+    <li role="presentation">
+      <a href="#vimrc-preview" data-toggle="tab">.vimrc Preview</a>
+    </li>
+  </ul>
+  <form class="navbar-form navbar-right">
+    <select class="form-control programing-lang">
+      <% @programlang_options.each do |lang| %>
+        <option value="<%= lang['ext'] %>"><%= lang['lang'] %></option>
+      <% end %>
+    </select>
+  </form>
+</nav>
+
+<div class="tab-content">
+  <div id="terminal-wrapper" class="tab-pane active">
+    <div id="terminal"></div>
+  </div>
+  <div id="vimrc-preview" class="tab-pane">
+    <p class="well">
+      <% @initial_options.each do |option_line| %>
+        <%= option_line %><br/>
+      <% end %>
+    </p>
+  </div>
+</div>

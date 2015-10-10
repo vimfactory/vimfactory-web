@@ -2,94 +2,9 @@
 <input id="connection_id" type="hidden" value="<%= @connection_id %>">
 <div id="main" class="hide">
   <div id="left-contents">
-    <header>
-        <h1>Vim::Factory</h1>
-    </header>
-    <div id="vim-settings">
-      <nav>
-        <ul class="nav nav-tabs">
-          <li role="presentation" class="active">
-            <a href="#setting-basic" data-toggle="tab">Settings</a>
-          </li>
-          <li role="presentation">
-            <a href="#setting-color" data-toggle="tab">Color</a>
-          </li>
-        </ul>
-      </nav>
-      <div id="setting-contents" class="tab-content">
-        <div id="setting-basic" class="tab-pane fade in active">
-          <% @basic_options.each do |genre, elements| %>
-            <h4><%= @settings_msg['genre-title'][genre] %></h4>
-            <table class="table table-condensed">
-              <% elements.each do |element| %>
-                <tr>
-                  <td class="table-left"><%= element['message'][@locale] %></td>
-                  <td class="table-right">
-                    <% if element['type'] == 'text' %>
-                        <input class="vimrc-contents genre-<%= genre %>" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['disabled'] %> size="6">
-                    <% else %>
-                        <input class="vimrc-contents genre-<%= genre %>" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['checked'] %> <%= element['disabled'] %> >
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            </table>
-          <% end %>
-        </div>
-        <div id="setting-color" class="tab-pane fade">
-          <h4><%= @settings_msg['color-title'] %></h4>
-          <% @colorscheme_options.each_with_index do |colorscheme, index| %>
-            <div class="colorscheme">
-              <div class="radio">
-                <label>
-                  <input type="radio" class="vimrc-contents" name="colorscheme" value="<%= colorscheme['name'] %>" <%= "checked" if index == 0 %>>
-                  <span class="colorschme-name"><%= colorscheme['name'] %></span>
-                </label>
-                <a href="<%= colorscheme['url'] %>" target=”_blank”>
-                  <i class="colorscheme-link material-icons">link</i>
-                </a>
-              </div>
-              <%= erb :"colorschemes/#{colorscheme['name']}" %>
-            </div>
-          <% end %>
-        </div>
-        <div id="setting-btn-area">
-          <button type="button" id="setting-btn" class="btn btn-primary">Save & Refresh</button>
-        </div>
-      </div>
-    </div>
+    <%= erb :left_contents %>
   </div>
-
   <div id="right-contents">
-    <nav id="terminal-navbar" class="navbar">
-      <ul class="nav navbar-nav">
-        <li role="presentation" class="active">
-          <a href="#terminal-wrapper" data-toggle="tab">Terminal</a>
-        </li>
-        <li role="presentation">
-          <a href="#vimrc-preview" data-toggle="tab">.vimrc Preview</a>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-right">
-        <select class="form-control programing-lang">
-          <% @programlang_options.each do |lang| %>
-            <option value="<%= lang['ext'] %>"><%= lang['lang'] %></option>
-          <% end %>
-        </select>
-      </form>
-    </nav>
-
-    <div class="tab-content">
-      <div id="terminal-wrapper" class="tab-pane active">
-        <div id="terminal"></div>
-      </div>
-      <div id="vimrc-preview" class="tab-pane">
-        <p class="well">
-          <% @initial_options.each do |option_line| %>
-            <%= option_line %><br/>
-          <% end %>
-        </p>
-      </div>
-    </div>
+    <%= erb :right_contents %>
   </div>
 </div>

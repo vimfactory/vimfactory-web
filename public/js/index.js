@@ -46,10 +46,9 @@
           val = false;
         }
         results[key] = val;
-        return;
+      } else if ($(this).attr('type') === 'select') {
+        results[key] = $(this).val();
       }
-      val = $(this).val();
-      return results[key] = val;
     });
     return results;
   };
