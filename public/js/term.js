@@ -53,8 +53,9 @@
       this.terminalExtraAxis = this.navbarHeight + this.terminalPaddingTop + this.terminalPaddingBottom;
       this.terminalExtraVertical = this.navbarHeight + this.terminalPaddingLeft + this.terminalPaddingRight;
       this.computeCharSize();
+      this.terminalHeightRatio = 0.6;
       this.cols = Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width);
-      this.rows = Math.floor((window.innerHeight - this.terminalExtraAxis) * 0.6 / this.charSize.height);
+      this.rows = Math.floor((window.innerHeight - this.terminalExtraAxis) * this.terminalHeightRatio / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
       this.scrollback = 1000000;
@@ -1521,7 +1522,7 @@
       oldRows = this.rows;
       this.computeCharSize();
       this.cols = x || Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width);
-      this.rows = y || Math.floor((window.innerHeight - this.terminalExtraAxis) / this.charSize.height);
+      this.rows = y || Math.floor((window.innerHeight - this.terminalExtraAxis) * this.terminalHeightRatio / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
       if ((!x && !y) && oldCols === this.cols && oldRows === this.rows) {
