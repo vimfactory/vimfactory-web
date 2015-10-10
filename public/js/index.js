@@ -95,23 +95,29 @@
   };
 
   this.start_loading = function() {
-    $("#terminal").css("visibility", "hidden");
+    $("#right-contents").css("visibility", "hidden");
     return $.blockUI({
-      message: '<h1 class="loading-message">now loading...</h1>',
+      message: '<div class="loading-message">now loading...</div>',
+      overlayCSS: {
+        'z-index': 2000,
+        'opacity': 0.7
+      },
       css: {
-        border: 'none',
-        padding: '15px',
-        backgroundColor: 'transparent',
+        'font-size': '25px',
+        'border': 'none',
+        'padding': '15px',
+        'backgroundColor': 'transparent',
         '-webkit-border-radius': '10px',
         '-moz-border-radius': '10px',
-        opacity: 1,
-        color: '#fff'
+        'z-index': 2001,
+        'opacity': 1,
+        'color': '#fff'
       }
     });
   };
 
   this.stop_loading = function() {
-    $("#terminal").css("visibility", "visible");
+    $("#right-contents").css("visibility", "visible");
     return $.unblockUI();
   };
 
