@@ -69,20 +69,29 @@ class Terminal
     @navbarHeight = @navbar.clientHeight
 
     bodyStyle = window.getComputedStyle(@body, null)
+
+    # right-contentsのpadding
+    @parentPaddingTop    = 10
+    @parentPaddingBottom = 10
+
     @terminalPaddingTop    = parseInt(bodyStyle.paddingTop, 10) || 0
     @terminalPaddingBottom = parseInt(bodyStyle.paddingBottom, 10) || 0
     @terminalPaddingLeft   = parseInt(bodyStyle.paddingLeft, 10) || 0
     @terminalPaddingRight  = parseInt(bodyStyle.paddingRight, 10) || 0
 
-    @terminalExtraAxis     = @navbarHeight + @terminalPaddingTop + @terminalPaddingBottom
-    @terminalExtraVertical = @navbarHeight + @terminalPaddingLeft + @terminalPaddingRight
+    @terminalExtraAxis     = @terminalPaddingTop + @terminalPaddingBottom + @parentPaddingTop + @parentPaddingBottom
+    @terminalExtraVertical = @terminalPaddingLeft + @terminalPaddingRight
 
     @computeCharSize()
-    @terminalHeightRatio = 0.6
+    @terminalHeightRatio     = 0.6
+    @vimrcpreviewHeightRatio = 0.4
     @cols = Math.floor((@body.clientWidth - @terminalExtraVertical) / @charSize.width)
-    @rows = Math.floor((window.innerHeight - @terminalExtraAxis) * @terminalHeightRatio / @charSize.height)
+    @rows = Math.floor((window.innerHeight - @terminalExtraAxis - @navbarHeight) * @terminalHeightRatio / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
+    
+    @vimrcPreviewHeight = (window.innerHeight - @terminalExtraAxis - @navbarHeight) * @vimrcpreviewHeightRatio
+    jQuery("#vimrc-preview").css('height', @vimrcPreviewHeight + 'px')
 
     @scrollback = 1000000
     @buffSize = 100000
@@ -1534,7 +1543,7 @@ class Terminal
     oldRows = @rows
     @computeCharSize()
     @cols = x or Math.floor((@body.clientWidth - @terminalExtraVertical) / @charSize.width)
-    @rows = y or Math.floor((window.innerHeight - @terminalExtraAxis) * @terminalHeightRatio / @charSize.height)
+    @rows = y or Math.floor((window.innerHeight - @terminalExtraAxis - @navbarHeight) * @terminalHeightRatio / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
 
@@ -1591,6 +1600,10 @@ class Terminal
     # to null for now.
     @normal = null
     @reset() if x or y
+    
+    # resize vimrc-preview 
+    @vimrcPreviewHeight = (window.innerHeight - @terminalExtraAxis - @navbarHeight) * @vimrcpreviewHeightRatio
+    jQuery("#vimrc-preview").css('height', @vimrcPreviewHeight + 'px')
 
   resizeWindowPlease: (cols) ->
     # This is only when running butterfly in app mode when resizeTo is available

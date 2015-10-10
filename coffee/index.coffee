@@ -78,7 +78,7 @@ update_vimrc = (connection_id) ->
     dataType: "json",
     success: (data) ->
       vimrc_html = data.vimrc.replace(/(\n|\r)/g, "<br />")
-      $("#vimrc-preview p").html(vimrc_html)
+      $("#vimrc-preview").html(vimrc_html)
       defer.resolve()
     error: (data) ->
       alert("Fail to reload vimrc: "+data.message)

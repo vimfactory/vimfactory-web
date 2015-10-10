@@ -46,18 +46,23 @@
       this.navbar = this.document.getElementById('header');
       this.navbarHeight = this.navbar.clientHeight;
       bodyStyle = window.getComputedStyle(this.body, null);
+      this.parentPaddingTop = 10;
+      this.parentPaddingBottom = 10;
       this.terminalPaddingTop = parseInt(bodyStyle.paddingTop, 10) || 0;
       this.terminalPaddingBottom = parseInt(bodyStyle.paddingBottom, 10) || 0;
       this.terminalPaddingLeft = parseInt(bodyStyle.paddingLeft, 10) || 0;
       this.terminalPaddingRight = parseInt(bodyStyle.paddingRight, 10) || 0;
-      this.terminalExtraAxis = this.navbarHeight + this.terminalPaddingTop + this.terminalPaddingBottom;
-      this.terminalExtraVertical = this.navbarHeight + this.terminalPaddingLeft + this.terminalPaddingRight;
+      this.terminalExtraAxis = this.terminalPaddingTop + this.terminalPaddingBottom + this.parentPaddingTop + this.parentPaddingBottom;
+      this.terminalExtraVertical = this.terminalPaddingLeft + this.terminalPaddingRight;
       this.computeCharSize();
       this.terminalHeightRatio = 0.6;
+      this.vimrcpreviewHeightRatio = 0.4;
       this.cols = Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width);
-      this.rows = Math.floor((window.innerHeight - this.terminalExtraAxis) * this.terminalHeightRatio / this.charSize.height);
+      this.rows = Math.floor((window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.terminalHeightRatio / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
+      this.vimrcPreviewHeight = (window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.vimrcpreviewHeightRatio;
+      jQuery("#vimrc-preview").css('height', this.vimrcPreviewHeight + 'px');
       this.scrollback = 1000000;
       this.buffSize = 100000;
       this.visualBell = 100;
@@ -1522,7 +1527,7 @@
       oldRows = this.rows;
       this.computeCharSize();
       this.cols = x || Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width);
-      this.rows = y || Math.floor((window.innerHeight - this.terminalExtraAxis) * this.terminalHeightRatio / this.charSize.height);
+      this.rows = y || Math.floor((window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.terminalHeightRatio / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
       if ((!x && !y) && oldCols === this.cols && oldRows === this.rows) {
@@ -1584,8 +1589,10 @@
       this.refresh(true);
       this.normal = null;
       if (x || y) {
-        return this.reset();
+        this.reset();
       }
+      this.vimrcPreviewHeight = (window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.vimrcpreviewHeightRatio;
+      return jQuery("#vimrc-preview").css('height', this.vimrcPreviewHeight + 'px');
     };
 
     Terminal.prototype.resizeWindowPlease = function(cols) {

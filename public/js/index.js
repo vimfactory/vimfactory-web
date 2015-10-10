@@ -84,7 +84,7 @@
       success: function(data) {
         var vimrc_html;
         vimrc_html = data.vimrc.replace(/(\n|\r)/g, "<br />");
-        $("#vimrc-preview p").html(vimrc_html);
+        $("#vimrc-preview").html(vimrc_html);
         return defer.resolve();
       },
       error: function(data) {
