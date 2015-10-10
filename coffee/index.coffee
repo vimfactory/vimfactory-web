@@ -10,7 +10,7 @@ $("#setting-btn").click ->
     stop_loading()
 
 create_vimrc_conetns_json = ->
-  ### 
+  ###
   json形式
   {
     "connection_id": "xxxxxxxxx",
@@ -23,7 +23,7 @@ create_vimrc_conetns_json = ->
     }
   }
   ###
-  
+
   results = {}
 
   $(".vimrc-contents:not(.genre-fixed)").map ->
@@ -45,12 +45,12 @@ create_vimrc_conetns_json = ->
         val = false
       results[key] = val
       return
-    
+
     #selectbox
     else if $(this).attr('type') == 'select'
       results[key] = $(this).val()
       return
-  
+
   return results
 
 post_vimrc = (id, vimrc_contents) ->
@@ -90,13 +90,13 @@ update_vimrc = (connection_id) ->
   $.blockUI
     message: '<h1 class="loading-message">now loading...</h1>',
     css:
-      border: 'none', 
-      padding: '15px', 
-      backgroundColor: 'transparent', 
-      '-webkit-border-radius': '10px', 
-      '-moz-border-radius': '10px', 
-      opacity: 1, 
-      color: '#fff' 
+      border: 'none',
+      padding: '15px',
+      backgroundColor: 'transparent',
+      '-webkit-border-radius': '10px',
+      '-moz-border-radius': '10px',
+      opacity: 1,
+      color: '#fff'
 
 
 @stop_loading = ->

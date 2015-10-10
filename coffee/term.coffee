@@ -65,7 +65,7 @@ class Terminal
     @body.appendChild(div)
     @children = [div]
 
-    @navbar = @document.getElementById('terminal-navbar')
+    @navbar = @document.getElementById('header')
     @navbarHeight = @navbar.clientHeight
 
     bodyStyle = window.getComputedStyle(@body, null)
@@ -73,13 +73,16 @@ class Terminal
     @terminalPaddingBottom = parseInt(bodyStyle.paddingBottom, 10) || 0
     @terminalPaddingLeft   = parseInt(bodyStyle.paddingLeft, 10) || 0
     @terminalPaddingRight  = parseInt(bodyStyle.paddingRight, 10) || 0
-    
+
     @terminalExtraAxis     = @navbarHeight + @terminalPaddingTop + @terminalPaddingBottom
     @terminalExtraVertical = @navbarHeight + @terminalPaddingLeft + @terminalPaddingRight
-    
+    # @terminalExtraAxis     = @terminalPaddingTop + @terminalPaddingBottom
+    # @terminalExtraVertical = @terminalPaddingLeft + @terminalPaddingRight
+
     @computeCharSize()
     @cols = Math.floor((@body.clientWidth - @terminalExtraVertical) / @charSize.width)
-    @rows = Math.floor((window.innerHeight - @terminalExtraAxis) / @charSize.height)
+    @rows = Math.floor((window.innerHeight - @terminalExtraAxis) * 0.6 / @charSize.height)
+    # @rows = Math.floor((window.innerHeight - @terminalExtraAxis) / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
 
@@ -3111,7 +3114,7 @@ class Terminal
     Swedish: null # (H or (7
     Swiss: null # (=
     ISOLatin: null # /A
-    
+
   reload_vim: (command) ->
     defer = jQuery.Deferred()
     term = @

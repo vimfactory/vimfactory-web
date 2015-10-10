@@ -13,7 +13,7 @@
 
   create_vimrc_conetns_json = function() {
 
-    /* 
+    /*
     json形式
     {
       "connection_id": "xxxxxxxxx",

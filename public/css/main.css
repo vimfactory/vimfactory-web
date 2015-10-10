@@ -5,6 +5,9 @@ html {
   position: relative;
   min-height: 100%;
   height: 100%; }
+  html h1 {
+    margin: 0;
+    padding: 0; }
 
 body {
   min-height: 100%;
@@ -17,76 +20,65 @@ body {
  * Main Page
  */
 div#main {
-  height: 100%;
+  padding: 60px 0 0 0;
   width: 100%;
-  /**
-   * left-contents
-   */
-  /**
-   * right-contents
-   */ }
-  div#main div#left-contents {
-    min-height: 100%;
-    width: 32%;
-    border-right: 1px solid #ccc; }
-    div#main div#left-contents header {
-      padding: 35px 13px;
-      border-bottom: 1px solid #ccc; }
-      div#main div#left-contents header h1 {
-        margin: 0;
-        text-align: center;
-        color: #666;
-        font-weight: normal;
-        font-size: 220%;
-        font-family: "Maven Pro", "Verdana", sans-serif; }
-    div#main div#left-contents h4 {
-      font-size: 14px; }
-    div#main div#left-contents div#vim-settings {
-      padding: 15px 13px;
-      font-size: 85%; }
-      div#main div#left-contents div#vim-settings div#setting-basic td {
-        border: none; }
-      div#main div#left-contents div#vim-settings div#setting-basic td.table-right {
-        text-align: right; }
-      div#main div#left-contents div#vim-settings div#setting-basic td.table-right input[type="text"] {
-        text-align: right; }
-      div#main div#left-contents div#vim-settings div#setting-color i.colorscheme-link {
-        vertical-align: middle;
-        font-size: 19px;
-        margin-left: 3px; }
-      div#main div#left-contents div#vim-settings div#setting-btn-area {
-        text-align: center; }
-        div#main div#left-contents div#vim-settings div#setting-btn-area button {
-          background-color: #d75f5f;
-          border: none; }
-          div#main div#left-contents div#vim-settings div#setting-btn-area button:hover {
-            background-color: #bb2f2f;
-            opacity: 0.9; }
-  div#main div#right-contents {
-    width: 68%;
-    min-height: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
+  height: 100%;
+  min-height: 100%; }
+  div#main header#header {
+    display: flex;
     background-color: #f8f8f8;
-    padding: 0px 13px; }
-    div#main div#right-contents nav.navbar {
-      margin-bottom: 0; }
-    div#main div#right-contents li a {
-      padding: 7px 14px;
-      margin: 7px 0px;
-      border-radius: 2px;
-      color: #444; }
-    div#main div#right-contents li.active > a {
-      background-color: #626262;
-      color: #fff; }
-    div#main div#right-contents div#terminal-wrapper {
-      background-color: #110f13;
-      overflow: hidden; }
-      div#main div#right-contents div#terminal-wrapper div#terminal {
-        height: 100%;
-        width: 100%;
-        padding: 3px 5px 13px 5px; }
+    height: 60px;
+    margin-bottom: 0; }
+    div#main header#header div#logo {
+      font-family: "Maven Pro", "Verdana", sans-serif;
+      text-align: center;
+      color: #666;
+      font-weight: normal; }
+  div#main div.row {
+    margin: 0;
+    height: 100%;
+    min-height: 100%;
+    /**
+     * left-contents
+     */
+    /**
+     * right-contents
+     */ }
+    div#main div.row div#left-contents {
+      border-right: 1px solid #ccc;
+      height: 100%;
+      min-height: 100%;
+      padding: 15px 13px; }
+      div#main div.row div#left-contents h4 {
+        font-size: 14px; }
+      div#main div.row div#left-contents div#vim-settings {
+        font-size: 85%; }
+        div#main div.row div#left-contents div#vim-settings div#setting-basic td {
+          border: none; }
+        div#main div.row div#left-contents div#vim-settings div#setting-basic td.table-right {
+          text-align: right; }
+        div#main div.row div#left-contents div#vim-settings div#setting-basic td.table-right input[type="text"] {
+          text-align: right; }
+        div#main div.row div#left-contents div#vim-settings div#setting-color i.colorscheme-link {
+          vertical-align: middle;
+          font-size: 19px;
+          margin-left: 3px; }
+    div#main div.row div#right-contents {
+      padding: 0;
+      position: fixed;
+      top: 60px;
+      right: 0;
+      padding: 15px 13px; }
+      div#main div.row div#right-contents div#terminal-wrapper {
+        background-color: #110f13;
+        overflow: hidden; }
+        div#main div.row div#right-contents div#terminal-wrapper div#terminal {
+          height: 100%;
+          width: 100%;
+          padding: 3px 5px 13px 5px; }
+      div#main div.row div#right-contents div#vimrc-preview {
+        background-color: #ddd;
+        padding: 10px; }
 
 /**
  * Welcome

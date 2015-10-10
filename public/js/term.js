@@ -43,7 +43,7 @@
       div.className = 'line';
       this.body.appendChild(div);
       this.children = [div];
-      this.navbar = this.document.getElementById('terminal-navbar');
+      this.navbar = this.document.getElementById('header');
       this.navbarHeight = this.navbar.clientHeight;
       bodyStyle = window.getComputedStyle(this.body, null);
       this.terminalPaddingTop = parseInt(bodyStyle.paddingTop, 10) || 0;
@@ -54,7 +54,7 @@
       this.terminalExtraVertical = this.navbarHeight + this.terminalPaddingLeft + this.terminalPaddingRight;
       this.computeCharSize();
       this.cols = Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width);
-      this.rows = Math.floor((window.innerHeight - this.terminalExtraAxis) / this.charSize.height);
+      this.rows = Math.floor((window.innerHeight - this.terminalExtraAxis) * 0.6 / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
       this.scrollback = 1000000;
