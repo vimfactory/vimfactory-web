@@ -57,7 +57,7 @@
       this.computeCharSize();
       this.terminalHeightRatio = 0.6;
       this.vimrcpreviewHeightRatio = 0.4;
-      this.cols = Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width);
+      this.cols = Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width) - 1;
       this.rows = Math.floor((window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.terminalHeightRatio / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
@@ -174,7 +174,9 @@
     };
 
     Terminal.prototype.computeCharSize = function() {
-      var testSpan;
+      var testSpan, tmp;
+      tmp = this.children[0].innerHTML;
+      jQuery(this.children[0]).empty();
       testSpan = document.createElement('span');
       testSpan.textContent = '0123456789';
       this.children[0].appendChild(testSpan);
@@ -182,7 +184,8 @@
         width: testSpan.getBoundingClientRect().width / 10,
         height: this.children[0].getBoundingClientRect().height
       };
-      return this.children[0].removeChild(testSpan);
+      this.children[0].removeChild(testSpan);
+      return jQuery(this.children[0]).append(tmp);
     };
 
     Terminal.prototype.eraseAttr = function() {
@@ -1497,7 +1500,7 @@
       oldCols = this.cols;
       oldRows = this.rows;
       this.computeCharSize();
-      this.cols = x || Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width);
+      this.cols = x || Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width) - 1;
       this.rows = y || Math.floor((window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.terminalHeightRatio / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
