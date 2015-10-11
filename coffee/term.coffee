@@ -93,8 +93,8 @@ class Terminal
     @vimrcPreviewHeight = (window.innerHeight - @terminalExtraAxis - @navbarHeight) * @vimrcpreviewHeightRatio
     jQuery("#vimrc-preview").css('height', @vimrcPreviewHeight + 'px')
 
-    @scrollback = 1000000
-    @buffSize = 100000
+    @scrollback = @rows
+    @buffSize = @rows
 
     @visualBell = 100
     @convertEol = false
@@ -1546,6 +1546,9 @@ class Terminal
     @rows = y or Math.floor((window.innerHeight - @terminalExtraAxis - @navbarHeight) * @terminalHeightRatio / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
+
+    @scrollback = @rows
+    @buffSize = @rows
 
     if (not x and not y) and oldCols == @cols and oldRows == @rows
       return

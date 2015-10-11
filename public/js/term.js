@@ -63,8 +63,8 @@
       this.body.style['padding-bottom'] = px + "px";
       this.vimrcPreviewHeight = (window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.vimrcpreviewHeightRatio;
       jQuery("#vimrc-preview").css('height', this.vimrcPreviewHeight + 'px');
-      this.scrollback = 1000000;
-      this.buffSize = 100000;
+      this.scrollback = this.rows;
+      this.buffSize = this.rows;
       this.visualBell = 100;
       this.convertEol = false;
       this.termName = 'xterm';
@@ -1501,6 +1501,8 @@
       this.rows = y || Math.floor((window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.terminalHeightRatio / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
+      this.scrollback = this.rows;
+      this.buffSize = this.rows;
       if ((!x && !y) && oldCols === this.cols && oldRows === this.rows) {
         return;
       }
