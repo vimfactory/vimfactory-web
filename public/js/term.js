@@ -936,15 +936,6 @@
                 i++;
               }
               this.params.push(this.currentParam);
-              switch (this.params[0]) {
-                case 0:
-                case 1:
-                case 2:
-                  if (this.params[1]) {
-                    this.title = this.params[1] + " - ƸӜƷ butterfly";
-                    this.handleTitle(this.title);
-                  }
-              }
               this.params = [];
               this.currentParam = 0;
               this.state = State.normal;

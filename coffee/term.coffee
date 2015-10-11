@@ -886,11 +886,11 @@ class Terminal
           if ch is "\x1b" or ch is "\x07"
             i++ if ch is "\x1b"
             @params.push @currentParam
-            switch @params[0]
-              when 0, 1, 2
-                if @params[1]
-                  @title = @params[1] + " - ƸӜƷ butterfly"
-                  @handleTitle @title
+#            switch @params[0]
+#              when 0, 1, 2
+#                if @params[1]
+#                  @title = @params[1] + " - ƸӜƷ butterfly"
+#                  @handleTitle @title
 
             # reset colors
             @params = []
