@@ -5,6 +5,6 @@
 vendor/bundle
 logs/*.log
 logs/*.log.*
-config/docker/connection_sh.conf
+config/thin/thin.yml
 bower_components
 !.gitkeep
