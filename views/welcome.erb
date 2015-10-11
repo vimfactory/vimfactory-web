@@ -8,11 +8,23 @@
     <% end %>
     <% end %>
   </div>
-  <h1>Vim::Factory</h1>
-  <p><%= @top_msg["subtitle"] %></p>
-  <div id="start">
-    <button id="open" class="btn btn-default btn-lg">Get Started</button>
-    <input id="connection_id" type="hidden" value="<%= @connection_id %>">
+  <div class="jumbotron">
+    <h1><span class="title-deco">Vim</span>::Factory</h1>
+    <p><%= @top_msg["subtitle"] %></p>
+    <div id="start">
+      <button id="open" class="btn btn-default btn-lg">Get Started</button>
+      <input id="connection_id" type="hidden" value="<%= @connection_id %>">
+    </div>
+  </div>
+  <div class="container">
+    <div class="news">
+      <h3>News</h3>
+      <ul class="list-unstyled">
+        <li>2015/10/18<br><p>デザインを一新いたしました</p></li>
+        <li>2015/07/19<br><p>Vim::Factoryの技術情報を一部公開しました。<a href="http://mosuke5.hateblo.jp/entry/2015/07/19/135844" target="_blank">こちら</a>から。</p></li>
+        <li>2015/05/01<br><p>α版をリリースしました。</p></li>
+      </ul>
+    </div>
   </div>
   <footer>
     <p>&copy; 2015 Created by <a href="https://twitter.com/mosuke5">@mosuke5</a> &amp; <a href="https://twitter.com/mogulla3">@mogulla3</a></p>

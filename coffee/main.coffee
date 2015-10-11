@@ -23,7 +23,7 @@ $ = document.querySelectorAll.bind(document)
 
 jQuery("#open").click ->
   jQuery("#welcome").addClass("hide")
-  jQuery("body").css( "background-image", "url('')" )
+  jQuery("body").css("background-image","none")
   jQuery("#main").removeClass("hide")
 
   send = (data) ->

@@ -10,9 +10,14 @@ html {
     padding: 0; }
 
 body {
+  background-image: -webkit-radial-gradient(center, circle cover, #456 0%, #1a1a1a 100%);
   min-height: 100%;
   height: 100%;
   font-family: "Maven Pro", "Verdana", sans-serif; }
+
+span.title-deco {
+  color: #d75f5f;
+  font-weight: bold; }
 
 /**
  * Main Page
@@ -107,48 +112,38 @@ div#main {
  * Welcome
  */
 div#welcome {
-  background-color: #292929;
-  color: #fff;
-  height: 100%;
-  padding: 50px 50px 0 50px;
-  background-image: -webkit-radial-gradient(center, circle cover, #456 0%, #1a1a1a 100%); }
-  div#welcome h1 {
+  color: #fafafa; }
+  div#welcome a {
+    color: #fff;
+    text-decoration: underline; }
+  div#welcome div.jumbotron {
     text-align: center;
-    letter-spacing: 5px;
-    font-size: 70px;
-    font-weight: normal;
-    padding: 100px 0 30px 0;
-    margin: 0; }
-  div#welcome h1:before {
-    content: "<";
-    font-weight: bold;
-    margin-right: 15px;
-    color: #d75f5f; }
-  div#welcome h1:after {
-    content: ">";
-    font-weight: bold;
-    margin-left: 15px;
-    color: #d75f5f; }
-  div#welcome p {
-    text-align: center;
-    margin: 0;
-    font-size: 22px; }
-  div#welcome div#start {
-    margin: 40px 0 80px;
-    text-align: center; }
-    div#welcome div#start button#open {
-      padding: 13px 42px;
-      background-color: #d75f5f;
-      color: #fff;
-      border: none; }
-      div#welcome div#start button#open:hover {
-        background-color: #bb2f2f;
-        opacity: 0.9; }
+    background-color: transparent; }
+    div#welcome div.jumbotron h1 {
+      letter-spacing: 3px;
+      font-weight: normal;
+      padding: 100px 0 30px 0;
+      margin: 0; }
+    div#welcome div.jumbotron p {
+      margin: 0;
+      font-size: 22px; }
+    div#welcome div.jumbotron div#start {
+      margin: 40px 0px 20px; }
+      div#welcome div.jumbotron div#start button#open {
+        padding: 13px 42px;
+        background-color: #d75f5f;
+        color: #fff;
+        border: none; }
+        div#welcome div.jumbotron div#start button#open:hover {
+          background-color: #bb2f2f;
+          opacity: 0.9; }
+  div#welcome div.container {
+    max-width: 420px; }
+    div#welcome div.container h3 {
+      text-align: center; }
   div#welcome footer {
+    text-align: center;
     width: 100%;
     margin: 10px 0; }
-    div#welcome footer a {
-      color: #fff;
-      text-decoration: underline; }
 
 /*# sourceMappingURL=main.css.map */
