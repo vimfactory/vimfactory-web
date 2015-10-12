@@ -1,10 +1,27 @@
 <%= erb :welcome %>
 <input id="connection_id" type="hidden" value="<%= @connection_id %>">
-<div id="main" class="hide">
-  <div id="left-contents">
-    <%= erb :left_contents %>
-  </div>
-  <div id="right-contents">
-    <%= erb :right_contents %>
+<div id="main" class="hide container">
+  <header id="header" class="navbar-fixed-top row">
+    <div id="logo" class="col-md-4">
+      <div id="logo-inner">
+        <h1><span>&lt;</span> Vim::Factory <span>&gt;</span></h1>
+      </div>
+    </div>
+    <div id="header-content" class="col-md-8">
+      <button type="button" id="setting-btn" class="btn btn-primary">Save &amp; Refresh</button>
+      <select class="programing-lang">
+        <% @programlang_options.each do |lang| %>
+          <option value="<%= lang['ext'] %>"><%= lang['lang'] %></option>
+        <% end %>
+      </select>
+    </div>
+  </header>
+  <div class="row">
+    <div id="left-contents" class="col-md-4">
+      <%= erb :left_contents %>
+    </div>
+    <div id="right-contents" class="col-md-8">
+      <%= erb :right_contents %>
+    </div>
   </div>
 </div>

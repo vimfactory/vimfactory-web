@@ -65,23 +65,33 @@ class Terminal
     @body.appendChild(div)
     @children = [div]
 
-    @navbar = @document.getElementById('terminal-navbar')
+    @navbar = @document.getElementById('header')
     @navbarHeight = @navbar.clientHeight
 
     bodyStyle = window.getComputedStyle(@body, null)
+
+    # right-contentsのpadding
+    @parentPaddingTop    = 10
+    @parentPaddingBottom = 10
+
     @terminalPaddingTop    = parseInt(bodyStyle.paddingTop, 10) || 0
     @terminalPaddingBottom = parseInt(bodyStyle.paddingBottom, 10) || 0
     @terminalPaddingLeft   = parseInt(bodyStyle.paddingLeft, 10) || 0
     @terminalPaddingRight  = parseInt(bodyStyle.paddingRight, 10) || 0
-    
-    @terminalExtraAxis     = @navbarHeight + @terminalPaddingTop + @terminalPaddingBottom
-    @terminalExtraVertical = @navbarHeight + @terminalPaddingLeft + @terminalPaddingRight
-    
+
+    @terminalExtraAxis     = @terminalPaddingTop + @terminalPaddingBottom + @parentPaddingTop + @parentPaddingBottom
+    @terminalExtraVertical = @terminalPaddingLeft + @terminalPaddingRight
+
     @computeCharSize()
+    @terminalHeightRatio     = 0.6
+    @vimrcpreviewHeightRatio = 0.4
     @cols = Math.floor((@body.clientWidth - @terminalExtraVertical) / @charSize.width)
-    @rows = Math.floor((window.innerHeight - @terminalExtraAxis) / @charSize.height)
+    @rows = Math.floor((window.innerHeight - @terminalExtraAxis - @navbarHeight) * @terminalHeightRatio / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
+    
+    @vimrcPreviewHeight = (window.innerHeight - @terminalExtraAxis - @navbarHeight) * @vimrcpreviewHeightRatio
+    jQuery("#vimrc-preview").css('height', @vimrcPreviewHeight + 'px')
 
     @scrollback = 1000000
     @buffSize = 100000
@@ -389,17 +399,17 @@ class Terminal
         sendButton ev
         cancel ev
 
-  linkify: (t) ->
-    # http://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
-    urlPattern = (
-      /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim)
-    pseudoUrlPattern = /(^|[^\/])(www\.[\S]+(\b|$))/gim
-    emailAddressPattern = /[\w.]+@[a-zA-Z_-]+?(?:\.[a-zA-Z]{2,6})+/gim
-    (part
-      .replace(urlPattern, '<a href="$&">$&</a>')
-      .replace(pseudoUrlPattern, '$1<a href="http://$2">$2</a>')
-      .replace(emailAddressPattern, '<a href="mailto:$&">$&</a>'
-    ) for part in t.split('&nbsp;')).join('&nbsp;')
+#  linkify: (t) ->
+#    # http://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
+#    urlPattern = (
+#      /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim)
+#    pseudoUrlPattern = /(^|[^\/])(www\.[\S]+(\b|$))/gim
+#    emailAddressPattern = /[\w.]+@[a-zA-Z_-]+?(?:\.[a-zA-Z]{2,6})+/gim
+#    (part
+#      .replace(urlPattern, '<a href="$&">$&</a>')
+#      .replace(pseudoUrlPattern, '$1<a href="http://$2">$2</a>')
+#      .replace(emailAddressPattern, '<a href="mailto:$&">$&</a>'
+#    ) for part in t.split('&nbsp;')).join('&nbsp;')
 
   refresh: (force=false) ->
     for cursor in @body.querySelectorAll(".cursor")
@@ -500,7 +510,7 @@ class Terminal
         out += "</span>" if i is x
         attr = data
       out += "</span>" unless @equalAttr attr, @defAttr
-      out = @linkify(out) unless j is @y + @shift or data.html
+#      out = @linkify(out) unless j is @y + @shift or data.html
       out += '\u23CE' if line.wrap
       if @children[j]
         @children[j].innerHTML = out
@@ -876,11 +886,11 @@ class Terminal
           if ch is "\x1b" or ch is "\x07"
             i++ if ch is "\x1b"
             @params.push @currentParam
-            switch @params[0]
-              when 0, 1, 2
-                if @params[1]
-                  @title = @params[1] + " - ƸӜƷ butterfly"
-                  @handleTitle @title
+#            switch @params[0]
+#              when 0, 1, 2
+#                if @params[1]
+#                  @title = @params[1] + " - ƸӜƷ butterfly"
+#                  @handleTitle @title
 
             # reset colors
             @params = []
@@ -1533,7 +1543,7 @@ class Terminal
     oldRows = @rows
     @computeCharSize()
     @cols = x or Math.floor((@body.clientWidth - @terminalExtraVertical) / @charSize.width)
-    @rows = y or Math.floor((window.innerHeight - @terminalExtraAxis) / @charSize.height)
+    @rows = y or Math.floor((window.innerHeight - @terminalExtraAxis - @navbarHeight) * @terminalHeightRatio / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
 
@@ -1590,6 +1600,10 @@ class Terminal
     # to null for now.
     @normal = null
     @reset() if x or y
+    
+    # resize vimrc-preview 
+    @vimrcPreviewHeight = (window.innerHeight - @terminalExtraAxis - @navbarHeight) * @vimrcpreviewHeightRatio
+    jQuery("#vimrc-preview").css('height', @vimrcPreviewHeight + 'px')
 
   resizeWindowPlease: (cols) ->
     # This is only when running butterfly in app mode when resizeTo is available
@@ -3111,7 +3125,7 @@ class Terminal
     Swedish: null # (H or (7
     Swiss: null # (=
     ISOLatin: null # /A
-    
+
   reload_vim: (command) ->
     defer = jQuery.Deferred()
     term = @

@@ -43,20 +43,26 @@
       div.className = 'line';
       this.body.appendChild(div);
       this.children = [div];
-      this.navbar = this.document.getElementById('terminal-navbar');
+      this.navbar = this.document.getElementById('header');
       this.navbarHeight = this.navbar.clientHeight;
       bodyStyle = window.getComputedStyle(this.body, null);
+      this.parentPaddingTop = 10;
+      this.parentPaddingBottom = 10;
       this.terminalPaddingTop = parseInt(bodyStyle.paddingTop, 10) || 0;
       this.terminalPaddingBottom = parseInt(bodyStyle.paddingBottom, 10) || 0;
       this.terminalPaddingLeft = parseInt(bodyStyle.paddingLeft, 10) || 0;
       this.terminalPaddingRight = parseInt(bodyStyle.paddingRight, 10) || 0;
-      this.terminalExtraAxis = this.navbarHeight + this.terminalPaddingTop + this.terminalPaddingBottom;
-      this.terminalExtraVertical = this.navbarHeight + this.terminalPaddingLeft + this.terminalPaddingRight;
+      this.terminalExtraAxis = this.terminalPaddingTop + this.terminalPaddingBottom + this.parentPaddingTop + this.parentPaddingBottom;
+      this.terminalExtraVertical = this.terminalPaddingLeft + this.terminalPaddingRight;
       this.computeCharSize();
+      this.terminalHeightRatio = 0.6;
+      this.vimrcpreviewHeightRatio = 0.4;
       this.cols = Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width);
-      this.rows = Math.floor((window.innerHeight - this.terminalExtraAxis) / this.charSize.height);
+      this.rows = Math.floor((window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.terminalHeightRatio / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
+      this.vimrcPreviewHeight = (window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.vimrcpreviewHeightRatio;
+      jQuery("#vimrc-preview").css('height', this.vimrcPreviewHeight + 'px');
       this.scrollback = 1000000;
       this.buffSize = 100000;
       this.visualBell = 100;
@@ -378,23 +384,6 @@
       })(this));
     };
 
-    Terminal.prototype.linkify = function(t) {
-      var emailAddressPattern, part, pseudoUrlPattern, urlPattern;
-      urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
-      pseudoUrlPattern = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
-      emailAddressPattern = /[\w.]+@[a-zA-Z_-]+?(?:\.[a-zA-Z]{2,6})+/gim;
-      return ((function() {
-        var k, len, ref, results;
-        ref = t.split('&nbsp;');
-        results = [];
-        for (k = 0, len = ref.length; k < len; k++) {
-          part = ref[k];
-          results.push(part.replace(urlPattern, '<a href="$&">$&</a>').replace(pseudoUrlPattern, '$1<a href="http://$2">$2</a>').replace(emailAddressPattern, '<a href="mailto:$&">$&</a>'));
-        }
-        return results;
-      })()).join('&nbsp;');
-    };
-
     Terminal.prototype.refresh = function(force) {
       var attr, ch, classes, cursor, data, fg, group, i, j, k, len, len1, len2, len3, line, lines, m, n, newOut, o, out, q, ref, ref1, ref2, ref3, ref4, skipnext, styles, x;
       if (force == null) {
@@ -517,9 +506,6 @@
         }
         if (!this.equalAttr(attr, this.defAttr)) {
           out += "</span>";
-        }
-        if (!(j === this.y + this.shift || data.html)) {
-          out = this.linkify(out);
         }
         if (line.wrap) {
           out += '\u23CE';
@@ -930,15 +916,6 @@
                 i++;
               }
               this.params.push(this.currentParam);
-              switch (this.params[0]) {
-                case 0:
-                case 1:
-                case 2:
-                  if (this.params[1]) {
-                    this.title = this.params[1] + " - ƸӜƷ butterfly";
-                    this.handleTitle(this.title);
-                  }
-              }
               this.params = [];
               this.currentParam = 0;
               this.state = State.normal;
@@ -1521,7 +1498,7 @@
       oldRows = this.rows;
       this.computeCharSize();
       this.cols = x || Math.floor((this.body.clientWidth - this.terminalExtraVertical) / this.charSize.width);
-      this.rows = y || Math.floor((window.innerHeight - this.terminalExtraAxis) / this.charSize.height);
+      this.rows = y || Math.floor((window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.terminalHeightRatio / this.charSize.height);
       px = window.innerHeight % this.charSize.height;
       this.body.style['padding-bottom'] = px + "px";
       if ((!x && !y) && oldCols === this.cols && oldRows === this.rows) {
@@ -1583,8 +1560,10 @@
       this.refresh(true);
       this.normal = null;
       if (x || y) {
-        return this.reset();
+        this.reset();
       }
+      this.vimrcPreviewHeight = (window.innerHeight - this.terminalExtraAxis - this.navbarHeight) * this.vimrcpreviewHeightRatio;
+      return jQuery("#vimrc-preview").css('height', this.vimrcPreviewHeight + 'px');
     };
 
     Terminal.prototype.resizeWindowPlease = function(cols) {

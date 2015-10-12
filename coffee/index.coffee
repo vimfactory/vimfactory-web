@@ -10,7 +10,7 @@ $("#setting-btn").click ->
     stop_loading()
 
 create_vimrc_conetns_json = ->
-  ### 
+  ###
   json形式
   {
     "connection_id": "xxxxxxxxx",
@@ -23,7 +23,7 @@ create_vimrc_conetns_json = ->
     }
   }
   ###
-  
+
   results = {}
 
   $(".vimrc-contents:not(.genre-fixed)").map ->
@@ -45,12 +45,12 @@ create_vimrc_conetns_json = ->
         val = false
       results[key] = val
       return
-    
+
     #selectbox
     else if $(this).attr('type') == 'select'
       results[key] = $(this).val()
       return
-  
+
   return results
 
 post_vimrc = (id, vimrc_contents) ->
@@ -78,7 +78,7 @@ update_vimrc = (connection_id) ->
     dataType: "json",
     success: (data) ->
       vimrc_html = data.vimrc.replace(/(\n|\r)/g, "<br />")
-      $("#vimrc-preview p").html(vimrc_html)
+      $("#vimrc-preview").html(vimrc_html)
       defer.resolve()
     error: (data) ->
       alert("Fail to reload vimrc: "+data.message)
@@ -86,21 +86,26 @@ update_vimrc = (connection_id) ->
 
 
 @start_loading = ->
-  $("#terminal").css("visibility","hidden")
+  $("#right-contents").css("visibility","hidden")
   $.blockUI
-    message: '<h1 class="loading-message">now loading...</h1>',
+    message: '<div class="loading-message">now loading...</div>',
+    overlayCSS:
+      'z-index': 2000,
+      'opacity': 0.7
     css:
-      border: 'none', 
-      padding: '15px', 
-      backgroundColor: 'transparent', 
-      '-webkit-border-radius': '10px', 
-      '-moz-border-radius': '10px', 
-      opacity: 1, 
-      color: '#fff' 
+      'font-size': '25px',
+      'border': 'none',
+      'padding': '15px',
+      'backgroundColor': 'transparent',
+      '-webkit-border-radius': '10px',
+      '-moz-border-radius': '10px',
+      'z-index': 2001
+      'opacity': 1,
+      'color': '#fff'
 
 
 @stop_loading = ->
-  $("#terminal").css("visibility","visible")
+  $("#right-contents").css("visibility","visible")
   $.unblockUI()
 
 
