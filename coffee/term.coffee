@@ -85,7 +85,7 @@ class Terminal
     @computeCharSize()
     @terminalHeightRatio     = 0.6
     @vimrcpreviewHeightRatio = 0.4
-    @cols = Math.floor((@body.clientWidth - @terminalExtraVertical) / @charSize.width)
+    @cols = Math.floor((@body.clientWidth - @terminalExtraVertical) / @charSize.width) - 1
     @rows = Math.floor((window.innerHeight - @terminalExtraAxis - @navbarHeight) * @terminalHeightRatio / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
@@ -195,8 +195,16 @@ class Terminal
     @screen.push @blankLine(false, false) while i--
     @setupStops()
     @skipNextKey = null
-
+  
+  ## 文字サイズ決定のロジックを変更 
+  #  もともと'0123456789'というテストspanを挿入し、それで高さと幅を図っていたが
+  #  既存の文字がある状態でspanを挿入すると、謎の記号で改行問題によって、
+  #  正確な高さがはかれなくなる。
+  #  そのため、一度子要素の中身を削除してからテストspanを挿入して高さと幅を計算するように変更
   computeCharSize: ->
+    tmp = @children[0].innerHTML
+    jQuery(@children[0]).empty()
+
     testSpan = document.createElement('span')
     testSpan.textContent = '0123456789'
     @children[0].appendChild(testSpan)
@@ -204,6 +212,7 @@ class Terminal
       width: testSpan.getBoundingClientRect().width / 10
       height: @children[0].getBoundingClientRect().height
     @children[0].removeChild(testSpan)
+    jQuery(@children[0]).append(tmp)
 
   eraseAttr: ->
     erased = @cloneAttr @defAttr
@@ -1542,7 +1551,7 @@ class Terminal
     oldCols = @cols
     oldRows = @rows
     @computeCharSize()
-    @cols = x or Math.floor((@body.clientWidth - @terminalExtraVertical) / @charSize.width)
+    @cols = x or Math.floor((@body.clientWidth - @terminalExtraVertical) / @charSize.width) - 1
     @rows = y or Math.floor((window.innerHeight - @terminalExtraAxis - @navbarHeight) * @terminalHeightRatio / @charSize.height)
     px = window.innerHeight % @charSize.height
     @body.style['padding-bottom'] = "#{px}px"
