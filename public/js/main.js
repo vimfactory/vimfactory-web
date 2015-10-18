@@ -14,7 +14,7 @@
   jQuery("#open").click(function() {
     var ctl, id, lastData, observe_terminal, observer, queue, send, t_queue, term, terminal_content, treat, ws, wsUrl;
     jQuery("#welcome").addClass("hide");
-    jQuery("body").css("background-image", "url('')");
+    jQuery("body").css("background-image", "none");
     jQuery("#main").removeClass("hide");
     send = function(data) {
       return ws.send('S' + data);

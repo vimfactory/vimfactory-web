@@ -14,9 +14,14 @@ html
     padding: 0
 
 body
+  background-image: -webkit-radial-gradient(center, circle cover, #456 0%, #1a1a1a 100%)
   min-height: 100%
   height: 100%
   font-family: "Maven Pro", "Verdana", sans-serif
+
+span.title-deco
+  color: $accent-color
+  font-weight: bold
 
 /**
  * Main Page
@@ -118,46 +123,36 @@ div#main
  * Welcome
  */
 div#welcome
-  background-color: #292929
-  color: #fff
-  height: 100%
-  padding: 50px 50px 0 50px
-  background-image: -webkit-radial-gradient(center, circle cover, #456 0%, #1a1a1a 100%)
-  h1
+  color: #fafafa
+  a
+    color: #fff
+    text-decoration: underline
+  div.jumbotron
     text-align: center
-    letter-spacing: 5px
-    font-size: 70px
-    font-weight: normal
-    padding: 100px 0 30px 0
-    margin: 0
-  h1:before
-    content: "<"
-    font-weight: bold
-    margin-right: 15px
-    color: $accent-color
-  h1:after
-    content: ">"
-    font-weight: bold
-    margin-left: 15px
-    color: $accent-color
-  p
-    text-align: center
-    margin: 0
-    font-size: 22px
-  div#start
-    margin: 40px 0 80px
-    text-align: center
-    button#open
-      padding: 13px 42px
-      background-color: $accent-color
-      color: #fff
-      border: none
-      &:hover
-        background-color: #bb2f2f
-        opacity: 0.9
+    background-color: transparent
+    h1
+      letter-spacing: 3px
+      font-weight: normal
+      padding: 100px 0 30px 0
+      margin: 0
+    p
+      margin: 0
+      font-size: 22px
+    div#start
+      margin: 40px 0px 20px
+      button#open
+        padding: 13px 42px
+        background-color: $accent-color
+        color: #fff
+        border: none
+        &:hover
+          background-color: #bb2f2f
+          opacity: 0.9
+  div.container
+    max-width: 420px
+    h3
+      text-align: center
   footer
+    text-align: center
     width: 100%
     margin: 10px 0
-    a
-      color: #fff
-      text-decoration: underline
