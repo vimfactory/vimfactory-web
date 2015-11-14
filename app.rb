@@ -9,12 +9,11 @@ require './lib/validator'
 require './lib/vimrc_creator'
 require './lib/vimrc_preview'
 require './lib/vimrc_option'
-require './lib/cache'
 
 configure do
   enable :logging
+  set :cache, Memcached.new('localhost:11211')
   config_file './config/config.yml'
-  $cache = VimFactory::Cache.new('localhost:11211')
 end
 
 before do
@@ -28,6 +27,19 @@ before '/en/*' do
   request.path_info = '/' + params[:splat][0]
 end
 
+helpers do
+  def generate_uniqid
+    loop do
+      begin
+        hex = SecureRandom.hex(8)
+        settings.cache.get(hex)
+      rescue Memcached::NotFound
+        return hex
+      end
+    end
+  end
+end
+
 assets do
   serve '/js', from: 'public/js'
   serve '/css', from: 'public/css'
@@ -37,7 +49,7 @@ assets do
     '/bower_components/jquery/dist/jquery.min.js',
     '/bower_components/jquery.blockUI.js/jquery.blockUI.js',
     '/bower_components/bootstrap/dist/js/bootstrap.min.js',
-    '/js/*.js',
+    '/js/*.js'
   ]
 
   css :app, '/css/app.css', [
@@ -59,12 +71,14 @@ get '/' do
   @colorscheme_options = YAML.load_file(settings.colorscheme_options_path)
   @programlang_options = YAML.load_file(settings.programlang_options_path)
   @initial_options = File.read(settings.vimrc_default_path).split("\n")
-  @connection_id = $cache.generate_uniqid
+  @connection_id = generate_uniqid
+  logger.warn(@connection_id)
   erb :index
 end
 
 # vimrc作成
 post '/api/vimrc' do
+  content_type :json
   begin
     params = JSON.parse(request.body.read)
 
@@ -77,7 +91,7 @@ post '/api/vimrc' do
     # vimrc作成
     vimrc_creator = VimFactory::VimrcCreator.new(
       params['vimrc_contents'],
-      "#{settings.vimrc_dir}/vimrc_#{$cache.get(params['connection_id'])}"
+      "#{settings.vimrc_dir}/vimrc_#{settings.cache.get(params['connection_id'])}"
     )
     vimrc_creator.create
   rescue JSON::ParserError => e
@@ -94,8 +108,9 @@ end
 
 # vimrc取得
 get '/api/vimrc/:connection_id' do |id|
+  content_type :json
   begin
-    vimrc_path = "#{settings.vimrc_dir}/vimrc_#{$cache.get(id)}"
+    vimrc_path = "#{settings.vimrc_dir}/vimrc_#{settings.cache.get(id)}"
     vimrc_preview = VimFactory::VimrcPreview.new(vimrc_path)
     vimrc = vimrc_preview.get
   rescue Memcached::NotFound => e

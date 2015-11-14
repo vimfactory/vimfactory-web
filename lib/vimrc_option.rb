@@ -32,7 +32,6 @@ module VimFactory
       'encoding'      => %w(utf-8 sjis euc-jp euc-kr euc-cn latin1),
       'fileformat'    => %w(dos unix mac),
       'fileformats'   => %w(unix,dos,mac),
-      'encoding'      => %w(utf-8),
       'fileencodings' => %w(utf-8)
     }
 
