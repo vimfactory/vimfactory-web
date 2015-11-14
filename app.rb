@@ -72,7 +72,6 @@ get '/' do
   @programlang_options = YAML.load_file(settings.programlang_options_path)
   @initial_options = File.read(settings.vimrc_default_path).split("\n")
   @connection_id = generate_uniqid
-  logger.warn(@connection_id)
   erb :index
 end
 
