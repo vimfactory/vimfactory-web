@@ -3,4 +3,6 @@ test:
     - apt-get update
     - apt-get install -y libsasl2-dev
     - bundle install --path vendor/bundle
-    - bundle exec ruby tests/*.rb
+    - bundle exec ruby tests/test_validator.rb
+    - bundle exec ruby tests/test_vimrc_creator.rb
+    - bundle exec ruby tests/test_vimrc_option.rb
