@@ -8,8 +8,8 @@ module VimFactory
     # コンストラクタ
     # @param [Hash] vimrc_contents vimrcの設定値
     # @param [String] filepath 作成するvimrcのパス
-    def initialize(vimrc_contents = {}, filepath)
-      @vimrc_contents = vimrc_contents
+    def initialize(vimrc_contents, filepath)
+      @vimrc_contents = vimrc_contents || {}
       @filepath = filepath.to_s
     end
 
