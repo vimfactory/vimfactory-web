@@ -10,7 +10,7 @@ module VimFactory
 
     def create
       File.open(@filepath, 'w') do |file|
-        @vimrc_contents.merge(VimrcOption::FIXED_OPTIONS).each do |option, value|
+        @vimrc_contents.merge(VimrcOption.fixed_options).each do |option, value|
           line = build_option_line(option, value)
           file.puts(line) if line.nil? == false
         end

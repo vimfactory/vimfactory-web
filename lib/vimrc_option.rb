@@ -3,18 +3,6 @@ require 'yaml'
 module VimFactory
   # Vimrcの設定値を管理するクラス
   class VimrcOption
-    INITIAL_OPTIONS = {
-      'colorscheme' => 'molokai'
-    }
-
-    FIXED_OPTIONS = {
-      't_Co' => 256,
-      'fileformats' => 'unix,dos,mac',
-      'encoding' => 'utf-8',
-      'fileencodings' => 'utf-8',
-      'syntax_on' => true
-    }
-
     TYPE = {
       toggle: 1,
       string: 2,
@@ -32,6 +20,14 @@ module VimFactory
         when special_option?(option) then TYPE[:special]
         when color_option?(option) then TYPE[:color]
         end
+      end
+
+      def initial_options
+        load_option_file('initial')
+      end
+
+      def fixed_options
+        load_option_file('fixed')
       end
 
       def toggle_options

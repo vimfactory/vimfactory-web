@@ -5,8 +5,8 @@ task :make_default_vimrc do
   require './lib/vimrc_creator'
 
   config = YAML.load_file('./config/config.yml')
-  fixed_options = VimFactory::VimrcOption::FIXED_OPTIONS
-  default_options = VimFactory::VimrcOption::INITIAL_OPTIONS.merge(fixed_options)
+  fixed_options = VimFactory::VimrcOption.fixed_options
+  default_options = VimFactory::VimrcOption.initial_options.merge(fixed_options)
 
   vimrc_creator = VimFactory::VimrcCreator.new(
     default_options,
