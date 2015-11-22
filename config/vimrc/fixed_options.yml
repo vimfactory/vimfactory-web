@@ -1,0 +1,5 @@
+t_Co: 256
+fileformats: unix,dos,mac
+encoding: utf-8
+fileencodings: utf-8
+syntax_on: true

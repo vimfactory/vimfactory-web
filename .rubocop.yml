@@ -4,9 +4,9 @@ AllCops:
     - 'vendor/**/*'
     - 'tests/*'
 
-# 一行の最大文字数は120文字とする（暫定）
+# 一行の最大文字数は100文字とする
 Metrics/LineLength:
-  Max: 120
+  Max: 100
 
 # 日本語コメントを認める
 Style/AsciiComments:
@@ -16,13 +16,3 @@ Style/AsciiComments:
 # 10 -> 20
 Metrics/MethodLength:
   Max: 20
-
-# 循環的複雑度
-# 6 -> 10
-Metrics/CyclomaticComplexity:
-  Max: 10
-
-# 知覚複雑度
-# 6 -> 10
-Metrics/PerceivedComplexity:
-  Max: 10

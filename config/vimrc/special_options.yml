@@ -1,0 +1,8 @@
+syntax_on: syntax on
+syntax_off: syntax off
+syntax_enable: syntax enable
+syntax_clear: syntax clear
+filetype_on: filetype on
+filetype_off: filetype off
+filetype_indent_on: filetype indent on
+filetype_plugin_indent_on: filetype plugin indent on
