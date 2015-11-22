@@ -1,0 +1,15 @@
+encoding:
+  - utf-8
+  - sjis
+  - euc-jp
+  - euc-kr
+  - euc-cn
+  - latin1
+fileformat:
+  - dos
+  - unix
+  - mac
+fileformats:
+  - unix,dos,mac
+fileencodings:
+  - utf-8

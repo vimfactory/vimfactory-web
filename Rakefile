@@ -8,6 +8,9 @@ task :make_default_vimrc do
   fixed_options = VimFactory::VimrcOption::FIXED_OPTIONS
   default_options = VimFactory::VimrcOption::INITIAL_OPTIONS.merge(fixed_options)
 
-  vimrc_creator = VimFactory::VimrcCreator.new(default_options, "#{config['vimrc_dir']}/vimrc_default")
+  vimrc_creator = VimFactory::VimrcCreator.new(
+    default_options,
+    "#{config['vimrc_dir']}/vimrc_default"
+  )
   vimrc_creator.create
 end

@@ -1,20 +1,13 @@
 require_relative './vimrc_option'
 
 module VimFactory
-  #
-  # == 与えられた設定値に従いvimrcを作成するクラス
-  #
+  # Vimrcを生成するクラス
   class VimrcCreator
-    # コンストラクタ
-    # @param [Hash] vimrc_contents vimrcの設定値
-    # @param [String] filepath 作成するvimrcのパス
     def initialize(vimrc_contents, filepath)
       @vimrc_contents = vimrc_contents || {}
       @filepath = filepath.to_s
     end
 
-    # vimrc作成処理
-    # @return [void]
     def create
       File.open(@filepath, 'w') do |file|
         @vimrc_contents.merge(VimrcOption::FIXED_OPTIONS).each do |option, value|
@@ -26,32 +19,40 @@ module VimFactory
 
     private
 
-    # 設定行を組み立てる
-    # @param [String] option オプション名
-    # @param [String] value オプション値
-    # @return [String, nil] 設定行
     def build_option_line(option, value)
-      case
-      when VimrcOption.toggle_option?(option)
-        return "set #{option}" if value == true
-      when VimrcOption.string_option?(option)
-        if VimrcOption::STRING_OPTIONS[option].include?(value)
-          return "set #{option}=#{value}"
-        end
-      when VimrcOption.number_option?(option)
-        return nil if value.nil? || value == ''
-        if VimrcOption::NUMBER_OPTIONS[option].include?(value.to_i)
-          return "set #{option}=#{value.to_i}"
-        end
-      when VimrcOption.special_option?(option)
-        return VimrcOption::SPECIAL_OPTIONS[option]
-      when option == 'colorscheme'
-        if VimrcOption::COLOR_SCHEMES.include?(value)
-          return "colorscheme #{value}"
-        end
-      else
-        return nil
+      case VimrcOption.type(option)
+      when VimrcOption::TYPE[:toggle]
+        toggle_option_line(option, value)
+      when VimrcOption::TYPE[:string]
+        string_option_line(option, value)
+      when VimrcOption::TYPE[:number]
+        number_option_line(option, value)
+      when VimrcOption::TYPE[:special]
+        special_option_line(option)
+      when VimrcOption::TYPE[:color]
+        color_option_line(option, value)
       end
+    end
+
+    def toggle_option_line(option, value)
+      "set #{option}" if value == true
+    end
+
+    def string_option_line(option, value)
+      "set #{option}=#{value}" if VimrcOption.string_options[option].include?(value)
+    end
+
+    def number_option_line(option, value)
+      return nil if value.nil? || value == ''
+      "set #{option}=#{value.to_i}" if VimrcOption.number_options[option].include?(value.to_i)
+    end
+
+    def color_option_line(option, value)
+      "#{option} #{value}" if VimrcOption.color_options[option].include?(value)
+    end
+
+    def special_option_line(option)
+      VimrcOption.special_options[option]
     end
   end
 end

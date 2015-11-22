@@ -1,0 +1,7 @@
+matchtime: !ruby/range 0..100
+numberwidth: !ruby/range 0..100
+scrolloff: !ruby/range 0..100
+shiftwidth: !ruby/range 0..100
+softtabstop: !ruby/range 0..100
+tabstop: !ruby/range 0..100
+t_Co: !ruby/range 256..256
