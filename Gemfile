@@ -15,5 +15,6 @@ group :development do
 end
 
 group :test do
+  gem 'simplecov', '0.10.0', require: false
   gem 'test-unit', '3.1.5'
 end
