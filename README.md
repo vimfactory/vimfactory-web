@@ -35,8 +35,7 @@ $ sudo npm install bower -g
 ### rubocopをつかった静的解析
 commit/push前にチェック
 ```
-// 全コードチェック
-$ bundle exec rubocop .
+$ bundle exec rake rubocop
 ```
 
 ### ユニットテスト
@@ -50,12 +49,10 @@ $ bundle exec rake test TESTOPTS="-v"
 
 ### sassコンパイル
 ```
-$ bundle exec sass sass/butterfly.sass ./public/css/butterfly.css
-$ bundle exec sass sass/main.sass ./public/css/main.css
+$ bundle exec rake compile_sass
 ```
 
 ### coffeeコンパイル
 ```
-$ coffee -o ./public/js/ -c coffee/
-$ coffee -o ./public/js/ -c coffee/ext/
+$ bundle exec rake compile_coffee_script
 ```
