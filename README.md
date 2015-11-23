@@ -43,7 +43,9 @@ $ bundle exec rubocop .
 commit/push前にチェック
 ```
 // テスト実行
-$ bundle exec ruby tests/[テストしたいファイル].rb
+$ bundle exec rake test
+// 詳細表示にしたい場合
+$ bundle exec rake test TESTOPTS="-v"
 ```
 
 ### sassコンパイル
