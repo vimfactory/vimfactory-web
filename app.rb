@@ -12,8 +12,8 @@ require './lib/vimrc_option'
 
 configure do
   enable :logging
-  set :cache, Memcached.new('localhost:11211')
   config_file './config/config.yml'
+  set :cache, Memcached.new(settings.memcached)
 end
 
 before do
