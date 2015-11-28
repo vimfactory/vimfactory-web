@@ -8,6 +8,7 @@ module VimFactory
     end
 
     def get
+      return nil unless File.exist?(@filepath)
       File.open(@filepath, 'r').read
     end
   end

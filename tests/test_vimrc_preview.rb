@@ -4,34 +4,32 @@ require_relative "../lib/vimrc_preview"
 class TestVimrcPreview < Test::Unit::TestCase
   @@present_vimrc = "tests/test_vimrc"
   @@not_present_vimrc = "tests/test_novimrc"
-  class << self
-    def startup
-      test_vimrc = <<-EOS
+  def setup
+    test_vimrc = <<-EOS
 " testvimrc
 set number
 set autoindent
-      EOS
-      File.open 'tests/test_vimrc', 'w' do |f|
-        f.write test_vimrc
-      end
+    EOS
+    File.open 'tests/test_vimrc', 'w' do |f|
+      f.write test_vimrc
     end
+  end
   
-    def shutdown
-      File.unlink(@@present_vimrc) if File.exist?(@@present_vimrc)
-    end
+  def teardown
+    File.unlink(@@present_vimrc) if File.exist?(@@present_vimrc)
   end
   
   # vimrcファイルを適切に読み込めること 
   def test_read_present_vimrc
     vimrc_preview = VimFactory::VimrcPreview.new(@@present_vimrc)
-    assert_equal(vimrc_preview.get.include?("testvimrc"), true)
+    assert_equal(vimrc_preview.get.include?("\" testvimrc"), true)
+    assert_equal(vimrc_preview.get.include?("set number"), true)
+    assert_equal(vimrc_preview.get.include?("set autoindent"), true)
   end
 
-  # 存在しないvimrcファイルを読んだ時に例外をはくこと
+  # vimrcファイルがない場合にはnilを返すこと
   def test_read_not_present_vimrc
     vimrc_preview = VimFactory::VimrcPreview.new(@@not_present_vimrc)
-    assert_raise("Errno::ENOENT") do
-      vimrc_preview.get
-    end
+    assert_equal(vimrc_preview.get, nil)
   end
 end
