@@ -21,7 +21,6 @@ end
 desc 'Compile CoffeeScript'
 task :compile_coffee_script do
   `coffee -o ./public/js/ -c coffee/`
-  `coffee -o ./public/js/ -c coffee/ext/`
 end
 
 require 'rubocop/rake_task'

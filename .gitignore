@@ -8,4 +8,6 @@ logs/*.log.*
 config/thin/thin.yml
 bower_components
 coverage/
+public/js/
+public/css/
 !.gitkeep
