@@ -7,6 +7,7 @@ gem 'sinatra-r18n'
 gem 'sass', '3.4.19'
 gem 'thin', '1.6.4'
 gem 'memcached', '1.8.0'
+gem 'rake', '10.4.2'
 
 group :development do
   gem 'pry', '0.10.3'

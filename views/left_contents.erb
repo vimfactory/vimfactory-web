@@ -16,12 +16,16 @@
         <table class="table table-condensed">
           <% elements.each do |element| %>
             <tr>
-              <td class="table-left"><%= element['message'][@locale] %></td>
+              <td class="table-left">
+                <label for="<%= genre %>-<%= element['name'] %>">
+                  <%= element['message'][@locale] %>
+                </label>
+              </td>
               <td class="table-right">
                 <% if element['type'] == 'text' %>
-                    <input class="vimrc-contents genre-<%= genre %>" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['disabled'] %> size="6">
+                  <input class="vimrc-contents genre-<%= genre %>" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['disabled'] %> size="6">
                 <% elsif element['type'] == 'checkbox' %>
-                    <input class="vimrc-contents genre-<%= genre %>" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['checked'] %> <%= element['disabled'] %> >
+                  <input id="<%= genre %>-<%= element['name'] %>" class="vimrc-contents genre-<%= genre %>" type="<%= element['type'] %>" name="<%= element['name'] %>" <%= element['checked'] %> <%= element['disabled'] %> >
                 <% elsif element['type'] == 'selectbox' %>
                   <select type="select" class="vimrc-contents genre-<%= genre %>" name="<%= element['name'] %>">
                     <% element['values'].each do |val| %>
