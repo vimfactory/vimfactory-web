@@ -7,6 +7,7 @@ tab:
   - name: tabstop
     type: selectbox
     values:
+      -   # 未選択状態
       - 2
       - 4
       - 8
@@ -22,88 +23,89 @@ indent:
   - name: shiftwidth
     type: selectbox
     values:
+      -   # 未選択状態
       - 2
       - 4
       - 8
-    message: 
+    message:
       ja: 自動インデントの各段階に使われる空白の数
       en: Sets spaces used for (auto)indent
 search:
   - name: ignorecase
     type: checkbox
-    message: 
+    message:
       ja: 検索時大文字小文字を区別しない
       en: Ignore case in search patterns
   - name: wrapscan
     type: checkbox
-    message: 
+    message:
       ja: 検索がファイル末尾まで進んだら先頭から再検索
       en: Searches wrap around the end of the file
   - name: incsearch
     type: checkbox
-    message: 
+    message:
       ja: インクリメンタルサーチを行う
       en: Highlight match while typing search pattern
 cursor:
   - name: cursorcolumn
     type: checkbox
-    message: 
+    message:
       ja: カーソルがある桁を強調表示する
       en: Highlight the screen column of the cursor
   - name: cursorline
     type: checkbox
-    message: 
+    message:
       ja: カーソルがある行を強調表示する
       en: Highlight the screen line of the cursor
 visual:
   - name: number
     type: checkbox
-    message: 
+    message:
       ja: 行番号をつける
       en: Print the line number in front of each line
   - name: showmatch
     type: checkbox
-    message: 
+    message:
       ja: 対応するカッコをハイライトする
       en: Briefly jump to matching bracket if insert one
   - name: wrap
     type: checkbox
-    message: 
+    message:
       ja: 長い行を折り返して表示する
       en: Long lines wrap and continue on the next line
   - name: list
     type: checkbox
-    message: 
+    message:
       ja: タブや改行を可視化する
       en: Show &lt;Tab&gt; and &lt;EOL&gt;
   - name: showcmd
     type: checkbox
-    message: 
+    message:
       ja: コマンドをステータスラインに表示する
       en: Show (partial) command in status line
   - name: spell
     type: checkbox
-    message: 
+    message:
       ja: スペルチェック機能を有効にする
       en: Enable spell checking
 fixed:
   - name: t_Co
     type: checkbox
-    message: 
+    message:
       ja: 色の種類：256色
       en: 256 colors
     disabled: disabled
     checked: checked
   - name: fileformats
     type: checkbox
-    message: 
+    message:
       ja: 対応改行コード：unix,dos,mac
       en: "Newline character: unix,dos,mac"
     disabled: disabled
     checked: checked
   - name: encoding
     type: checkbox
-    message: 
+    message:
       ja: 文字コード：utf-8
       en: "Character code: utf-8"
     disabled: disabled
