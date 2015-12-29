@@ -91,7 +91,7 @@ post '/api/vimrc' do
     # vimrc作成
     vimrc_creator = VimFactory::VimrcCreator.new(
       params['vimrc_contents'],
-      "#{settings.vimrc_dir}/vimrc_#{settings.cache.get(params['connection_id'])}"
+      "#{settings.vimrc_dir}/#{settings.cache.get(params['connection_id'])}/vimrc"
     )
     vimrc_creator.create
   rescue JSON::ParserError => e
@@ -110,7 +110,7 @@ end
 get '/api/vimrc/:connection_id' do |id|
   content_type :json
   begin
-    vimrc_path = "#{settings.vimrc_dir}/vimrc_#{settings.cache.get(id)}"
+    vimrc_path = "#{settings.vimrc_dir}/#{settings.cache.get(id)}/vimrc"
     vimrc_preview = VimFactory::VimrcPreview.new(vimrc_path)
     vimrc = vimrc_preview.get
   rescue Memcached::NotFound => e
