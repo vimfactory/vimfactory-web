@@ -56,3 +56,9 @@ $ bundle exec rake compile_sass
 ```
 $ bundle exec rake compile_coffee_script
 ```
+
+## Guard起動
+coffeescriptコンパイル、sassコンパイル、テスト、rubocop起動を行う
+```
+$ bundle exec guard start
+```
