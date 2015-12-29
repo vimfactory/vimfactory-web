@@ -1,0 +1,17 @@
+<div id="setting-plugin" class="tab-pane fade">
+  <% @plugin_options.each_with_index do |plugin, index| %>
+    <div class="plugin">
+      <div class="radio">
+        <label>
+          <input type="radio" class="vimrc-contents" name="plugin" value="<%= plugin['name'] %>" <%= "checked" if index == 0 %>>
+          <span class="colorschme-name"><%= plugin['name'] %></span>
+        </label>
+        <% if plugin['url'] %>
+        <a href="<%= plugin['url'] %>" target=”_blank”>
+          <i class="setting-link material-icons">link</i>
+        </a>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

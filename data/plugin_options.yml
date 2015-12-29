@@ -1,0 +1,7 @@
+- name: プラグインを適応しない
+- name: endwise.vim
+  url: https://github.com/tomasr/molokai
+- name: yankring.vim
+  url: https://github.com/jpo/vim-railscasts-theme
+- name: surround.vim
+  url: https://github.com/nanotech/jellybeans.vim

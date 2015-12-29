@@ -70,6 +70,7 @@ get '/' do
   @settings_msg = t.settings
   @basic_options = YAML.load_file(settings.basic_options_path)
   @colorscheme_options = YAML.load_file(settings.colorscheme_options_path)
+  @plugin_options = YAML.load_file(settings.plugin_options_path)
   @programlang_options = YAML.load_file(settings.programlang_options_path)
   @initial_options = File.read(settings.vimrc_default_path).split("\n")
   @connection_id = generate_uniqid
