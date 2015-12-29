@@ -1,4 +1,4 @@
-vimrc_dir: "/home/vimfactory/vimrcs"
+vimrc_dir: "/home/vimfactory/vimstorage/default"
 vimrc_default_path: "/home/vimfactory/vimrcs/vimrc_default"
 basic_options_path: "/home/vimfactory/app/vimfactory-web/data/basic_options.yml"
 colorscheme_options_path: "/home/vimfactory/app/vimfactory-web/data/colorscheme_options.yml"
