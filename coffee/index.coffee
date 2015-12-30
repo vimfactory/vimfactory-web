@@ -19,8 +19,9 @@ create_vimrc_conetns_json = ->
       "number": true,          // set number
       "ruler": false,          // when value is false, skip
       "history": 100,          // set history=100
-      "encoding": "utf-8"      // set encoding=utf-8
-    }
+      "encoding": "utf-8",     // set encoding=utf-8
+      "plugin": "endwise.vim"
+    },
   }
   ###
 
@@ -32,6 +33,13 @@ create_vimrc_conetns_json = ->
 
     #colorscheme
     if key=="colorscheme"
+      if $(this).prop('checked')
+        val = $(this).val()
+        results[key] = val
+      return
+    
+    #plugin
+    else if key=="plugin"
       if $(this).prop('checked')
         val = $(this).val()
         results[key] = val
@@ -50,7 +58,6 @@ create_vimrc_conetns_json = ->
     else if $(this).attr('type') == 'select'
       results[key] = $(this).val()
       return
-
   return results
 
 post_vimrc = (id, vimrc_contents) ->
