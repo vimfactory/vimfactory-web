@@ -3,7 +3,7 @@
     <div class="plugin">
       <div class="radio">
         <label>
-          <input type="radio" class="vimrc-contents" name="plugin" value="<%= plugin['name'] %>" <%= "checked" if index == 0 %>>
+          <input type="radio" class="vimrc-contents" name="plugin" value="<%= plugin['value'] %>" <%= "checked" if index == 0 %>>
           <span class="colorschme-name"><%= plugin['name'] %></span>
         </label>
         <% if plugin['url'] %>
