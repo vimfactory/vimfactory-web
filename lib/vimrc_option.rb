@@ -8,7 +8,8 @@ module VimFactory
       string: 2,
       number: 3,
       special: 4,
-      color: 5
+      color: 5,
+      plugin: 6
     }
 
     class << self
@@ -19,6 +20,7 @@ module VimFactory
         when number_option?(option) then TYPE[:number]
         when special_option?(option) then TYPE[:special]
         when color_option?(option) then TYPE[:color]
+        when plugin_option?(option) then TYPE[:plugin]
         end
       end
 
@@ -50,6 +52,10 @@ module VimFactory
         load_option_file('color')
       end
 
+      def plugin_options
+        load_option_file('plugin')
+      end
+
       def toggle_option?(option)
         toggle_options.include?(option)
       end
@@ -68,6 +74,10 @@ module VimFactory
 
       def color_option?(option)
         color_options.include?(option)
+      end
+
+      def plugin_option?(option)
+        plugin_options.include?(option)
       end
 
       private

@@ -92,7 +92,8 @@ post '/api/vimrc' do
     # vimrc作成
     vimrc_creator = VimFactory::VimrcCreator.new(
       params['vimrc_contents'],
-      "#{settings.vimrc_dir}/#{settings.cache.get(params['connection_id'])}/vimrc"
+      "#{settings.vimrc_dir}/#{settings.cache.get(params['connection_id'])}/vimrc",
+      settings.cache.get(params['connection_id'])
     )
     vimrc_creator.create
   rescue JSON::ParserError => e
