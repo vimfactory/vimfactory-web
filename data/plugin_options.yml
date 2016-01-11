@@ -1,0 +1,11 @@
+- name: プラグインを適応しない
+  value: ''
+- name: endwise.vim
+  value: endwise.vim
+  url: https://github.com/tpope/vim-endwise
+- name: yankring.vim
+  value: yankring.vim
+  url: https://github.com/vim-scripts/YankRing.vim
+- name: surround.vim
+  value: surround.vim
+  url: https://github.com/tpope/vim-surround

@@ -1,0 +1,4 @@
+plugin:
+  - endwise.vim
+  - yankring.vim
+  - surround.vim

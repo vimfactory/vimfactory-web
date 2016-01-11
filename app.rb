@@ -70,6 +70,7 @@ get '/' do
   @settings_msg = t.settings
   @basic_options = YAML.load_file(settings.basic_options_path)
   @colorscheme_options = YAML.load_file(settings.colorscheme_options_path)
+  @plugin_options = YAML.load_file(settings.plugin_options_path)
   @programlang_options = YAML.load_file(settings.programlang_options_path)
   @initial_options = File.read(settings.vimrc_default_path).split("\n")
   @connection_id = generate_uniqid
@@ -89,16 +90,18 @@ post '/api/vimrc' do
     end
 
     # vimrc作成
+    container_id = settings.cache.get(params['connection_id'])
     vimrc_creator = VimFactory::VimrcCreator.new(
       params['vimrc_contents'],
-      "#{settings.vimrc_dir}/#{settings.cache.get(params['connection_id'])}/vimrc"
+      "#{settings.vimrc_dir}/#{container_id}/vimrc",
+      container_id
     )
     vimrc_creator.create
   rescue JSON::ParserError => e
     logger.error(e.message)
     return [400, { message: 'Requestbody should be JSON format' }.to_json]
   rescue => e
-    logger.error(e.message)
+    logger.error("msg:#{e.message} trace:#{e.backtrace}")
     return [500, { message: 'Unexpected error' }.to_json]
   end
 

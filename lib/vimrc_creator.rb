@@ -1,11 +1,13 @@
 require_relative './vimrc_option'
+require_relative './plugin'
 
 module VimFactory
   # Vimrcを生成するクラス
   class VimrcCreator
-    def initialize(vimrc_contents, filepath)
+    def initialize(vimrc_contents, filepath, container_id)
       @vimrc_contents = vimrc_contents || {}
       @filepath = filepath.to_s
+      @container_id = container_id.to_s
     end
 
     def create
@@ -31,6 +33,8 @@ module VimFactory
         special_option_line(option)
       when VimrcOption::TYPE[:color]
         color_option_line(option, value)
+      when VimrcOption::TYPE[:plugin]
+        plugin_option_line(value)
       end
     end
 
@@ -53,6 +57,14 @@ module VimFactory
 
     def special_option_line(option)
       VimrcOption.special_options[option]
+    end
+
+    def plugin_option_line(value)
+      if value.empty?
+        Plugin.disable(@container_id)
+      else
+        Plugin.enable(@container_id, value)
+      end
     end
   end
 end

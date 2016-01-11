@@ -16,3 +16,6 @@ Style/AsciiComments:
 # 10 -> 20
 Metrics/MethodLength:
   Max: 20
+
+CyclomaticComplexity:
+  Max: 9
