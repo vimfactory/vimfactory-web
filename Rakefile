@@ -8,7 +8,8 @@ task :make_default_vimrc do
 
   VimFactory::VimrcCreator.new(
     VimFactory::VimrcOption.initial_options,
-    "#{config['vimrc_dir']}/default/vimrc"
+    "#{config['vimrc_dir']}/default/vimrc",
+    nil
   ).create
 end
 
