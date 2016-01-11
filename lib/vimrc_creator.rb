@@ -60,11 +60,10 @@ module VimFactory
     end
 
     def plugin_option_line(value)
-      plugin = Plugin.new(@container_id)
       if value.empty?
-        plugin.disable
+        Plugin.disable(@container_id)
       else
-        plugin.enable(value)
+        Plugin.enable(@container_id, value)
       end
     end
   end
