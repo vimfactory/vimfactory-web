@@ -1,3 +1,5 @@
+task :default => [:test]
+
 desc 'Make vimrc_default'
 task :make_default_vimrc do
   require 'yaml'
