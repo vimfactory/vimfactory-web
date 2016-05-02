@@ -1,6 +1,7 @@
 [![build status](https://gitlab.com/ci/projects/3269/status.png?ref=master)](https://gitlab.com/ci/projects/3269?ref=master)
 
 # vimfactory-web
+http://vimfactory.com  
 vimfactoryのフロントエンド兼APIリポジトリ
 
 ## SETUP
