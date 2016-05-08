@@ -15,8 +15,10 @@ end
 
 desc 'Compile Sass'
 task :compile_sass do
-  `bundle exec sass ./sass/butterfly.sass ./public/css/butterfly.css`
-  `bundle exec sass ./sass/main.sass ./public/css/main.css`
+  Bundler.with_clean_env do
+    `bundle exec sass ./sass/butterfly.sass ./public/css/butterfly.css`
+    `bundle exec sass ./sass/main.sass ./public/css/main.css`
+  end
 end
 
 desc 'Compile CoffeeScript'
